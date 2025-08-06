@@ -1,0 +1,949 @@
+/* AAC 웹사이트 스타일 */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Noto Sans KR", sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 메인 컨테이너 */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width:100%;
+    margin: 0 auto;
+    padding: 10px;
+    gap: 15px;
+}
+
+/* 입력 컨테이너 */
+.input-container {
+    display: flex;
+    align-items: center;
+    background-color: #f4f4f4;
+    border-radius: 20px;
+    padding: 20px;
+    height: 80px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    gap: 15px;
+}
+
+/* 현재 입력 영역 */
+#current_input {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    font-size: 28px; /* 24px → 28px */
+    font-weight: 500;
+    color: #333;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    min-height: 40px;
+}
+
+#current_input:empty::before {
+    content: "여기에 선택한 단어들이 표시됩니다";
+    color: #999;
+    font-style: italic;
+}
+
+/* 삭제 버튼 */
+.clear-btn {
+    background: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.8);
+}
+
+.clear-btn:hover {
+    background: #ff3742;
+    transform: scale(0.9);
+}
+
+.clear-btn.show {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+/* 카테고리 영역 */
+#category {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 10px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+#category::-webkit-scrollbar {
+    display: none;
+}
+
+.category-btn {
+    background-color: #ffffff;
+    border: 1.2px solid #dddddd;
+    border-radius: 25px;
+    padding: 12px 24px;
+    font-size: 18px; /* 16px → 18px */
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    min-width: 80px;
+}
+
+.category-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.category-btn.active {
+    background: #4CAF50;
+    transform: scale(1.05);
+}
+
+/* AAC 버튼 그리드 */
+#buttons {
+    flex: 1;
+    display: grid;
+    gap: 15px;
+    padding: 10px 0;
+    overflow-y: auto;
+    height: calc(100vh - 300px); /* 고정 높이 설정 */
+    grid-auto-rows: 110px; /* 버튼 높이 고정 */
+}
+
+/* 모바일: 3x3 그리드 */
+@media (max-width: 768px) {
+    #buttons {
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 110px; /* 버튼 높이 고정 */
+        height: calc(100vh - 320px); /* 모바일에서 고정 높이 */
+    }
+    
+    .main-container {
+        padding: 8px;
+        gap: 12px;
+    }
+    
+    .input-container {
+        height: 70px; /* 모바일에서 고정 높이 */
+        padding: 15px;
+    }
+    
+    #current_input {
+        font-size: 20px; /* 18px → 20px */
+    }
+    
+    .clear-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+    
+    .aac-btn-text {
+        font-size: 18px; /* 16px → 18px */
+        font-weight: 600;
+    }
+    
+    .category-btn {
+        padding: 10px 18px;
+        font-size: 16px; /* 14px → 16px */
+    }
+    
+    .footer-btn {
+        font-size: 16px; /* 14px → 16px */
+        padding: 12px;
+    }
+}
+
+/* 매우 작은 모바일 화면 */
+@media (max-width: 480px) {
+    .main-container {
+        padding: 5px;
+        gap: 8px;
+    }
+    
+    #buttons {
+        grid-auto-rows: 110px; /* 버튼 높이 고정 */
+        gap: 8px;
+        height: calc(100vh - 340px); /* 작은 화면에서 고정 높이 */
+    }
+    
+    .aac-btn {
+        padding: 10px;
+        border-radius: 15px;
+    }
+    
+    .aac-btn-text {
+        font-size: 16px; /* 14px → 16px */
+        font-weight: 600;
+    }
+    
+    .input-container {
+        height: 60px; /* 작은 화면에서 고정 높이 */
+        padding: 12px;
+    }
+    
+    #current_input {
+        font-size: 18px; /* 16px → 18px */
+    }
+    
+    .clear-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+    }
+}
+
+/* 태블릿: 4x4 그리드 */
+@media (min-width: 769px) and (max-width: 1024px) {
+    #buttons {
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: 110px; /* 버튼 높이 고정 */
+        height: calc(100vh - 280px);
+    }
+    
+    .aac-btn-text {
+        font-size: 22px; /* 20px → 22px 태블릿에서 텍스트 크기 증가 */
+        font-weight: 700;
+    }
+    
+    .input-container {
+        height: 90px;
+    }
+    
+    #current_input {
+        font-size: 30px; /* 26px → 30px */
+    }
+}
+
+/* 데스크톱: 5x4 그리드 */
+@media (min-width: 1025px) {
+    #buttons {
+        grid-template-columns: repeat(5, 1fr);
+        grid-auto-rows: 110px; /* 버튼 높이 고정 */
+        height: calc(100vh - 260px);
+    }
+    
+    .aac-btn-text {
+        font-size: 24px; /* 22px → 24px 데스크톱에서 텍스트 크기 더 증가 */
+        font-weight: 700;
+    }
+    
+    .input-container {
+        height: 100px;
+    }
+    
+    #current_input {
+        font-size: 32px; /* 28px → 32px */
+    }
+}
+
+/* AAC 버튼 스타일 */
+.aac-btn {
+    background: #f4f4f4;
+    border: 2px solid #ddd;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.aac-btn:hover {
+    transform: translateY(-2px);
+    border-color: #4CAF50;
+    background: #f8f8f8;
+}
+
+.aac-btn:active {
+    transform: translateY(-2px) scale(0.98);
+    background: #f0f8ff;
+}
+
+.aac-btn-text {
+    font-size: 18px; /* 16px → 18px */
+    font-weight: 600;
+    color: #333;
+    line-height: 1.2;
+    word-break: keep-all;
+    text-align: center;
+}
+
+/* 맥락 버튼 특별 스타일 */
+.aac-btn.context-btn {
+    background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%);
+    border: 2px solid #4CAF50;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.2);
+}
+
+.aac-btn.context-btn:hover {
+    background: linear-gradient(135deg, #c8e6c9 0%, #e8f5e8 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.3);
+}
+
+.context-badge {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 16px;
+    opacity: 0.9;
+    color: #4CAF50;
+}
+
+/* 일반 버튼 스타일 (맥락 모드에서) */
+.aac-btn.regular-btn {
+    background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f4 100%);
+    border: 1px solid #e0e0e0;
+    opacity: 0.85;
+}
+
+.aac-btn.regular-btn:hover {
+    opacity: 1;
+    background: linear-gradient(135deg, #f1f3f4 0%, #e8eaf6 100%);
+    transform: translateY(-2px);
+}
+
+/* 뒤로가기 버튼 스타일 */
+.aac-btn.back-btn:hover {
+    background: #e0e0e0 !important;
+    border-color: #999 !important;
+    transform: translateY(-2px);
+}
+
+.aac-btn.back-btn:focus {
+    outline: 3px solid #2196F3;
+    outline-offset: 2px;
+}
+
+/* 구분 헤더 애니메이션 */
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.context-section-header, .regular-section-header {
+    animation: fadeInSlide 0.5s ease-out;
+}
+
+/* 버튼 클릭 애니메이션 */
+.aac-btn.clicked {
+    animation: buttonClick 0.6s ease;
+}
+
+.aac-btn.touch-active {
+    transform: scale(0.95);
+    background: #f0f8ff;
+}
+
+@keyframes buttonClick {
+    0% { transform: scale(1); background: white; }
+    25% { transform: scale(1.05); background: #4CAF50; }
+    50% { transform: scale(1.1); background: #4CAF50; color: white; }
+    75% { transform: scale(1.05); background: #4CAF50; }
+    100% { transform: scale(1); background: white; color: #333; }
+}
+
+/* 푸터 영역 */
+#footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 15px 0;
+}
+
+.footer-btn {
+    flex: 1;
+    background: #ffffff;
+    color: #333;
+    border: 2px solid #dddddd;
+    border-radius: 15px;
+    padding: 15px;
+    font-size: 18px; /* 16px → 18px */
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.footer-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.footer-btn.context-btn {
+    background: #74b9ff;
+    color: #333;
+    border: none;
+}
+
+.footer-btn.settings-btn {
+    background: #ffffff;
+    color: #333;
+    border: 2px solid #dddddd;
+}
+
+.footer-btn.settings-btn:hover {
+    border-color: #4CAF50;
+}
+
+/* Google Icons 스타일 */
+.material-symbols-outlined {
+    font-size: 24px; /* 20px → 24px */
+}
+
+/* 로딩 애니메이션 */
+.loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #4CAF50;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 스크롤바 스타일 */
+#buttons::-webkit-scrollbar {
+    width: 6px;
+}
+
+#buttons::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+}
+
+#buttons::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+#buttons::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* 접근성 개선 */
+.aac-btn:focus,
+.category-btn:focus,
+.footer-btn:focus {
+    outline: 3px solid #4CAF50;
+    outline-offset: 2px;
+    z-index: 1;
+}
+
+/* 맥락 버튼 포커스 스타일 */
+.aac-btn.context-btn:focus {
+    outline: 3px solid #2e7d32;
+    outline-offset: 2px;
+    background: linear-gradient(135deg, #c8e6c9 0%, #e8f5e8 100%);
+}
+
+/* 키보드 네비게이션 시각적 피드백 */
+.aac-btn:focus .aac-btn-text {
+    font-weight: 700;
+}
+
+/* 로딩 상태에서 접근성 */
+.aac-btn:disabled,
+.aac-btn.loading {
+    opacity: 0.6;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+/* 고대비 모드 지원 */
+@media (prefers-contrast: high) {
+    .aac-btn {
+        border: 2px solid #000;
+    }
+    
+    .aac-btn.context-btn {
+        border: 3px solid #2e7d32;
+        background: #e8f5e8;
+    }
+    
+    .aac-btn:focus {
+        outline: 4px solid #000;
+        outline-offset: 2px;
+    }
+}
+
+/* 컴팩트 모드 */
+.compact-mode .aac-btn {
+    padding: 8px;
+}
+
+.compact-mode .aac-btn-text {
+    font-size: 15px; /* 13px → 15px */
+    font-weight: 600;
+}
+
+/* 추천 버튼 팝업 */
+.recommendation-popup {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%);
+    border-top: 3px solid #4CAF50;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 500;
+    max-height: 55vh; /* 40vh → 55vh */
+    overflow: hidden;
+}
+
+.recommendation-popup.show {
+    transform: translateY(0);
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 2px solid #c8e6c9;
+    background: linear-gradient(135deg, #c8e6c9 0%, #e8f5e8 100%);
+}
+
+.popup-title {
+    font-size: 20px; /* 18px → 20px */
+    font-weight: bold;
+    color: #2e7d32;
+}
+
+.popup-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.popup-nav-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.popup-nav-btn:hover {
+    background: #45a049;
+    transform: scale(1.05);
+}
+
+.popup-nav-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.popup-close {
+    background: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.popup-close:hover {
+    background: #ff3742;
+    transform: scale(1.1);
+}
+
+.recommendation-buttons {
+    padding: 15px;
+    display: grid;
+    gap: 12px; /* 10px → 12px */
+    max-height: calc(55vh - 80px); /* 40vh → 55vh, 70px → 80px */
+    overflow-y: auto;
+}
+
+/* 추천 버튼 그리드 - 반응형 */
+@media (max-width: 768px) {
+    .recommendation-buttons {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 12px;
+        gap: 8px;
+    }
+    
+    .recommendation-btn-text {
+        font-size: 18px; /* AAC 버튼과 동일 */
+    }
+    
+    .recommendation-btn {
+        min-height: 75px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .recommendation-buttons {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .recommendation-btn-text {
+        font-size: 22px; /* AAC 버튼 태블릿 크기와 동일 */
+    }
+    
+    .recommendation-btn {
+        min-height: 85px;
+    }
+}
+
+@media (min-width: 1025px) {
+    .recommendation-buttons {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .recommendation-btn-text {
+        font-size: 24px; /* AAC 버튼 데스크톱 크기와 동일 */
+    }
+    
+    .recommendation-btn {
+        min-height: 90px;
+    }
+}
+
+/* 추천 버튼 스타일 */
+.recommendation-btn {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border: 2px solid #4CAF50;
+    border-radius: 15px;
+    padding: 15px; /* 12px → 15px */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+    min-height: 80px; /* 60px → 80px */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.recommendation-btn:hover {
+    background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
+    transform: translateY(-2px);
+    border-color: #2e7d32;
+}
+
+.recommendation-btn:active {
+    transform: translateY(0) scale(0.98);
+    background: #4CAF50;
+    color: white;
+}
+
+.recommendation-btn-text {
+    font-size: 18px; /* 15px → 18px (AAC 버튼과 동일) */
+    font-weight: 600;
+    color: #2e7d32;
+    line-height: 1.2;
+    word-break: keep-all;
+}
+
+.recommendation-btn:active .recommendation-btn-text {
+    color: white;
+}
+
+.recommendation-btn-badge {
+    position: absolute;
+    top: 8px; /* 5px → 8px */
+    right: 8px; /* 5px → 8px */
+    font-size: 16px; /* 12px → 16px */
+    opacity: 0.8;
+}
+
+/* 팝업 애니메이션 */
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.recommendation-popup.show {
+    animation: slideUp 0.3s ease-out;
+}
+
+/* 스크롤바 스타일 */
+.recommendation-buttons::-webkit-scrollbar {
+    width: 4px;
+}
+
+.recommendation-buttons::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 2px;
+}
+
+.recommendation-buttons::-webkit-scrollbar-thumb {
+    background: rgba(76, 175, 80, 0.3);
+    border-radius: 2px;
+}
+
+.recommendation-buttons::-webkit-scrollbar-thumb:hover {
+    background: rgba(76, 175, 80, 0.5);
+}
+
+/* 맥락듣기 모달 */
+.context-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.context-modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.context-modal-content {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 90%;
+    max-height: 80%;
+    width: 500px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow-y: auto;
+}
+
+.context-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.context-modal-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+}
+
+.context-modal-close {
+    background: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.context-modal-close:hover {
+    background: #ff3742;
+    transform: scale(1.1);
+}
+
+.context-status {
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+    color: #666;
+}
+
+.context-status.listening {
+    color: #4CAF50;
+    font-weight: 600;
+}
+
+.context-status .listening-icon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: #4CAF50;
+    border-radius: 50%;
+    margin: 10px auto;
+    position: relative;
+    animation: pulse 2s infinite;
+}
+
+.context-status .listening-icon::before {
+    content: '🎤';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.context-results {
+    margin-top: 20px;
+}
+
+.context-result-item {
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.context-result-item:hover {
+    background: #e3f2fd;
+    border-color: #4CAF50;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.context-result-item:active {
+    transform: translateY(0);
+    background: #4CAF50;
+    color: white;
+}
+
+/* 모바일에서 모달 조정 */
+@media (max-width: 768px) {
+    .context-modal-content {
+        width: 95%;
+        padding: 20px;
+        max-height: 85%;
+    }
+    
+    .context-modal-title {
+        font-size: 20px;
+    }
+    
+    .context-status {
+        font-size: 16px;
+        padding: 15px;
+    }
+    
+    .context-result-item {
+        font-size: 15px;
+        padding: 12px;
+    }
+}
+
+/* 다크모드 지원 */
+/* @media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+        color: white;
+    }
+    
+    #current_input {
+        background: #2c3e50;
+        color: white;
+        border-color: #4CAF50;
+    }
+    
+    .aac-btn {
+        background: #34495e;
+        color: white;
+        border-color: #4CAF50;
+    }
+} */
+
+/* 펄스 애니메이션 */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
