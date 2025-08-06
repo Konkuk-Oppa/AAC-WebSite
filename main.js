@@ -138,8 +138,10 @@ function handleAACButtonClick(buttonData) {
     // 텍스트 추가
     addToCurrentInput(buttonData.text);
     
-    // 음성 재생 (모든 AAC 버튼에서 작동)
-    playAudio(buttonData.text);
+    // 음성 재생 (추천 버튼이 아닌 경우에만)
+    if (!buttonData.isContext) {
+        playAudio(buttonData.text);
+    }
     
     // 햅틱 피드백 (모바일에서)
     if (navigator.vibrate) {
@@ -313,8 +315,6 @@ $(window).on('load', function() {
 
 // 맥락듣기 시작
 function playContext() {
-    console.log('playContext 함수 호출됨');
-    
     // 맥락듣기 버튼에 클릭 피드백 제공
     const contextButton = document.querySelector('.context-btn');
     if (contextButton) {
@@ -327,17 +327,12 @@ function playContext() {
     }
     
     // 즉시 통합 팝업 표시 (맥락 듣기 화면) - 지연 없이 바로 표시
-    console.log('showIntegratedPopup 호출 전');
     showIntegratedPopup('listening');
-    console.log('showIntegratedPopup 호출 후');
     
     // 팝업이 확실히 표시되도록 강제로 다시 한번 체크
     setTimeout(() => {
         const popup = document.getElementById('recommendationPopup');
-        console.log('팝업 요소:', popup);
-        console.log('팝업 클래스:', popup ? popup.classList : 'null');
         if (!popup.classList.contains('show')) {
-            console.log('팝업에 show 클래스 추가');
             popup.classList.add('show');
         }
     }, 50);
@@ -355,15 +350,11 @@ function playContext() {
 
 // 통합 팝업 표시 (맥락듣기, 맥락선택, 추천버튼 모든 상태)
 function showIntegratedPopup(mode, context = null, buttons = []) {
-    console.log('showIntegratedPopup 함수 호출됨, mode:', mode);
-    
     const popup = document.getElementById('recommendationPopup');
     const title = document.getElementById('contextTitle');
     const buttonsContainer = document.getElementById('recommendationButtons');
     const prevBtn = document.getElementById('prevContextBtn');
     const nextBtn = document.getElementById('nextContextBtn');
-    
-    console.log('팝업 요소들:', { popup, title, buttonsContainer, prevBtn, nextBtn });
     
     if (!popup) {
         console.error('recommendationPopup 요소를 찾을 수 없습니다!');
@@ -506,15 +497,11 @@ function showIntegratedPopup(mode, context = null, buttons = []) {
     }
     
     // 팝업을 확실히 표시 (즉시 표시되도록 강제)
-    console.log('팝업 표시 전 클래스:', popup.classList);
     popup.classList.add('show');
-    console.log('팝업 표시 후 클래스:', popup.classList);
     
     // 브라우저 렌더링 강제 후 다시 한번 체크 (확실한 표시를 위해)
     setTimeout(() => {
-        console.log('10ms 후 팝업 클래스 재확인:', popup.classList);
         if (!popup.classList.contains('show')) {
-            console.log('다시 show 클래스 추가');
             popup.classList.add('show');
         }
     }, 10);
