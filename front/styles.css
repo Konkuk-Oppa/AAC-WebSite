@@ -6,10 +6,12 @@
   --text:#111;
   --primary:#4caf50;
   --primary-ink:#2e7d32;
-  --stroke:#e9ecef;
+  --stroke:#d1d5db;
   --shadow:0 4px 12px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.06);
   --shadow-strong: 0 14px 28px rgba(0,0,0,0.15), 0 6px 12px rgba(0,0,0,0.10);
   --radius:14px;
+  --container-w: min(97vw, 480px); /* 기종별 너비차를 흡수하는 유동 컨테이너 */
+  --radius-lg: clamp(18px, 4.5vw, 22px); /* 기기 폭에 따라 부드럽게 스케일 */
 }
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -28,8 +30,8 @@ body{
   flex-direction:column;
 }
 .content{
-  width:100%;
-  max-width:360px; /* 기본 모바일 기준 폭을 360으로 시작 */
+  width: var(--container-w);
+  max-width: none;
   margin:0 auto;
   padding:6px 8px 88px; /* 섹션 간격 축소 */
 }
@@ -47,19 +49,30 @@ body{
 
 /* Segmented control */
 .segmented{
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:0;
-  margin:6px 0; /* 탭 간격 축소 */
+  background: var(--card);
+  border: none;
+  border-radius: var(--radius-lg);
+  padding: clamp(4px, 1.5vw, 8px) clamp(10px, 2.6vw, 14px);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  align-items: center;
 }
 .segmented-item{
-  appearance:none; border:none; background:var(--card); color:#333;
-  padding:10px 0; font-weight:600; cursor:pointer; position:relative;
-  border:1px solid var(--stroke);
+  appearance:none;
+  background: transparent;
+  border: none;             /* 아이템 경계선 제거 */
+  border-radius: 0;         /* 아이템 개별 라운드 제거 */
+  color: var(--text);
+  font-weight: 700;
+  padding: clamp(8px, 2.4vw, 12px) 0;
+  cursor: pointer;
+  text-align: center;
 }
-.segmented-item:first-child{border-top-left-radius:12px;border-bottom-left-radius:12px}
-.segmented-item:last-child{border-top-right-radius:12px;border-bottom-right-radius:12px}
-.segmented-item.is-active{box-shadow:inset 0 0 0 2px var(--stroke);}
+/* 활성/호버/클릭 효과 제거 */
+.segmented-item.is-active{ box-shadow: none; }
+.segmented-item:hover{ background: transparent; }
+.segmented-item:active{ background: transparent; transform: none; }
 
 /* List */
 .list{display:flex;flex-direction:column}
@@ -72,11 +85,12 @@ body{
 
 /* Composer */
 .composer{position:fixed; left:0; right:0; bottom:0; background:transparent}
-.safe-area{height:10px}
+.safe-area{height: env(safe-area-inset-bottom, 10px)}
 .composer-card{
-  max-width:360px; margin:0 auto 8px; padding:14px 12px; /* 카드 내부 여백 증가 */
-  border-radius:22px;
-  box-shadow:var(--shadow-strong); /* 강한 그림자 */
+  width: var(--container-w);
+  max-width: none;
+  border-radius: var(--radius-lg);
+  margin: 0 auto calc(8px + env(safe-area-inset-bottom, 0px));
 }
 
 /* 입력 pill을 큰 카드 위에 얹은 형태 */
@@ -84,12 +98,13 @@ body{
   display:flex; gap:8px; align-items:center;
   background:var(--card);
   border:none;                /* 외곽선 제거 */
-  border-radius:18px;         /* 더 큰 라운드 */
-  padding:10px 10px 10px 14px;/* 내부 여백 확대 */
+  border-radius: var(--radius-lg);
+  padding:5px 10px 5px 14px;
   box-shadow:var(--shadow-strong);
+  width:100%;
 }
 .input-row input{
-  flex:1; height:40px; padding:0 10px; border:none; border-radius:12px; outline:none;
+  flex:1; height: clamp(40px, 10vw, 44px); padding:0 10px; border:none; border-radius:12px; outline:none;
   background:transparent; box-shadow:none;
   font-weight:700;           /* 진한 텍스트 */
   color:var(--text);
@@ -100,16 +115,18 @@ body{
   font-weight:700;
 }
 .icon-btn{
-  width:44px; height:40px;  /* 더 두툼한 우측 버튼 */
-  border-radius:14px;
+  width: clamp(40px, 10vw, 48px);
+  height: clamp(36px, 9vw, 44px);
+  border-radius: calc(var(--radius-lg) - 6px);
   background:var(--primary);
 }
 
 /* 즐겨찾기: 카드 배경 위 좌측 정렬 텍스트 버튼 */
 .btn-secondary{
-  width:100%; margin-top:10px; height:auto; min-height:44px;
+  width:100%; margin:0; height:auto; min-height:44px;
   border:none; background:transparent; cursor:pointer; text-align:left;
-  font-weight:700; color:var(--text); padding:12px 14px; border-radius:14px;
+  font-weight:700; color:var(--text); padding:14px 16px;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
 }
 .btn-secondary:hover{background:rgba(0,0,0,0.03)}
 
