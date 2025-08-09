@@ -35,13 +35,22 @@
     <!-- 하단 입력창 -->
     <footer class="composer" role="contentinfo">
       <div class="card composer-card" role="group" aria-label="입력 및 즐겨찾기">
+        <!-- 키보드 보조 영역: 상단 그레이 오버레이 + 그린 버블(두 줄) -->
+        <div id="kbAssist" class="kb-assist hidden" aria-live="polite" aria-atomic="true">
+          <div id="overlayLine" class="kb-overlay">맥도날드 가주세요</div>
+          <div class="kb-bubble">
+            <div id="rec1" class="kb-item">얼마나 걸리나요.</div>
+            <div id="rec2" class="kb-item">늦었어요.</div>
+          </div>
+        </div>
+
         <div class="input-row">
           <input id="textInput" type="text" inputmode="text" placeholder="텍스트 입력" aria-label="텍스트 입력" />
-          <button id="actionBtn" class="icon-btn" aria-label="실행">
-            <!-- 동그란 아이콘 대신 단색 버튼 (디자인 참조) -->
-            <span class="sr-only">실행</span>
+          <button id="actionBtn" class="icon-btn" aria-label="텍스트 입력 열기">
+            <span class="sr-only">텍스트 입력 열기</span>
           </button>
         </div>
+
         <button id="favBtn" class="btn-secondary">즐겨찾기</button>
       </div>
       <div class="safe-area" aria-hidden="true"></div>
