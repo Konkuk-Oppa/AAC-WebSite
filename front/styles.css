@@ -44,8 +44,14 @@ body{
 
 /* Log card */
 .log-card{padding:10px; margin-bottom:6px;} /* 로그-탭 사이 간격 축소 */
-.log-content{display:flex;flex-direction:column;gap:4px}
-.log-line{font-weight:600}
+.log-content{
+  display:flex;flex-direction:column;gap:4px;
+  height: calc(2 * 1.5em + 4px); /* 2줄(행간 1.5) + 줄 간격 4px */
+  overflow-y: auto;              /* 초과 시 스크롤 */
+  overscroll-behavior: contain;  /* 상위로 스크롤 전파 방지 */
+  -webkit-overflow-scrolling: touch; /* iOS 관성 스크롤 */
+}
+.log-line{font-weight:600; line-height:1.5}
 
 /* Segmented control */
 .segmented{
