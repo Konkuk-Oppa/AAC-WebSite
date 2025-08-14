@@ -70,13 +70,13 @@ function Toast({isVisible, message, type = "error", onClose}) {
   );
 }
 
-// 즐겨찾기 / 카테고리 / 어휘추가
+// 즐겨찾기 / 대화 / 카테고리
 function MenuSelector({menu, onClick}) {
   return (
     <div className={styles.menuSelector}>
-      <div className={`${styles.menuItem} ${menu == "bookmark" && styles.selected}`} onClick={() => onClick("bookmark")}>즐겨찾기</div>
-      <div className={`${styles.menuItem} ${menu == "category" && styles.selected}`} onClick={() => onClick("category")}>카테고리</div>
-      <div className={`${styles.menuItem} ${menu == "add" && styles.selected}`} onClick={() => onClick("add")}>어휘추가</div>
+      <div className={`${styles.menuItem} ${menu === "bookmark" && styles.selected}`} onClick={() => onClick("bookmark")}>즐겨찾기</div>
+      <div className={`${styles.menuItem} ${menu === "conversation" && styles.selected}`} onClick={() => onClick("conversation")}>대화</div>
+      <div className={`${styles.menuItem} ${menu === "category" && styles.selected}`} onClick={() => onClick("category")}>카테고리</div>
     </div>
   )
 }
@@ -96,7 +96,16 @@ function Recommend({recommends}) {
 }
 
 // ai 추천 팜업 + input + 최근 기록
-function InputSection({openHistoryModal, input, onInputChange, isRecommendOpen, recommends, openAddModal}) {
+function InputSection({
+  openHistoryModal, 
+  input, 
+  onInputChange, 
+  isRecommendOpen, 
+  recommends, 
+  openAddModal,
+  orderType,
+  setOrderType
+}) {
   return(
     <div className={styles.bottomSection}>
       <div>
@@ -114,7 +123,15 @@ function InputSection({openHistoryModal, input, onInputChange, isRecommendOpen, 
           <div className={styles.bottomMenu}>
             <div className={styles.menuItem} onClick={openAddModal}>어휘추가</div>
             <div className={styles.menuItem} onClick={openHistoryModal}>최근기록</div>
-            <div className={styles.menuItem}>메뉴3</div>
+            <div 
+              className={styles.menuItem}
+              onClick={
+                orderType === "default" ? () => setOrderType("abc") : 
+                orderType === "frequency" ? () => setOrderType("default") :
+                () => setOrderType("frequency")}
+            >
+              {orderType === "default" ? "기본" : orderType === "frequency" ? "빈도" : "가나다"} 정렬
+            </div>
           </div>
         </div>
       </div>
@@ -586,9 +603,9 @@ export default function Home() {
   const [isRecommendOpen, setIsRecommendOpen] = useState(false);  // recommend창 열림 여부
   const [recommends, setRecommends] = useState([]);
   const [toast, setToast] = useState({ isVisible: false, message: "", type: "error" }); // 토스트 팝업 상태
+  const [orderType, setOrderType] = useState("default");          // 정렬 기능
   const debounceTimeoutRef = useRef(null);          // 너무 낮은 recommend 불러오기 방지용
   const addingRef = useRef(false);                  // 추가 중 여부 체크용
-
   const openHistoryModal = () => setIsHistoryModalOpen(true);
   const closeHistoryModal = () => setIsHistoryModalOpen(false);
   const selectMenu = (menuName) => setMenu(menuName);
@@ -986,6 +1003,12 @@ export default function Home() {
     }
   ]);
 
+  const [conversation, setConversation] = useState([
+    "input에서 수정한 텍스트",
+    "input에서 입력한 텍스트",
+    "모음"
+  ]);
+
   return (
     <div className={styles.container}>
       <div className={styles.nav}>
@@ -999,6 +1022,8 @@ export default function Home() {
         onEdit={handleTextEdit}
         onDelete={handleTextDelete}
         onBookmark={handleTextBookmark}
+        orderType={orderType}
+        conversation={conversation}
       />
       <InputSection
         openHistoryModal={openHistoryModal}
@@ -1007,6 +1032,8 @@ export default function Home() {
         onInputChange={handleInputChange}
         isRecommendOpen={isRecommendOpen}
         recommends={recommends}
+        orderType={orderType}
+        setOrderType={setOrderType}
       />
       <HistoryModal 
         isOpen={isHistoryModalOpen} 

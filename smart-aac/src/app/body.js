@@ -1,4 +1,4 @@
-import TextCard from "./component";
+import { ConversationCard, TextCard } from "./component";
 import { getRecommendCategory } from "./controller";
 import styles from "./page.module.css";
 import { useState, useEffect, useCallback } from "react";
@@ -109,10 +109,17 @@ function Bookmark({
   )
 }
 
-function Conversation() {
+function Conversation({conversation, onTextClick}) {
   return (
     <div>
-      구현중
+      {conversation.map((item, index) => (
+        <ConversationCard 
+          key={index} 
+          item={item} 
+          onTextClick={onTextClick}
+          isNotEnd={conversation.length != index+1}
+        />
+      ))}
     </div>
   )
 }
@@ -230,7 +237,9 @@ export default function Body({
   onTextClick, 
   onEdit, 
   onDelete, 
-  onBookmark
+  onBookmark,
+  orderType,
+  conversation
 }) {
   return (
     <div className={styles.bodyContainer}>
@@ -241,10 +250,15 @@ export default function Body({
           onEdit={onEdit}
           onDelete={onDelete}
           onBookmark={onBookmark}
-          orderType="default"   // TODO 변경 가능하게
+          orderType={orderType}
         />
       )}
-      {menu === "conversation" && <Conversation/>}
+      {menu === "conversation" && (
+        <Conversation 
+          conversation={conversation}
+          onTextClick={onTextClick} 
+        />
+      )}
       {menu === "category" && (
         <Category 
           categories={categories}
