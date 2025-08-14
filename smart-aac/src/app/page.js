@@ -2,7 +2,7 @@
 import styles from "./page.module.css";
 import { useState, useEffect, useRef } from "react";
 import Body from "./body";
-import { getRecommends } from "./controller";
+import { addText, getRecommends } from "./controller";
 
 // 화면 상단 두개 보여주는 기록
 function History({history, onClick}) {
@@ -42,8 +42,8 @@ function HistoryModal({isOpen, onClose, history}) {
   )
 }
 
-// 오류 팝업 컴포넌트
-function ErrorToast({isVisible, message, onClose}) {
+// 토스트 팝업 컴포넌트 (오류/성공 메시지)
+function Toast({isVisible, message, type = "error", onClose}) {
   useEffect(() => {
     if (isVisible) {
       const timer = setTimeout(() => {
@@ -56,16 +56,21 @@ function ErrorToast({isVisible, message, onClose}) {
 
   if (!isVisible) return null;
 
+  const toastClass = type === "success" ? styles.successToast : styles.errorToast;
+  const contentClass = type === "success" ? styles.successToastContent : styles.errorToastContent;
+  const closeClass = type === "success" ? styles.successToastClose : styles.errorToastClose;
+
   return (
-    <div className={styles.errorToast}>
-      <div className={styles.errorToastContent}>
+    <div className={toastClass}>
+      <div className={contentClass}>
         <span>{message}</span>
-        <button className={styles.errorToastClose} onClick={onClose}>×</button>
+        <button className={closeClass} onClick={onClose}>×</button>
       </div>
     </div>
   );
 }
 
+// 즐겨찾기 / 카테고리 / 어휘추가
 function MenuSelector({menu, onClick}) {
   return (
     <div className={styles.menuSelector}>
@@ -76,6 +81,7 @@ function MenuSelector({menu, onClick}) {
   )
 }
 
+// ai 추천 팝업
 function Recommend({recommends}) {
   return (
     <div className={styles.recommend}>
@@ -89,6 +95,7 @@ function Recommend({recommends}) {
   )
 }
 
+// ai 추천 팜업 + input + 최근 기록
 function InputSection({openHistoryModal, input, onInputChange, isRecommendOpen, recommends}) {
   return(
     <div className={styles.bottomSection}>
@@ -121,8 +128,9 @@ export default function Home() {
   const [input, setInput] = useState("");           // input태그의 내용
   const [isRecommendOpen, setIsRecommendOpen] = useState(false);  // recommend창 열림 여부
   const [recommends, setRecommends] = useState([]);
-  const [errorToast, setErrorToast] = useState({ isVisible: false, message: "" }); // 오류 팝업 상태
+  const [toast, setToast] = useState({ isVisible: false, message: "", type: "error" }); // 토스트 팝업 상태
   const debounceTimeoutRef = useRef(null);          // 너무 낮은 recommend 불러오기 방지용
+  const addingRef = useRef(false);                  // 추가 중 여부 체크용
 
   const openHistoryModal = () => setIsHistoryModalOpen(true);
   const closeHistoryModal = () => setIsHistoryModalOpen(false);
@@ -130,12 +138,158 @@ export default function Home() {
 
   // 오류 팝업 표시 함수
   const showError = (message) => {
-    setErrorToast({ isVisible: true, message });
+    setToast({ isVisible: true, message, type: "error" });
   };
 
-  // 오류 팝업 닫기 함수
-  const hideError = () => {
-    setErrorToast({ isVisible: false, message: "" });
+  // 성공 팝업 표시 함수
+  const showInfo = (message) => {
+    setToast({ isVisible: true, message, type: "success" });
+  };
+
+  // 토스트 팝업 닫기 함수
+  const hideToast = () => {
+    setToast({ isVisible: false, message: "", type: "error" });
+  };
+
+  // 카테고리에 새 단어/문장 추가하는 함수
+  const addToCategory = async (text, type, cat0Name, cat1Name = "", cat2Name = "") => {
+    // 이미 실행 중이면 무시
+    if (addingRef.current) return;
+    addingRef.current = true;
+
+    let updateSuccess = false;
+
+    setCategories(prevCats => {
+      // 중복 추가 방지 - 이미 같은 텍스트가 있는지 확인
+      const isDuplicate = prevCats.some(cat0 => {
+        if (cat0.name === cat0Name) {
+          return cat0.subcategories.some(cat1 => {
+            if (Array.isArray(cat1) && cat1Name === "") {
+              return cat1.includes(text);
+            } else if (cat1.name === cat1Name) {
+              return cat1.subcategories.some(cat2 => {
+                if (Array.isArray(cat2) && cat2Name === "") {
+                  return cat2.includes(text);
+                } else if (cat2.name === cat2Name) {
+                  return cat2.subcategories[0].includes(text);
+                }
+                return false;
+              })
+            }
+            return false;
+          });
+        }
+        return false;
+      });
+      
+      if (isDuplicate) {
+        showError("이미 존재하는 항목입니다.");
+        addingRef.current = false; 
+        return prevCats; 
+      }
+
+      const newCats = [...prevCats];
+      
+      // 메인 카테고리 찾기 또는 생성
+      let cat0Index = newCats.findIndex(cat => cat.name === cat0Name);
+      
+      // 카테고리가 없으면 새로 생성
+      if (cat0Index === -1) {
+        newCats.push({name: cat0Name, subcategories: []});
+        cat0Index = newCats.length-1;
+      }
+
+      // category1이 설정되지 않은 경우
+      if (cat1Name === "") {
+        const cat1s = newCats[cat0Index].subcategories;
+        const cat1ArrIndex = cat1s.findIndex(cat1 => Array.isArray(cat1));
+        
+        // 배열이 없는 경우
+        if (cat1ArrIndex === -1) cat1s.push([text])
+        // 배열이 있는 경우
+        else cat1s[cat1ArrIndex] = [...cat1s[cat1ArrIndex], text];
+        
+        addingRef.current = false; // 플래그 리셋
+        updateSuccess = true;
+        return newCats;
+      }
+
+      // category1 리스트에 추가
+      const cat1s = newCats[cat0Index].subcategories;
+      let cat1Index = cat1s.findIndex(cat => cat.name === cat1Name);
+
+      // 카테고리 없으면 새로 생성
+      if (cat1Index === -1) {
+        const lastIndex = cat1s.length-1;
+        const isLastElementArray = lastIndex >= 0 && Array.isArray(cat1s[lastIndex]);
+
+        if (isLastElementArray) {
+          // 마지막 요소가 배열이면 그 앞에 삽입
+          cat1s.splice(lastIndex, 0, {name: cat1Name, subcategories: []});
+          cat1Index = lastIndex;
+        } else {
+          // 마지막 요소가 배열이 아니면 맨 뒤에 추가
+          cat1s.push({name: cat1Name, subcategories: []});
+          cat1Index = cat1s.length - 1;
+        }
+      }
+
+      // category2가 설정되지 않은 경우
+      if (cat2Name === "") {
+        const cat2s = cat1s[cat1Index].subcategories;
+        const cat2ArrIndex = cat2s.findIndex(cat2 => Array.isArray(cat2));
+
+        // 배열이 없는 경우
+        if (cat2ArrIndex === -1) cat2s.push([text])
+        // 배열이 있는 경우
+        else cat2s[cat2ArrIndex] = [...cat2s[cat2ArrIndex], text];
+
+        addingRef.current = false; // 플래그 리셋
+        updateSuccess = true;
+        return newCats;
+      }
+
+      // category2 리스트에 추가
+      const cat2s = cat1s[cat1Index].subcategories;
+      let cat2Index = cat2s.findIndex(cat => cat.name === cat2Name);
+
+      // 카테고리 없으면 새로 생성
+      if (cat2Index === -1) {
+        const lastIndex = cat2s.length-1;
+        const isLastElementArray = lastIndex >= 0 && Array.isArray(cat2s[lastIndex]);
+
+        if (isLastElementArray) {
+          // 마지막 요소가 배열이면 그 앞에 삽입
+          cat2s.splice(lastIndex, 0, {name: cat2Name, subcategories: []});
+          cat2Index = lastIndex;
+        } else {
+          // 마지막 요소가 배열이 아니면 맨 뒤에 추가
+          cat2s.push({name: cat2Name, subcategories: []});
+          cat2Index = cat2s.length - 1;
+        }
+      }
+
+      // category2에 텍스트 추가
+      const cat2 = cat2s[cat2Index];
+      const cat2TextIndex = cat2.subcategories.findIndex(arr => Array.isArray(arr));
+
+      // 배열이 없는 경우
+      if (cat2TextIndex === -1) cat2.subcategories.push([text])
+      // 배열이 있는 경우
+      else cat2.subcategories[cat2TextIndex] = [...cat2.subcategories[cat2TextIndex], text];
+
+      addingRef.current = false; // 플래그 리셋
+      updateSuccess = true;
+      return newCats;
+    });
+
+    // 서버에 반영
+    if (updateSuccess) {
+      const res = await addText(text, type, cat0Name, cat1Name, cat2Name);
+
+      if (res.success) showInfo("항목 추가 성공");
+      else showError("서버 업로드 실패"); 
+    }
   };
 
   // 유저가 타이핑 한 후 0.2초 후 추천 목록 불러오기
@@ -238,8 +392,8 @@ export default function Home() {
         {
           name: "양식",
           subcategories: [
-            { name: "파스타", subcategories: ["스파게티 주세요", "카르보나라 주세요"] },
-            { name: "피자", subcategories: ["피자 주세요", "치즈피자 주세요"] }
+            { name: "파스타", subcategories: [["스파게티 주세요", "카르보나라 주세요"]] },
+            { name: "피자", subcategories: [["피자 주세요", "치즈피자 주세요"]] }
           ]
         },
         ["음식 주문", "메뉴 추천해주세요"]
@@ -251,8 +405,8 @@ export default function Home() {
         {
           name: "병원",
           subcategories: [
-            { name: "증상", subcategories: ["아파요", "열이 나요", "머리가 아파요"] },
-            { name: "예약", subcategories: ["예약하고 싶어요", "진료 받고 싶어요"] },
+            { name: "증상", subcategories: [["아파요", "열이 나요", "머리가 아파요"]] },
+            { name: "예약", subcategories: [["예약하고 싶어요", "진료 받고 싶어요"]] },
             ["괜찮아요", "별일 아니에요"]
           ]
         }
@@ -270,6 +424,7 @@ export default function Home() {
         menu={menu}
         bookmarkSentences={bookmarkSentences}
         categories={categories}
+        addToCategory={addToCategory}
       />
       <InputSection
         openHistoryModal={openHistoryModal}
@@ -283,10 +438,11 @@ export default function Home() {
         onClose={closeHistoryModal} 
         history={history}
       />
-      <ErrorToast
-        isVisible={errorToast.isVisible}
-        message={errorToast.message}
-        onClose={hideError}
+      <Toast
+        isVisible={toast.isVisible}
+        message={toast.message}
+        type={toast.type}
+        onClose={hideToast}
       />
     </div>
   );

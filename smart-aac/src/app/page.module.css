@@ -266,6 +266,50 @@
   opacity: 0.8;
 }
 
+/* 성공 팝업 스타일 */
+.successToast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width:80%;
+  max-width: 400px;
+  animation: slideDown 0.3s ease-out;
+}
+
+.successToastContent {
+  background-color: #28a745;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 400px;
+  font-size: 14px;
+}
+
+.successToastClose {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0;
+  margin-left: auto;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.successToastClose:hover {
+  opacity: 0.8;
+}
+
 @keyframes slideDown {
   from {
     opacity: 0;
@@ -319,7 +363,7 @@
   cursor: pointer;
   transition: all 0.2s ease;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -332,71 +376,395 @@
 }
 
 .categoryName {
+  flex: 1;
   font-weight: 500;
   font-size: 16px;
   color: #333;
+  margin-left: 8px;
 }
 
-.categoryArrow {
+.categoryItem .material-symbols-outlined {
+  color: #ffc107;
+  font-size: 24px;
+  margin-right: 8px;
+}
+
+/* Add 컴포넌트 스타일 */
+.addContainer {
+  padding-top: 6px;
+  max-width: 500px;
+  margin: 0 auto;
+  margin-bottom: 200px; /* InputSection을 위한 하단 여백 추가 */
+}
+
+.addForm {
+  background-color: #f4f4f4;
+  padding: 14px;
+  border-radius: 15px;
+}
+
+.formGroup {
+  margin-bottom: 13px;
+}
+
+.formLabel {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+}
+
+.formInput {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.formInput:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.typeSelector {
+  display: flex;
+  height: 47.5px;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+}
+
+.radioLabel {
+  display: flex;
+  flex:1;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.radioLabel.checked{
+  background-color: #007bff;
+  border-radius: 6px;
+}
+
+.radioInput {
+  display: none;
+}
+
+.radioText {
+  color: #333;
+  font-weight: 500;
+}
+
+.radioText.checked {
+  color:white;
+}
+
+/* 카테고리 선택 버튼 */
+.categorySelectButton {
+  display: flex;
+  height: 47.5px;
+  align-items: center;
+  background-color: white;
+  border: 2px solid #dee2e6;
+  padding: 10px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.categorySelectButton:hover {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.categorySelectText {
+  flex: 1;
+  color: #495057;
+  font-size: 14px;
+}
+
+.categorySelectText:empty::before {
+  content: "카테고리를 선택하세요";
   color: #6c757d;
-  font-size: 18px;
-  font-weight: bold;
 }
 
-/* 선택된 문장들 표시 스타일 */
-.sentenceContainer {
-  background-color: #f8f9fa;
+.categorySelectArrow {
+  font-size: 16px;
+  color: #6c757d;
+}
+
+/* 카테고리 모달 */
+.categoryModalContent {
+  background: white;
   border-radius: 12px;
-  padding: 20px;
+  width: 90%;
+  max-width: 400px;
+  max-height: 70vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.categoryModalBody {
+  padding: 13px;
+}
+
+.categoryToggle {
+  margin-bottom: 16px;
+}
+
+.toggleButton {
+  background-color: #f8f9fa;
+  border: 2px solid #dee2e6;
+  color: #495057;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+.toggleButton:hover {
+  background-color: #e9ecef;
+  border-color: #adb5bd;
+}
+
+.toggleButton.active {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: white;
+}
+
+.modalActions {
+  display: flex;
+  gap: 12px;
   margin-top: 20px;
 }
 
-.sentenceTitle {
-  font-size: 18px;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 16px;
-  text-align: center;
+.cancelButton {
+  flex: 1;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
 
-.sentenceList {
-  background-color: white;
+.cancelButton:hover {
+  background-color: #5a6268;
+}
+
+.confirmButton {
+  flex: 1;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.confirmButton:hover:not(:disabled) {
+  background-color: #218838;
+}
+
+.confirmButton:disabled {
+  background-color: #c3e6cb;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* 커스텀 드롭다운 스타일 */
+.customSelectWrapper {
+  position: relative;
+}
+
+.customSelect {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e9ecef;
   border-radius: 8px;
-  padding: 16px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  background-color: white;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: border-color 0.2s;
+  user-select: none;
 }
 
-/* 레벨 문장들 (카테고리와 같은 레벨에 있는 문장들) 스타일 */
-.levelSentencesContainer {
-  margin-bottom: 24px;
+.customSelect:hover {
+  border-color: #007bff;
 }
 
-.levelSentencesTitle {
+.selectText {
+  color: #333;
+  flex: 1;
+}
+
+.selectText:empty::before {
+  content: attr(placeholder);
+  color: #6c757d;
+}
+
+.selectArrow {
+  color: #6c757d;
+  font-size: 12px;
+  transition: transform 0.2s;
+  margin-left: 8px;
+}
+
+.selectArrowOpen {
+  transform: rotate(180deg);
+}
+
+.customSelect:hover .selectArrow {
+  color: #007bff;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border: 2px solid #e9ecef;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.dropdownItem {
+  padding: 12px 16px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+  transition: background-color 0.2s;
+  border-bottom: 1px solid #f8f9fa;
+}
+
+.dropdownItem:hover {
+  background-color: #f8f9fa;
+}
+
+.dropdownItem:last-child {
+  border-bottom: none;
+}
+
+.newCategoryItem {
+  color: #007bff;
+  font-weight: 600;
+  background-color: #f8f9fa;
+}
+
+.newCategoryItem:hover {
+  background-color: #e9ecef;
+  color: #0056b3;
+}
+
+.cancelNewCategoryButton {
+  margin-top: 8px;
+  padding: 8px 12px;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.cancelNewCategoryButton:hover {
+  background-color: #5a6268;
+}
+
+.addSubmitButton {
+  width: 100%;
+  padding: 14px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 8px;
   font-size: 16px;
   font-weight: 600;
-  color: #007bff;
-  margin-bottom: 12px;
-}
-
-.levelSentencesList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.levelSentenceItem {
-  background-color: #e3f2fd;
-  color: #1976d2;
-  padding: 8px 12px;
-  border-radius: 20px;
   cursor: pointer;
-  font-size: 14px;
-  transition: all 0.2s ease;
-  border: 1px solid #bbdefb;
+  transition: background-color 0.2s;
+  margin-top: 8px;
 }
 
-.levelSentenceItem:hover {
-  background-color: #1976d2;
+.addSubmitButton:hover:not(:disabled) {
+  background-color: #218838;
+}
+
+.addSubmitButton:disabled {
+  background-color: #c3e6cb;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Add Modal Styles */
+.addModalContent {
+  background: white;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.addModalBody {
+  padding: 20px;
+}
+
+.addPlaceholder {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.addPlaceholder h2 {
+  color: #333;
+  margin-bottom: 12px;
+  font-size: 24px;
+}
+
+.addPlaceholder p {
+  color: #666;
+  margin-bottom: 24px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.openAddModalButton {
+  background-color: #007bff;
   color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.openAddModalButton:hover {
+  background-color: #0056b3;
   transform: translateY(-1px);
 }
