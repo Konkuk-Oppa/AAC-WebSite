@@ -287,9 +287,14 @@ export default function Home() {
     if (updateSuccess) {
       const res = await addText(text, type, cat0Name, cat1Name, cat2Name);
 
-      if (res.success) showInfo("항목 추가 성공");
+      if (res.success) {
+        showInfo("항목 추가 성공");
+        return true;
+      }
       else showError("서버 업로드 실패"); 
+      return false;
     }
+    return false;
   };
 
   // 유저가 타이핑 한 후 0.2초 후 추천 목록 불러오기

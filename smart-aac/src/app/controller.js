@@ -12,12 +12,12 @@ export async function getRecommendCategory({text}) {
   // 목업용 데이터
   const recommendCategory = [
     {
-      category0:"카테고리0",
-      category1:"카테고리1",
-      category2:"카테고리2"
+      category0:"인사",
+      category1:"안녕",
+      category2:"안녕하세요"
     }, {
-      category0:"카테고리0",
-      category1:"카테고리1",
+      category0:"음식",
+      category1:"한식",
       category2:""
     }];
     return {success: true, data: recommendCategory};

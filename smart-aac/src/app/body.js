@@ -256,6 +256,16 @@ function CategorySelectModal({isOpen, onClose, categories, onSelect, recommendCa
     setNewCategory2Name("");
   };
 
+  // 추천 카테고리 적용
+  const setReccomendCategory = (category) => {
+    setIsNewCategory0(false);
+    setIsNewCategory1(false);
+    setIsNewCategory2(false);
+    setSelectedCategory0(category.category0);
+    setSelectedCategory1(category.category1);
+    setSelectedCategory2(category.category2);
+  }
+
   return (
     <div className={styles.modalOverlay} onClick={onClose}>
       <div className={styles.categoryModalContent} onClick={(e) => e.stopPropagation()}>
@@ -264,6 +274,22 @@ function CategorySelectModal({isOpen, onClose, categories, onSelect, recommendCa
           <button className={styles.closeButton} onClick={onClose}>×</button>
         </div>
         <div className={styles.categoryModalBody}>
+          {/* 추천 카테고리 표시 */}
+          <div className={styles.formGroup}>
+            <label className={styles.formLabel}>추천 카테고리</label>
+            <div className={styles.recommendCategories}>
+              {recommendCategories.map((category, index) => (
+                <div key={index}>
+                  <div className={styles.recommendCategoryItem} onClick={()=> setReccomendCategory(category)}>
+                    {category.category0} {category.category1 != "" && ">"}
+                    {category.category1 != "" && category.category1} {category.category2 != "" && ">"}
+                    {category.category2 != "" && category.category2}
+                  </div>
+                  {index < recommendCategories.length - 1 && <hr className={styles.recommendCategoryDivider} />}
+                </div>
+              ))}
+            </div>
+          </div>
           <div className={styles.formGroup}>
             <div className={styles.categoryHeader}>
               <label className={styles.formLabel}>카테고리</label>
@@ -418,7 +444,7 @@ function Add({categories, addToCategory}) {
     setIsCategoryModalOpen(true);
 
     // 추가할 단어 및 문장의 추천 카테고리 가져오기
-    const res = await getRecommendCategory(text=inputText);
+    const res = await getRecommendCategory({text: inputText});
     
     if (res.success) {
       setRecommendCategories(res.data);
@@ -443,7 +469,7 @@ function Add({categories, addToCategory}) {
   };
 
   // 추가 버튼 클릭
-  const handleAdd = useCallback(() => {
+  const handleAdd = useCallback(async () => {
     if (isAdding) return; // 이미 실행 중이면 리턴
     
     if (inputText.trim() && selectedCategory0.trim()) {
@@ -451,14 +477,16 @@ function Add({categories, addToCategory}) {
       
       try {
         // 실제 카테고리에 추가
-        addToCategory(inputText, selectedType, selectedCategory0, selectedCategory1, selectedCategory2);
+        const res = await addToCategory(inputText, selectedType, selectedCategory0, selectedCategory1, selectedCategory2);
         
-        // 입력 초기화
-        setInputText("");
-        setSelectedCategory0("");
-        setSelectedCategory1("");
-        setSelectedCategory2("");
-        setSelectedCategoryLabel("");
+        if (res) {
+          // 입력 초기화
+          setInputText("");
+          setSelectedCategory0("");
+          setSelectedCategory1("");
+          setSelectedCategory2("");
+          setSelectedCategoryLabel("");
+        }
       } finally {
         // 실행 완료 후 플래그 해제
         setTimeout(() => setIsAdding(false), 100);
