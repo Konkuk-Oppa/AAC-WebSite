@@ -1,23 +1,115 @@
+import TextCard from "./component";
 import { getRecommendCategory } from "./controller";
 import styles from "./page.module.css";
 import { useState, useEffect, useCallback } from "react";
 
-function Bookmark({sentences}) {
+
+function Bookmark({
+  categories, 
+  onTextClick, 
+  onEdit, 
+  onDelete, 
+  onBookmark,
+  orderType       // frequency, abc, default
+}) {
+  const [sentences, setSentences] = useState([]);
+  const [originalSentences, setOriginalSentences] = useState([]);
+
+  // list는 {text: string, category0: string, category1: string, category2: string, frequency: int} 형태
+  useEffect(() => {
+    const list = [];
+    categories.map((cat0)=> {
+      const cat0Name = cat0.name;
+      cat0.subcategories.map((cat1) => {
+        if (Array.isArray(cat1)) {
+          cat1.map((item) => {
+            if (item.bookmark) {
+              list.push({
+                text: item.text,
+                category0: cat0Name,
+                category1: '',
+                category2: '',
+                frequency: item.frequency || 0,
+                bookmark: item.bookmark || false
+              });
+            }
+          });
+        } else {
+          const cat1Name = cat1.name;
+          cat1.subcategories.map((cat2) => {
+            if (Array.isArray(cat2)) {
+              cat2.map((item) => {
+                if (item.bookmark) {
+                  list.push({
+                    text: item.text,
+                    category0: cat0Name,
+                    category1: cat1Name,
+                    category2: '',
+                    frequency: item.frequency || 0,
+                    bookmark: item.bookmark || false
+                  });
+                }
+              });
+            } else {
+              cat2.subcategories.map((item) => {
+                if (item.bookmark) {
+                  list.push({
+                    text: item.text,
+                    category0: cat0Name,
+                    category1: cat1Name,
+                    category2: cat2.name,
+                    frequency: item.frequency || 0,
+                    bookmark: item.bookmark || false
+                  });
+                }
+              });
+            }
+          });
+        }
+      });
+    });
+    
+    if (orderType === "frequency") {
+      setSentences([...list].sort((a, b) => b.frequency - a.frequency));
+    } else if (orderType === "abc") {
+      setSentences([...list].sort((a, b) => a.text.localeCompare(b.text)));
+    } else {
+      setSentences(list);
+    }
+    setOriginalSentences([...list]);
+  }, [categories]);
+
+  // 정렬 변경
+  useEffect(() => {
+    if (orderType === "frequency") {
+      setSentences([...originalSentences].sort((a, b) => b.frequency - a.frequency));
+    } else if (orderType === "abc") {
+      setSentences([...originalSentences].sort((a, b) => a.text.localeCompare(b.text)));
+    } else {
+      setSentences(originalSentences);
+    }
+  }, [orderType, originalSentences]);
+
   return (
     <div>
-      {sentences.map((sentence, index) => {
+      {sentences.map((item, index) => {
         return (
-          <div key={index} className={styles.sentenceItem}>
-            <p>{sentence}</p>
-            {sentences.length != index+1 && <hr/>}
-          </div>
+          <TextCard
+            key={index}
+            item={item}
+            isNotEnd={sentences.length != index+1}
+            onTextClick={onTextClick}
+            onEdit={onEdit}
+            onDelete={onDelete}
+            onBookmark={onBookmark}
+          />
         )
       })}
     </div>
   )
 }
 
-function Category({categories}) {
+function Category({categories, onTextClick, onEdit, onDelete, onBookmark}) {
   const [currentPath, setCurrentPath] = useState([]);
   const [currentCategory, setCurrentCategory] = useState(categories);
 
@@ -73,30 +165,36 @@ function Category({categories}) {
       </div>
       {/* 카테고리 */}
       <div className={styles.categoryList}>
-        {(currentCategory.length > 0 && typeof currentCategory[0] == 'string')
+        {(currentCategory.length > 0 && currentCategory[0].hasOwnProperty('text'))
         ? <div>
-            {currentCategory.map((sentence, index) => {
-              return (<div
-                  key={index}
-                  className={styles.sentenceItem}
-                >
-                  <p>{sentence}</p>
-                  {currentCategory.length != index+1 && <hr/>}
-                </div>
+            {currentCategory.map((item, index) => {
+              return (
+                <TextCard 
+                  key={index} 
+                  item={item} 
+                  isNotEnd={currentCategory.length != index+1}
+                  onTextClick={onTextClick}
+                  onEdit={onEdit}
+                  onDelete={onDelete}
+                  onBookmark={onBookmark}
+                />
               )
             })}
           </div>
         : currentCategory.map((category, index) => {
           if (Array.isArray(category)) {
             return (<div key={index}>
-              {category.map((sentence, idx)=> {
-                return (<div
-                    key={idx}
-                    className={styles.sentenceItem}
-                  >
-                    <p>{sentence}</p>
-                    {category.length != idx+1 && <hr/>}
-                  </div>
+              {category.map((item, idx)=> {
+                return (
+                  <TextCard 
+                    key={idx} 
+                    item={item} 
+                    isNotEnd={category.length != idx+1}
+                    onTextClick={onTextClick}
+                    onEdit={onEdit}
+                    onDelete={onDelete}
+                    onBookmark={onBookmark}
+                  />
                 )
               })}
             </div>)
@@ -429,7 +527,7 @@ function CategorySelectModal({isOpen, onClose, categories, onSelect, recommendCa
   );
 }
 
-function Add({categories, addToCategory}) {
+function Add({categories, onAdd}) {
   const [inputText, setInputText] = useState("");
   const [selectedType, setSelectedType] = useState("word"); 
   const [selectedCategory0, setSelectedCategory0] = useState("");
@@ -477,7 +575,7 @@ function Add({categories, addToCategory}) {
       
       try {
         // 실제 카테고리에 추가
-        const res = await addToCategory(inputText, selectedType, selectedCategory0, selectedCategory1, selectedCategory2);
+        const res = await onAdd(inputText, selectedType, selectedCategory0, selectedCategory1, selectedCategory2);
         
         if (res) {
           // 입력 초기화
@@ -492,7 +590,7 @@ function Add({categories, addToCategory}) {
         setTimeout(() => setIsAdding(false), 100);
       }
     }
-  }, [isAdding, inputText, selectedType, selectedCategory0, selectedCategory1, selectedCategory2, addToCategory]);
+  }, [isAdding, inputText, selectedType, selectedCategory0, selectedCategory1, selectedCategory2, onAdd]);
 
   return(
     <div className={styles.addContainer}>
@@ -565,12 +663,37 @@ function Add({categories, addToCategory}) {
   )
 }
 
-export default function Body({menu, bookmarkSentences, categories, addToCategory}) {
+export default function Body({
+  menu, 
+  categories, 
+  onAdd,
+  onTextClick, 
+  onEdit, 
+  onDelete, 
+  onBookmark
+}) {
   return (
     <div className={styles.bodyContainer}>
-      {menu == "bookmark" && <Bookmark sentences={bookmarkSentences}/>}
-      {menu == "category" && <Category categories={categories}/>}
-      {menu == "add" && <Add categories={categories} addToCategory={addToCategory}/>}
+      {menu == "bookmark" && (
+        <Bookmark 
+          categories={categories}
+          onTextClick={onTextClick}
+          onEdit={onEdit}
+          onDelete={onDelete}
+          onBookmark={onBookmark}
+          orderType="default"   // TODO 변경 가능하게
+        />
+      )}
+      {menu == "category" && (
+        <Category 
+          categories={categories}
+          onTextClick={onTextClick}
+          onEdit={onEdit}
+          onDelete={onDelete}
+          onBookmark={onBookmark}
+        />
+      )}
+      {menu == "add" && <Add categories={categories} onAdd={onAdd}/>}
     </div>
   );
 }

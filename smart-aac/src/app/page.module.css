@@ -383,10 +383,18 @@
   margin-left: 8px;
 }
 
+.categoryItem .material-icons,
+.categoryItem .material-icons-outlined,
 .categoryItem .material-symbols-outlined {
   color: #ffc107;
   font-size: 24px;
   margin-right: 8px;
+}
+
+.categoryArrow {
+  color: #6c757d;
+  font-size: 18px;
+  margin-left: auto;
 }
 
 /* Add 컴포넌트 스타일 */
@@ -794,4 +802,154 @@
 .openAddModalButton:hover {
   background-color: #0056b3;
   transform: translateY(-1px);
+}
+
+/* TextCard 스타일 */
+.textCardContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Material Icons 기본 스타일 */
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: 'liga';
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+.material-icons-outlined {
+  font-family: 'Material Icons Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: 'liga';
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: 'liga';
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+.ttsButton {
+  background: none;
+  border: none;
+  color: #6c757d;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: color 0.2s, background-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+}
+
+.ttsButton:hover {
+  color: #495057;
+  background-color: #f8f9fa;
+}
+
+.ttsButton .material-icons,
+.ttsButton .material-symbols-outlined {
+  font-size: 20px;
+}
+
+/* TextCard 모달 스타일 */
+.textCardModalContent {
+  background: white;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.textCardModalBody {
+  padding: 20px;
+}
+
+.selectedText {
+  background-color: #f8f9fa;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-weight: 500;
+  color: #495057;
+  border-left: 4px solid #007bff;
+}
+
+.textCardOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.textCardOption {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border: none;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 14px;
+  font-weight: 500;
+  color: #495057;
+}
+
+.textCardOption:hover {
+  background-color: #e9ecef;
+}
+
+.textCardOption .material-icons,
+.textCardOption .material-symbols-outlined {
+  font-size: 20px;
+  color: #6c757d;
+}
+
+/* sentenceItem 수정 - 클릭 가능하도록 */
+.sentenceItem {
+  cursor: pointer;
+  transition: background-color 0.2s;
+  user-select: none;
+}
+
+.sentenceItem:hover {
+  background-color: rgba(0, 123, 255, 0.05);
 }

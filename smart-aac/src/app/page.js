@@ -122,6 +122,30 @@ function InputSection({openHistoryModal, input, onInputChange, isRecommendOpen, 
   )
 }
 
+// function AddModal({isOpen, onClose}) {
+//   return (
+//     <div className={styles.modalOverlay} onClick={onClose}>
+//       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+//         <div className={styles.modalHeader}>
+//           <h2>전체 기록</h2>
+//           <button className={styles.closeButton} onClick={onClose}>×</button>
+//         </div>
+//         <div className={styles.modalBody}>
+//           {history.length === 0 ? (
+//             <p>기록이 없습니다.</p>
+//           ) : (
+//             history.map((text, index) => (
+//               <div key={index} className={styles.historyModalItem}>
+//                 {text}
+//               </div>
+//             ))
+//           )}
+//         </div>
+//       </div>
+//     </div>
+//   )
+// }
+
 export default function Home() {
   const [menu, setMenu] = useState("bookmark");     // 현재 선택된 메뉴
   const [isHistoryModalOpen, setIsHistoryModalOpen] = useState(false);  // 최근 기록 모달창 열림 여부
@@ -151,8 +175,142 @@ export default function Home() {
     setToast({ isVisible: false, message: "", type: "error" });
   };
 
+  // TextCard 클릭 핸들러 - input에 텍스트 설정
+  const handleTextClick = (text) => {
+    setInput(text);
+    setIsRecommendOpen(false); // 추천창 닫기
+  };
+
+  // TextCard 수정 핸들러 TODO
+  const handleTextEdit = (text) => {
+    const newText = prompt("텍스트를 수정하세요:", text);
+    if (newText && newText.trim() && newText !== text) {
+      // 여기서 실제 수정 로직 구현 (서버 업데이트 등)
+      showInfo(`"${text}"이(가) "${newText}"로 수정되었습니다.`);
+      // TODO: 실제 데이터 업데이트 로직 구현 필요
+    }
+  };
+
+  // TextCard 삭제 핸들러 TODO
+  const handleTextDelete = (text) => {
+    if (confirm(`"${text}"을(를) 정말 삭제하시겠습니까?`)) {
+      // 여기서 실제 삭제 로직 구현
+      showInfo(`"${text}"이(가) 삭제되었습니다.`);
+      // TODO: 실제 데이터 삭제 로직 구현 필요
+    }
+  };
+
+  // TextCard 즐겨찾기 토글 핸들러
+  const handleTextBookmark = (item) => {
+    setCategories(prev => {
+      const updatedCategories = prev.map(cat0 => {
+        if (cat0.name === item.category0) {
+          return {
+            ...cat0,
+            subcategories: cat0.subcategories.map(cat1 => {
+              // category1이 ""면 categories 바로 안의 리스트
+              if (item.category1 === "") {
+                if (Array.isArray(cat1)) {
+                  return cat1.map(textItem => {
+                    if (textItem.text === item.text) {
+                      return { ...textItem, bookmark: !textItem.bookmark };
+                    }
+                    return textItem;
+                  });
+                }
+                return cat1;
+              }
+              // category2가 ""면 cat1 안의 리스트
+              else if (item.category2 === "") {
+                if (cat1.name === item.category1) {
+                  return {
+                    ...cat1,
+                    subcategories: cat1.subcategories.map(cat2 => {
+                      if (Array.isArray(cat2)) {
+                        return cat2.map(textItem => {
+                          if (textItem.text === item.text) {
+                            return { ...textItem, bookmark: !textItem.bookmark };
+                          }
+                          return textItem;
+                        });
+                      }
+                      return cat2;
+                    })
+                  };
+                }
+                return cat1;
+              }
+              // category2가 있는 경우 (3단계 깊이)
+              else {
+                if (cat1.name === item.category1) {
+                  return {
+                    ...cat1,
+                    subcategories: cat1.subcategories.map(cat2 => {
+                      if (cat2.name === item.category2) {
+                        return {
+                          ...cat2,
+                          subcategories: cat2.subcategories.map(textItem => {
+                            if (textItem.text === item.text) {
+                              return { ...textItem, bookmark: !textItem.bookmark };
+                            }
+                            return textItem;
+                          })
+                        };
+                      }
+                      return cat2;
+                    })
+                  };
+                }
+                return cat1;
+              }
+            })
+          };
+        }
+        return cat0;
+      });
+      
+      return updatedCategories;
+    });
+
+    // 북마크 상태 변경 메시지 표시
+    setTimeout(() => {
+      // categories가 업데이트된 후 실행되도록 setTimeout 사용
+      setCategories(currentCategories => {
+        const currentItem = currentCategories.find(cat0 => cat0.name === item.category0);
+        let isCurrentlyBookmarked = false;
+        
+        if (item.category1 === "") {
+          // cat0의 배열에서 찾기
+          const arrayInCat0 = currentItem?.subcategories.find(cat1 => Array.isArray(cat1));
+          const foundItem = arrayInCat0?.find(textItem => textItem.text === item.text);
+          isCurrentlyBookmarked = foundItem?.bookmark || false;
+        } else if (item.category2 === "") {
+          // cat1의 배열에서 찾기
+          const cat1 = currentItem?.subcategories.find(cat1 => cat1.name === item.category1);
+          const arrayInCat1 = cat1?.subcategories.find(cat2 => Array.isArray(cat2));
+          const foundItem = arrayInCat1?.find(textItem => textItem.text === item.text);
+          isCurrentlyBookmarked = foundItem?.bookmark || false;
+        } else {
+          // cat2의 배열에서 찾기
+          const cat1 = currentItem?.subcategories.find(cat1 => cat1.name === item.category1);
+          const cat2 = cat1?.subcategories.find(cat2 => cat2.name === item.category2);
+          const foundItem = cat2?.subcategories.find(textItem => textItem.text === item.text);
+          isCurrentlyBookmarked = foundItem?.bookmark || false;
+        }
+
+        if (isCurrentlyBookmarked) {
+          showInfo(`"${item.text}"이(가) 즐겨찾기에 추가되었습니다.`);
+        } else {
+          showInfo(`"${item.text}"이(가) 즐겨찾기에서 제거되었습니다.`);
+        }
+        
+        return currentCategories; // 상태 변경 없이 그대로 반환
+      });
+    }, 0);
+  };
+
   // 카테고리에 새 단어/문장 추가하는 함수
-  const addToCategory = async (text, type, cat0Name, cat1Name = "", cat2Name = "") => {
+  const handleTextAdd = async (text, type, cat0Name, cat1Name = "", cat2Name = "") => {
     // 이미 실행 중이면 무시
     if (addingRef.current) return;
     addingRef.current = true;
@@ -165,13 +323,13 @@ export default function Home() {
         if (cat0.name === cat0Name) {
           return cat0.subcategories.some(cat1 => {
             if (Array.isArray(cat1) && cat1Name === "") {
-              return cat1.includes(text);
+              return cat1.some(item => item.text === text);
             } else if (cat1.name === cat1Name) {
               return cat1.subcategories.some(cat2 => {
                 if (Array.isArray(cat2) && cat2Name === "") {
-                  return cat2.includes(text);
+                  return cat2.some(item => item.text === text);
                 } else if (cat2.name === cat2Name) {
-                  return cat2.subcategories[0].includes(text);
+                  return cat2.subcategories[0].some(item => item.text === text);
                 }
                 return false;
               })
@@ -205,10 +363,10 @@ export default function Home() {
         const cat1ArrIndex = cat1s.findIndex(cat1 => Array.isArray(cat1));
         
         // 배열이 없는 경우
-        if (cat1ArrIndex === -1) cat1s.push([text])
+        if (cat1ArrIndex === -1) cat1s.push([{text:text, bookmark:false, frequency: 0}])
         // 배열이 있는 경우
-        else cat1s[cat1ArrIndex] = [...cat1s[cat1ArrIndex], text];
-        
+        else cat1s[cat1ArrIndex] = [...cat1s[cat1ArrIndex], {text:text, bookmark:false, frequency: 0}];
+
         addingRef.current = false; // 플래그 리셋
         updateSuccess = true;
         return newCats;
@@ -240,9 +398,9 @@ export default function Home() {
         const cat2ArrIndex = cat2s.findIndex(cat2 => Array.isArray(cat2));
 
         // 배열이 없는 경우
-        if (cat2ArrIndex === -1) cat2s.push([text])
+        if (cat2ArrIndex === -1) cat2s.push([{text:text, bookmark:false, frequency: 0}])
         // 배열이 있는 경우
-        else cat2s[cat2ArrIndex] = [...cat2s[cat2ArrIndex], text];
+        else cat2s[cat2ArrIndex] = [...cat2s[cat2ArrIndex], {text:text, bookmark:false, frequency: 0}];
 
         addingRef.current = false; // 플래그 리셋
         updateSuccess = true;
@@ -274,9 +432,9 @@ export default function Home() {
       const cat2TextIndex = cat2.subcategories.findIndex(arr => Array.isArray(arr));
 
       // 배열이 없는 경우
-      if (cat2TextIndex === -1) cat2.subcategories.push([text])
+      if (cat2TextIndex === -1) cat2.subcategories.push([{text:text, bookmark:false, frequency: 0}])
       // 배열이 있는 경우
-      else cat2.subcategories[cat2TextIndex] = [...cat2.subcategories[cat2TextIndex], text];
+      else cat2.subcategories[cat2TextIndex] = [...cat2.subcategories[cat2TextIndex], {text:text, bookmark:false, frequency: 0}];
 
       addingRef.current = false; // 플래그 리셋
       updateSuccess = true;
@@ -340,27 +498,6 @@ export default function Home() {
     "안녕하세요", "권구현",
   ]);
 
-  const [bookmarkSentences, setBookmarkSentences] = useState([
-    "안녕하세요",
-    "권구현입니다",
-    "북마크",
-    "안녕하세요",
-    "권구현입니다",
-    "북마크",
-    "안녕하세요",
-    "권구현입니다",
-    "북마크",
-    "안녕하세요",
-    "권구현입니다",
-    "북마크",
-    "안녕하세요",
-    "권구현입니다",
-    "북마크",
-    "안녕하세요",
-    "권구현입니다",
-    "북마크",
-  ])
-
   const [categories, setCategories] = useState([
     {
       name: "인사",
@@ -368,20 +505,20 @@ export default function Home() {
         {
           name: "안녕",
           subcategories: [
-            { name: "안녕하세요", subcategories: ["안녕하세요", "반갑습니다"] },
-            { name: "안녕히 가세요", subcategories: ["안녕히 가세요", "다음에 봐요"] },
-            ["안녕", "하이", "헬로우"]
+            { name: "안녕하세요", subcategories: [{text:"안녕하세요", bookmark:false, frequency:1}, {text: "반갑습니다", bookmark:true, frequency:2}] },
+            { name: "안녕히 가세요", subcategories: [{text:"안녕히 가세요", bookmark:false, frequency:1}, {text: "다음에 봐요", bookmark:true, frequency:2}] },
+            [{text:"안녕", bookmark:false, frequency:1}, {text:"하이", bookmark:true, frequency:2}, {text:"헬로우", bookmark:false, frequency:1}]
           ]
         },
         {
           name: "감사",
           subcategories: [
-            { name: "고맙습니다", subcategories: ["고맙습니다", "감사해요"] },
-            { name: "죄송합니다", subcategories: ["죄송합니다", "미안해요"] },
-            ["빠른 감사", "정말 감사합니다"]
+            { name: "고맙습니다", subcategories: [{text:"고맙습니다", bookmark:false, frequency:1}, {text: "감사해요", bookmark:true, frequency:2}] },
+            { name: "죄송합니다", subcategories: [{text:"죄송합니다", bookmark:false, frequency:1}, {text: "미안해요", bookmark:true, frequency:2}] },
+            [{text:"빠른 감사", bookmark:false, frequency:1}, {text:"정말 감사합니다", bookmark:true, frequency:2}]
           ]
         },
-        ["빠른 인사", "안녕"]
+        [{text:"빠른 인사", bookmark:false, frequency:1}, {text:"안녕", bookmark:true, frequency:2}]
       ],
     },
     {
@@ -390,18 +527,18 @@ export default function Home() {
         {
           name: "한식",
           subcategories: [
-            { name: "밥류", subcategories: [["밥 주세요", "비빔밥 주세요"]] },
-            { name: "국물", subcategories: [["김치찌개 주세요", "된장찌개 주세요"]] }
+            { name: "밥류", subcategories: [{text:"밥 주세요", bookmark:false, frequency:1}, {text:"비빔밥 주세요", bookmark:true, frequency:2}] },
+            { name: "국물", subcategories: [{text:"김치찌개 주세요", bookmark:false, frequency:1}, {text:"된장찌개 주세요", bookmark:true, frequency:2}] }
           ]
         },
         {
           name: "양식",
           subcategories: [
-            { name: "파스타", subcategories: [["스파게티 주세요", "카르보나라 주세요"]] },
-            { name: "피자", subcategories: [["피자 주세요", "치즈피자 주세요"]] }
+            { name: "파스타", subcategories: [{text:"스파게티 주세요", bookmark:false, frequency:1}, {text:"카르보나라 주세요", bookmark:true, frequency:2}] },
+            { name: "피자", subcategories: [{text:"피자 주세요", bookmark:false, frequency:1}, {text:"치즈피자 주세요", bookmark:true, frequency:2}] }
           ]
         },
-        ["음식 주문", "메뉴 추천해주세요"]
+        [{text:"음식 주문", bookmark:false, frequency:1}, {text:"메뉴 추천해주세요", bookmark:true, frequency:2}]
       ],
     },
     {
@@ -410,9 +547,9 @@ export default function Home() {
         {
           name: "병원",
           subcategories: [
-            { name: "증상", subcategories: [["아파요", "열이 나요", "머리가 아파요"]] },
-            { name: "예약", subcategories: [["예약하고 싶어요", "진료 받고 싶어요"]] },
-            ["괜찮아요", "별일 아니에요"]
+            { name: "증상", subcategories: [{text:"아파요", bookmark:false}, {text:"열이 나요", bookmark:true}, {text:"머리가 아파요", bookmark:false}] },
+            { name: "예약", subcategories: [{text:"예약하고 싶어요", bookmark:false}, {text:"진료 받고 싶어요", bookmark:true}] },
+            [{text:"괜찮아요", bookmark:false}, {text:"별일 아니에요", bookmark:true}]
           ]
         }
       ]
@@ -427,9 +564,12 @@ export default function Home() {
       </div>
       <Body 
         menu={menu}
-        bookmarkSentences={bookmarkSentences}
         categories={categories}
-        addToCategory={addToCategory}
+        onAdd={handleTextAdd}
+        onTextClick={handleTextClick}
+        onEdit={handleTextEdit}
+        onDelete={handleTextDelete}
+        onBookmark={handleTextBookmark}
       />
       <InputSection
         openHistoryModal={openHistoryModal}
