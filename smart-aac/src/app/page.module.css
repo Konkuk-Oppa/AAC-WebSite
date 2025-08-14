@@ -519,16 +519,26 @@
   margin-bottom: 16px;
 }
 
+.categoryHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.categoryHeader .formLabel {
+  margin-bottom: 0;
+}
+
 .toggleButton {
   background-color: #f8f9fa;
   border: 2px solid #dee2e6;
   color: #495057;
-  padding: 8px 16px;
+  padding: 8px 8px;
   border-radius: 6px;
   font-size: 14px;
   cursor: pointer;
   transition: all 0.2s;
-  width: 100%;
 }
 
 .toggleButton:hover {
@@ -550,9 +560,8 @@
 
 .cancelButton {
   flex: 1;
-  background-color: #6c757d;
-  color: white;
-  border: none;
+  background-color: #f8f9fa;
+  border: 2px solid #dee2e6;
   padding: 10px 16px;
   border-radius: 6px;
   font-size: 14px;

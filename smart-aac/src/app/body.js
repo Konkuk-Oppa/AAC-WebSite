@@ -118,15 +118,20 @@ function Category({categories}) {
 }
 
 function CategorySelectModal({isOpen, onClose, categories, onSelect, recommendCategories}) {
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [selectedSubcategory, setSelectedSubcategory] = useState("");
-  const [isNewCategory, setIsNewCategory] = useState(false);
-  const [newCategoryName, setNewCategoryName] = useState("");
+  const [selectedCategory0, setSelectedCategory0] = useState("");
+  const [selectedCategory1, setSelectedCategory1] = useState("");
+  const [selectedCategory2, setSelectedCategory2] = useState("");
+  const [isNewCategory0, setIsNewCategory0] = useState(false);
+  const [isNewCategory1, setIsNewCategory1] = useState(false);
+  const [isNewCategory2, setIsNewCategory2] = useState(false);
+  const [newCategory0Name, setNewCategory0Name] = useState("");
+  const [newCategory1Name, setNewCategory1Name] = useState("");
+  const [newCategory2Name, setNewCategory2Name] = useState("");
 
   if (!isOpen) return null;
 
-  // 카테고리 옵션 생성
-  const getCategoryOptions = () => {
+  // 카테고리0 옵션 생성
+  const getCategory0Options = () => {
     const options = [];
     categories.forEach(category => {
       options.push({
@@ -138,60 +143,117 @@ function CategorySelectModal({isOpen, onClose, categories, onSelect, recommendCa
     return options;
   };
 
-  // 서브카테고리 옵션 생성
-  const getSubcategoryOptions = () => {
-    if (!selectedCategory) return [];
-    
-    const category = categories.find(cat => cat.name === selectedCategory);
-    if (!category) return [];
+  // 카테고리1 옵션 생성
+  const getCategory1Options = () => {
+    if (!selectedCategory0) return [];
+
+    const cat0 = categories.find(cat => cat.name === selectedCategory0);
+    if (!cat0) return [];
 
     const options = [];
-    category.subcategories.forEach((subcat, index) => {
-      if (Array.isArray(subcat)) {
-        options.push({
-          value: `array_${index}`,
-          label: `문장 그룹 ${index + 1}`
-        });
-      } else {
+    cat0.subcategories.forEach((subcat) => {
+      if (!Array.isArray(subcat)) {
         options.push({
           value: subcat.name,
-          label: subcat.name
+          label: subcat.name,
+          subcategories: subcat.subcategories || []
         });
       }
     });
     return options;
   };
 
-  // 카테고리 선택
-  const handleCategorySelect = (value) => {
-    setSelectedCategory(value);
-    setSelectedSubcategory(""); // 카테고리 변경시 서브카테고리 초기화
+  // 카테고리2 옵션 생성
+  const getCategory2Options = () => {
+    if (!selectedCategory1) return [];
+
+    const cat0 = categories.find(cat => cat.name === selectedCategory0);
+    if (!cat0) return [];
+    const cat1 = cat0.subcategories.find(cat => cat.name === selectedCategory1);
+    if (!cat1) return [];
+
+    const options = [];
+    cat1.subcategories.forEach((sentence) => {
+      if (!Array.isArray(sentence)) {
+        options.push({
+          value: sentence.name,
+          label: sentence.name,
+        });
+      }
+    });
+    return options;
   };
 
-  // 서브카테고리 선택
-  const handleSubcategorySelect = (value) => {
-    setSelectedSubcategory(value);
+  // 카테고리0 선택
+  const handleCategory0Select = (value) => {
+    setSelectedCategory0(value);
+    setSelectedCategory1("");
+    setSelectedCategory2("");
+  };
+
+  // 카테고리1 선택
+  const handleSubcategory1Select = (value) => {
+    setSelectedCategory1(value);
+    setSelectedCategory2("");
+  };
+
+  // 카테고리2 선택
+  const handleSubcategory2Select = (value) => {
+    setSelectedCategory2(value);
   };
 
   // 확인 버튼 클릭
   const handleConfirm = () => {
-    const categoryToUse = isNewCategory ? newCategoryName : selectedCategory;
-    onSelect(categoryToUse, selectedSubcategory, isNewCategory);
+    const category0ToUse = isNewCategory0 ? newCategory0Name : selectedCategory0;
+    const category1ToUse = isNewCategory1 ? newCategory1Name : selectedCategory1;
+    const category2ToUse = isNewCategory2 ? newCategory2Name : selectedCategory2;
     
-    // 초기화
-    setSelectedCategory("");
-    setSelectedSubcategory("");
-    setIsNewCategory(false);
-    setNewCategoryName("");
+    onSelect(category0ToUse, category1ToUse, category2ToUse, {
+      isNewCategory0,
+      isNewCategory1,
+      isNewCategory2
+    });
+
     onClose();
   };
 
-  // 새 카테고리 토글
-  const toggleNewCategory = () => {
-    setIsNewCategory(!isNewCategory);
-    setSelectedCategory("");
-    setSelectedSubcategory("");
-    setNewCategoryName("");
+  // 새 카테고리0 토글
+  const toggleNewCategory0 = () => {
+    if (!isNewCategory0) {
+      setIsNewCategory1(true);
+      setIsNewCategory2(true);
+    } else {
+      setIsNewCategory1(false);
+      setIsNewCategory2(false);
+    }
+    setIsNewCategory0(!isNewCategory0);
+    setSelectedCategory0("");
+    setSelectedCategory1("");
+    setSelectedCategory2("");
+    setNewCategory0Name("");
+    setNewCategory1Name("");
+    setNewCategory2Name("");
+  };
+
+  // 새 카테고리1 토글
+  const toggleNewCategory1 = () => {
+    if (!isNewCategory1) {
+      setIsNewCategory2(true);
+    } else {
+      setIsNewCategory2(false);
+    }
+    setIsNewCategory1(!isNewCategory1);
+    setSelectedCategory1("");
+    setSelectedCategory2("");
+    setNewCategory1Name("");
+    setNewCategory2Name("");
+  };
+
+  // 새 카테고리2 토글
+  const toggleNewCategory2 = () => {
+    setIsNewCategory2(!isNewCategory2);
+    setSelectedCategory2("");
+    setNewCategory2Name("");
   };
 
   return (
@@ -203,69 +265,121 @@ function CategorySelectModal({isOpen, onClose, categories, onSelect, recommendCa
         </div>
         <div className={styles.categoryModalBody}>
           <div className={styles.formGroup}>
-            <div className={styles.categoryToggle}>
+            <div className={styles.categoryHeader}>
+              <label className={styles.formLabel}>카테고리</label>
               <button
                 type="button"
-                onClick={toggleNewCategory}
-                className={`${styles.toggleButton} ${isNewCategory ? styles.active : ''}`}
+                onClick={toggleNewCategory0}
+                className={`${styles.toggleButton} ${isNewCategory0 ? styles.active : ''}`}
               >
-                {isNewCategory ? "기존 카테고리 선택" : "새 카테고리 만들기"}
+                {isNewCategory0 ? "기존 선택" : "새로 만들기"}
               </button>
             </div>
-          </div>
-          <div className={styles.formGroup}>
-            <label className={styles.formLabel}>추천 카테고리</label>
             
-          </div>
-
-          {isNewCategory ? (
-            <div className={styles.formGroup}>
-              <label className={styles.formLabel}>새 카테고리 이름</label>
+            {isNewCategory0 ? (
               <input
                 type="text"
-                placeholder="새 카테고리 이름을 입력하세요"
-                value={newCategoryName}
-                onChange={(e) => setNewCategoryName(e.target.value)}
+                placeholder="새 메인 카테고리 이름을 입력하세요"
+                value={newCategory0Name}
+                onChange={(e) => setNewCategory0Name(e.target.value)}
                 className={styles.formInput}
               />
-            </div>
-          ) : (
-            <>
-              <div className={styles.formGroup}>
-                <label className={styles.formLabel}>카테고리</label>
-                <select
-                  value={selectedCategory}
-                  onChange={(e) => handleCategorySelect(e.target.value)}
+            ) : (
+              <select
+                value={selectedCategory0}
+                onChange={(e) => handleCategory0Select(e.target.value)}
+                className={styles.formInput}
+              >
+                <option value="">메인 카테고리를 선택하세요</option>
+                {getCategory0Options().map((option, index) => (
+                  <option key={index} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            )}
+          </div>
+
+          {/* 카테고리 1 선택 (카테고리 0이 선택된 경우에만 표시) */}
+          {(selectedCategory0 || newCategory0Name) && (
+            <div className={styles.formGroup}>
+              <div className={styles.categoryHeader}>
+                <label className={styles.formLabel}>세부 카테고리 1 (선택사항)</label>
+                  {!isNewCategory0 && <button
+                    type="button"
+                    onClick={toggleNewCategory1}
+                    className={`${styles.toggleButton} ${isNewCategory1 ? styles.active : ''}`}
+                  >
+                    {isNewCategory1  ? "기존 선택" : "새로 만들기"}
+                  </button>}
+              </div>
+
+              {isNewCategory1 ? (
+                <input
+                  type="text"
+                  placeholder="새 서브 카테고리 이름을 입력하세요"
+                  value={newCategory1Name}
+                  onChange={(e) => setNewCategory1Name(e.target.value)}
                   className={styles.formInput}
+                />
+              ) : (
+                <select
+                  value={selectedCategory1}
+                  onChange={(e) => handleSubcategory1Select(e.target.value)}
+                  className={styles.formInput}
+                  disabled={isNewCategory0}
                 >
-                  <option value="">카테고리를 선택하세요</option>
-                  {getCategoryOptions().map((option, index) => (
+                  <option value="">서브 카테고리를 선택하세요</option>
+                  {!isNewCategory0 && getCategory1Options().map((option, index) => (
                     <option key={index} value={option.value}>
                       {option.label}
                     </option>
                   ))}
                 </select>
-              </div>
-
-              {/* 서브카테고리 선택 */}
-              {selectedCategory && (
-                <div className={styles.formGroup}>
-                  <label className={styles.formLabel}>세부 카테고리 (선택사항)</label>
-                  <select
-                    value={selectedSubcategory}
-                    onChange={(e) => handleSubcategorySelect(e.target.value)}
-                    className={styles.formInput}
-                  >
-                    <option value="">세부 카테고리를 선택하세요</option>
-                    {getSubcategoryOptions().map((option, index) => (
-                      <option key={index} value={option.value}>
-                        {option.label}
-                      </option>
-                    ))}
-                  </select>
-                </div>
               )}
-            </>
+            </div>
+          )}
+
+          {/* 카테고리 2 선택 (카테고리 1이 선택된 경우에만 표시) */}
+          {(selectedCategory1 || newCategory1Name) && (
+            <div className={styles.formGroup}>
+              <div className={styles.categoryHeader}>
+                <label className={styles.formLabel}>세부 카테고리 2 (선택사항)</label>
+                {!isNewCategory0 && !isNewCategory1 && (
+                  <button
+                    type="button"
+                    onClick={toggleNewCategory2}
+                    className={`${styles.toggleButton} ${isNewCategory2 ? styles.active : ''}`}
+                  >
+                    {isNewCategory2 ? "기존 선택" : "새로 만들기"}
+                  </button>
+                )}
+              </div>
+              
+              {isNewCategory2 ? (
+                <input
+                  type="text"
+                  placeholder="새 세부 카테고리 이름을 입력하세요"
+                  value={newCategory2Name}
+                  onChange={(e) => setNewCategory2Name(e.target.value)}
+                  className={styles.formInput}
+                />
+              ) : (
+                <select
+                  value={selectedCategory2}
+                  onChange={(e) => handleSubcategory2Select(e.target.value)}
+                  className={styles.formInput}
+                  disabled={isNewCategory1}
+                >
+                  <option value="">세부 카테고리를 선택하세요</option>
+                  {!isNewCategory1 && getCategory2Options().map((option, index) => (
+                    <option key={index} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+              )}
+            </div>
           )}
 
           <div className={styles.modalActions}>
@@ -277,7 +391,7 @@ function CategorySelectModal({isOpen, onClose, categories, onSelect, recommendCa
             </button>
             <button
               onClick={handleConfirm}
-              disabled={!selectedCategory && !newCategoryName.trim()}
+              disabled={(!selectedCategory0 && !newCategory0Name.trim())}
               className={styles.confirmButton}
             >
               확인
@@ -291,9 +405,10 @@ function CategorySelectModal({isOpen, onClose, categories, onSelect, recommendCa
 
 function Add({categories, addToCategory}) {
   const [inputText, setInputText] = useState("");
-  const [selectedType, setSelectedType] = useState("word"); // word or sentence
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [selectedSubcategory, setSelectedSubcategory] = useState("");
+  const [selectedType, setSelectedType] = useState("word"); 
+  const [selectedCategory0, setSelectedCategory0] = useState("");
+  const [selectedCategory1, setSelectedCategory1] = useState("");
+  const [selectedCategory2, setSelectedCategory2] = useState("");
   const [selectedCategoryLabel, setSelectedCategoryLabel] = useState("");
   const [isCategoryModalOpen, setIsCategoryModalOpen] = useState(false);
   const [isAdding, setIsAdding] = useState(false); // 중복 실행 방지
@@ -310,66 +425,46 @@ function Add({categories, addToCategory}) {
     } 
   }
 
-  // 카테고리 선택 완료
-  const handleCategorySelect = (category, subcategory, isNew) => {
-    setSelectedCategory(category);
-    setSelectedSubcategory(subcategory);
-    
+  // 카테고리 선택 완료시 라벨 표시
+  const handleCategorySelect = (cat0, cat1 = "", cat2 = "") => {
+    setSelectedCategory0(cat0);
+    setSelectedCategory1(cat1);
+    setSelectedCategory2(cat2);
+
     // 표시용 라벨 설정
-    let label = category;
-    if (subcategory && !isNew) {
-      const subcategoryOption = getSubcategoryOptions(category).find(opt => opt.value === subcategory);
-      if (subcategoryOption) {
-        label += ` > ${subcategoryOption.label}`;
+    let label = cat0;
+    if (cat1) {
+      label += ` > ${cat1}`;
+      if (cat2) {
+        label += ` > ${cat2}`;
       }
     }
     setSelectedCategoryLabel(label);
-  };
-
-  // 서브카테고리 옵션 생성 (라벨 표시용)
-  const getSubcategoryOptions = (categoryName) => {
-    const category = categories.find(cat => cat.name === categoryName);
-    if (!category) return [];
-
-    const options = [];
-    category.subcategories.forEach((subcat, index) => {
-      if (Array.isArray(subcat)) {
-        options.push({
-          value: `array_${index}`,
-          label: `문장 그룹 ${index + 1}`
-        });
-      } else {
-        options.push({
-          value: subcat.name,
-          label: subcat.name
-        });
-      }
-    });
-    return options;
   };
 
   // 추가 버튼 클릭
   const handleAdd = useCallback(() => {
     if (isAdding) return; // 이미 실행 중이면 리턴
     
-    if (inputText.trim() && selectedCategory.trim()) {
+    if (inputText.trim() && selectedCategory0.trim()) {
       setIsAdding(true); // 실행 중 표시
       
       try {
         // 실제 카테고리에 추가
-        addToCategory(inputText, selectedType, selectedCategory, selectedSubcategory);
+        addToCategory(inputText, selectedType, selectedCategory0, selectedCategory1, selectedCategory2);
         
         // 입력 초기화
         setInputText("");
-        setSelectedCategory("");
-        setSelectedSubcategory("");
+        setSelectedCategory0("");
+        setSelectedCategory1("");
+        setSelectedCategory2("");
         setSelectedCategoryLabel("");
       } finally {
-        // 실행 완료 후 플래그 해제 (약간의 딜레이 추가)
+        // 실행 완료 후 플래그 해제
         setTimeout(() => setIsAdding(false), 100);
       }
     }
-  }, [isAdding, inputText, selectedType, selectedCategory, selectedSubcategory, addToCategory]);
+  }, [isAdding, inputText, selectedType, selectedCategory0, selectedCategory1, selectedCategory2, addToCategory]);
 
   return(
     <div className={styles.addContainer}>
@@ -424,7 +519,7 @@ function Add({categories, addToCategory}) {
         </div>
         <button
           onClick={handleAdd}
-          disabled={isAdding || !inputText.trim() || !selectedCategory.trim()}
+          disabled={isAdding || !inputText.trim() || !selectedCategory0.trim()}
           className={styles.addSubmitButton}
         >
           {isAdding ? "추가 중..." : "추가하기"}
