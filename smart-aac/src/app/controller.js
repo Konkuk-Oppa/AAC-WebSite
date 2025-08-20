@@ -23,7 +23,119 @@ export async function getRecommendCategory({text}) {
     return {success: true, data: recommendCategory};
 }
 
-export async function addText({text, type, cat0Name, cat1Name = "", cat2Name = ""}) {
-  // 목업용 데이터
+export async function addText(text, type, cat0Name, cat1Name = "", cat2Name = "") {
+  // 디버깅 용 코드
   return {success: true};
+
+  try {
+    const response = await fetch('/add', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        text: text,
+        type: type,
+        cat0Name: cat0Name,
+        cat1Name: cat1Name,
+        cat2Name: cat2Name
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    return { success: true };
+  } catch (error) {
+    console.error('Error adding text:', error);
+    return { success: false, error: error.message };
+  }
+}
+
+export async function updateBookmark(text, cat0Name, cat1Name = "", cat2Name = "", bookmark) {
+  // 디버깅 용 코드
+  return {success: true};
+
+  try {
+    const response = await fetch('/update-bookmark', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        text: text,
+        bookmark: bookmark,
+        cat0Name: cat0Name,
+        cat1Name: cat1Name,
+        cat2Name: cat2Name
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    return { success: true };
+  } catch (error) {
+    console.error('Error updating bookmark:', error);
+    return { success: false, error: error.message };
+  }
+}
+
+export async function deleteText(text, cat0Name, cat1Name = "", cat2Name = "") {
+  // 디버깅용 코드
+  return { success: true };
+  try {
+    const response = await fetch('/delete', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        text: text,
+        cat0Name: cat0Name,
+        cat1Name: cat1Name,
+        cat2Name: cat2Name
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    return { success: true };
+  } catch (error) {
+    console.error('Error deleting text:', error);
+    return { success: false, error: error.message };
+  }
+}
+
+export async function editText(oldText, newText, cat0Name, cat1Name = "", cat2Name = "") {
+  // 디버깅용 코드
+  return { success: true };
+  try {
+    const response = await fetch('/edit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        oldText: oldText,
+        newText: newText,
+        cat0Name: cat0Name,
+        cat1Name: cat1Name,
+        cat2Name: cat2Name
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    return { success: true };
+  } catch (error) {
+    console.error('Error editing text:', error);
+    return { success: false, error: error.message };
+  }
 }

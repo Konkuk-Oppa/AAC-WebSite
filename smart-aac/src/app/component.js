@@ -2,34 +2,93 @@ import styles from './page.module.css';
 import { useState, useRef } from 'react';
 
 // TextCard 옵션 모달
-function TextCardModal({isOpen, onClose, item, onEdit, onDelete, onBookmark}) {
+function TextCardModal({isOpen, onClose, item, onEdit, onDelete, onBookmark, currentPath, categories}) {
+  const [newText, setNewText] = useState(item.text);
   if (!isOpen) return null;
-  console.log(item);
+
+  let cat0Name = "", cat1Name = "", cat2Name = "";
+  if (currentPath.length === 0) {
+    cat0Name = item.category0;
+    cat1Name = item.category1;
+    cat2Name = item.category2;
+  } else {
+    if (currentPath.length > 0) cat0Name = currentPath[0];
+    if (currentPath.length > 1) cat1Name = currentPath[1];
+    if (currentPath.length > 2) cat2Name = currentPath[2];
+  }
+
+  // 실시간 북마크 상태 확인
+  const getCurrentBookmarkState = () => {
+    if (item.bookmark) return item.bookmark;
+    let currentBookmarkState = false;
+    
+    if (categories) {
+      categories.forEach(cat0 => {
+        if (cat0.name === cat0Name) {
+          if (cat1Name === "") {
+            // category1이 ""면 cat0의 list에서 찾기
+            if (cat0.list) {
+              const foundItem = cat0.list.find(textItem => textItem.text === item.text);
+              if (foundItem) {
+                currentBookmarkState = foundItem.bookmark || false;
+              }
+            }
+          } else {
+            // category1이 있는 경우
+            cat0.subcategories?.forEach(cat1 => {
+              if (cat1.name === cat1Name) {
+                if (cat2Name === "") {
+                  // category2가 ""면 cat1의 list에서 찾기
+                  if (cat1.list) {
+                    const foundItem = cat1.list.find(textItem => textItem.text === item.text);
+                    if (foundItem) {
+                      currentBookmarkState = foundItem.bookmark || false;
+                    }
+                  }
+                } else {
+                  // category2가 있는 경우
+                  cat1.subcategories?.forEach(cat2 => {
+                    if (cat2.name === cat2Name && cat2.list) {
+                      const foundItem = cat2.list.find(textItem => textItem.text === item.text);
+                      if (foundItem) {
+                        currentBookmarkState = foundItem.bookmark || false;
+                      }
+                    }
+                  });
+                }
+              }
+            });
+          }
+        }
+      });
+    }
+    
+    return currentBookmarkState;
+  };
+
+  const isBookmarked = getCurrentBookmarkState();
+
+
 
   return (
     <div className={styles.modalOverlay} onClick={onClose}>
       <div className={styles.textCardModalContent} onClick={(e) => e.stopPropagation()}>
         <div className={styles.modalHeader}>
-          <h3>텍스트 옵션</h3>
+          <h3>텍스트 수정</h3>
           <button className={styles.closeButton} onClick={onClose}>×</button>
         </div>
         <div className={styles.textCardModalBody}>
-          <div className={styles.selectedText}>"{item.text}"</div>
+          <input 
+            type="text" 
+            value={newText} 
+            onChange={(e) => setNewText(e.target.value)} 
+            className={styles.formInput}
+          />
           <div className={styles.textCardOptions}>
             <button 
               className={styles.textCardOption}
               onClick={() => {
-                onEdit(item.text);
-                onClose();
-              }}
-            >
-              <span className="material-symbols-outlined">edit</span>
-              수정
-            </button>
-            <button 
-              className={styles.textCardOption}
-              onClick={() => {
-                onDelete(text);
+                onDelete(item.text, cat0Name, cat1Name, cat2Name);
                 onClose();
               }}
             >
@@ -39,14 +98,23 @@ function TextCardModal({isOpen, onClose, item, onEdit, onDelete, onBookmark}) {
             <button 
               className={styles.textCardOption}
               onClick={() => {
-                onBookmark(item);
+                onBookmark(item.text, cat0Name, cat1Name, cat2Name);
                 onClose();
               }}
             >
               <span className="material-symbols-outlined">
-                {item.bookmark ? 'bookmark' : 'bookmark_border'}
+                {isBookmarked ? 'bookmark' : 'bookmark_border'}
               </span>
-              {item.bookmark ? '즐겨찾기 해제' : '즐겨찾기 추가'}
+              {isBookmarked ? '즐겨찾기 해제' : '즐겨찾기 추가'}
+            </button>
+            <button 
+              className={styles.addSubmitButton}
+              onClick={() => {
+                onEdit(item.text, newText, cat0Name, cat1Name, cat2Name);
+                onClose();
+              }}
+            >
+              수정
             </button>
           </div>
         </div>
@@ -62,6 +130,8 @@ export function TextCard({
   onEdit, 
   onDelete, 
   onBookmark, 
+  currentPath,
+  categories
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const longPressTimer = useRef(null);
@@ -156,6 +226,8 @@ export function TextCard({
         onEdit={onEdit}
         onDelete={onDelete}
         onBookmark={onBookmark}
+        currentPath={currentPath}
+        categories={categories}
       />
     </>
   )
@@ -163,7 +235,7 @@ export function TextCard({
 
 function ConversationCardModal({isOpen}) {
   if (!isOpen) return null;
-  
+
   return(<div>모달 내용</div>);
 }
 

@@ -10,84 +10,76 @@ function Bookmark({
   onEdit, 
   onDelete, 
   onBookmark,
-  orderType       // frequency, abc, default
+  orderType       // usageCount, abc, default
 }) {
   const [sentences, setSentences] = useState([]);
   const [originalSentences, setOriginalSentences] = useState([]);
 
-  // list는 {text: string, category0: string, category1: string, category2: string, frequency: int} 형태
+  const setOrder = (list) => {
+    if (orderType === "usageCount") {
+      setSentences([...list].sort((a, b) => b.usageCount - a.usageCount) || []);
+    } else if (orderType === "abc") {
+      setSentences([...list].sort((a, b) => a.text.localeCompare(b.text)) || []);
+    } else {
+      setSentences([...list] || []);
+    }
+  }
+
+  // list는 {text: string, category0: string, category1: string, category2: string, usageCount: int} 형태
   useEffect(() => {
     const list = [];
     categories.map((cat0)=> {
-      const cat0Name = cat0.name;
       cat0.subcategories.map((cat1) => {
-        if (Array.isArray(cat1)) {
-          cat1.map((item) => {
+        cat1.subcategories.map((cat2) => {
+          cat2.list.map((item) => {
             if (item.bookmark) {
               list.push({
                 text: item.text,
-                category0: cat0Name,
-                category1: '',
-                category2: '',
-                frequency: item.frequency || 0,
-                bookmark: item.bookmark || false
+                category0: cat0.name,
+                category1: cat1.name,
+                category2: cat2.name,
+                usageCount: item.usageCount || 0,
+                bookmark: item.bookmark
               });
             }
           });
-        } else {
-          const cat1Name = cat1.name;
-          cat1.subcategories.map((cat2) => {
-            if (Array.isArray(cat2)) {
-              cat2.map((item) => {
-                if (item.bookmark) {
-                  list.push({
-                    text: item.text,
-                    category0: cat0Name,
-                    category1: cat1Name,
-                    category2: '',
-                    frequency: item.frequency || 0,
-                    bookmark: item.bookmark || false
-                  });
-                }
-              });
-            } else {
-              cat2.subcategories.map((item) => {
-                if (item.bookmark) {
-                  list.push({
-                    text: item.text,
-                    category0: cat0Name,
-                    category1: cat1Name,
-                    category2: cat2.name,
-                    frequency: item.frequency || 0,
-                    bookmark: item.bookmark || false
-                  });
-                }
-              });
-            }
+        });
+        if (!cat1.list) return;
+        cat1.list.map((item) => {
+          if (item.bookmark) {
+            list.push({
+              text: item.text,
+              category0: cat0.name,
+              category1: cat1.name,
+              category2: '',
+              usageCount: item.usageCount || 0,
+              bookmark: item.bookmark
+            });
+          }
+        });
+      });
+      if (!cat0.list) return;
+      cat0.list.map((item) => {
+        if (item.bookmark) {
+          list.push({
+            text: item.text,
+            category0: cat0.name,
+            category1: '',
+            category2: '',
+            usageCount: item.usageCount || 0,
+            bookmark: item.bookmark
           });
         }
       });
     });
     
-    if (orderType === "frequency") {
-      setSentences([...list].sort((a, b) => b.frequency - a.frequency));
-    } else if (orderType === "abc") {
-      setSentences([...list].sort((a, b) => a.text.localeCompare(b.text)));
-    } else {
-      setSentences(list);
-    }
-    setOriginalSentences([...list]);
+    setOrder(list);
+    setOriginalSentences(list);
   }, [categories]);
 
   // 정렬 변경
   useEffect(() => {
-    if (orderType === "frequency") {
-      setSentences([...originalSentences].sort((a, b) => b.frequency - a.frequency));
-    } else if (orderType === "abc") {
-      setSentences([...originalSentences].sort((a, b) => a.text.localeCompare(b.text)));
-    } else {
-      setSentences(originalSentences);
-    }
+    setOrder(originalSentences);
   }, [orderType, originalSentences]);
 
   return (
@@ -102,6 +94,8 @@ function Bookmark({
             onEdit={onEdit}
             onDelete={onDelete}
             onBookmark={onBookmark}
+            currentPath={[]}
+            categories={categories}
           />
         )
       })}
@@ -124,19 +118,34 @@ function Conversation({conversation, onTextClick}) {
   )
 }
 
-function Category({categories, onTextClick, onEdit, onDelete, onBookmark}) {
+function Category({categories, onTextClick, onEdit, onDelete, onBookmark, orderType}) {
   const [currentPath, setCurrentPath] = useState([]);
   const [currentCategory, setCurrentCategory] = useState(categories);
+  const [currentList, setCurrentList] = useState([]);
+  const [originalCurrentList, setOriginalCurrentList] = useState([]);
 
-  // 카테고리 클릭 시 하위 카테고리로 이동
+  const setOrder = (list) => {
+    if (orderType === "usageCount") {
+      setCurrentList([...list].sort((a, b) => b.usageCount - a.usageCount) || []);
+    } else if (orderType === "abc") {
+      setCurrentList([...list].sort((a, b) => a.text.localeCompare(b.text)) || []);
+    } else {
+      setCurrentList([...list] || []);
+    }
+  }
+
+  // (완성) 카테고리 클릭 시 하위 카테고리로 이동
   const handleCategoryClick = (category) => {
     if (category.subcategories && category.subcategories.length > 0) {
       setCurrentPath([...currentPath, category.name]);
       setCurrentCategory(category.subcategories);
+
+      setOriginalCurrentList(category.list);
+      setOrder(category.list);
     } 
   };
 
-  // 경로 클릭 시 해당 카테고리로 이동
+  // (완성) 경로 클릭 시 해당 카테고리로 이동
   const handlePathClick = (index) => {    
     if (index === -1) {
       // 루트 카테고리로 이동
@@ -156,6 +165,10 @@ function Category({categories, onTextClick, onEdit, onDelete, onBookmark}) {
       setCurrentCategory(targetCategory);
     }
   };
+
+  useEffect(() => {
+    setOrder(originalCurrentList);
+  }, [orderType, categories]);
 
   return(
     <div className={styles.categoryContainer}>
@@ -180,50 +193,28 @@ function Category({categories, onTextClick, onEdit, onDelete, onBookmark}) {
       </div>
       {/* 카테고리 */}
       <div className={styles.categoryList}>
-        {(currentCategory.length > 0 && currentCategory[0].hasOwnProperty('text'))
-        ? <div>
-            {currentCategory.map((item, index) => {
-              return (
-                <TextCard 
-                  key={index} 
-                  item={item} 
-                  isNotEnd={currentCategory.length != index+1}
-                  onTextClick={onTextClick}
-                  onEdit={onEdit}
-                  onDelete={onDelete}
-                  onBookmark={onBookmark}
-                />
-              )
-            })}
-          </div>
-        : currentCategory.map((category, index) => {
-          if (Array.isArray(category)) {
-            return (<div key={index}>
-              {category.map((item, idx)=> {
-                return (
-                  <TextCard 
-                    key={idx} 
-                    item={item} 
-                    isNotEnd={category.length != idx+1}
-                    onTextClick={onTextClick}
-                    onEdit={onEdit}
-                    onDelete={onDelete}
-                    onBookmark={onBookmark}
-                  />
-                )
-              })}
-            </div>)
-          } else {
-            return (<div 
-                key={"category"+index} 
-                className={styles.categoryItem}
-                onClick={() => handleCategoryClick(category)}
-              >
-                <span className="material-symbols-outlined">folder</span>
-                <span className={styles.categoryName}>{category.name}</span>
-              </div>
-            )
-          }
+        {currentCategory.map((category, index) => {
+          return (
+            <div key={index} className={styles.categoryItem} onClick={() => handleCategoryClick(category)}>
+              <span className="material-symbols-outlined">folder</span>
+              <span className={styles.categoryName}>{category.name}</span>
+            </div>
+          )
+        })}
+        {currentList.map((item, index) => {
+          return (
+            <TextCard 
+              key={index} 
+              item={item} 
+              isNotEnd={currentList.length != index+1}
+              onTextClick={onTextClick}
+              onEdit={onEdit}
+              onDelete={onDelete}
+              onBookmark={onBookmark}
+              currentPath={currentPath}
+              categories={categories}
+            />
+          )
         })}
       </div>
     </div>
@@ -266,6 +257,7 @@ export default function Body({
           onEdit={onEdit}
           onDelete={onDelete}
           onBookmark={onBookmark}
+          orderType={orderType}
         />
       )}
     </div>
