@@ -1,10 +1,61 @@
 import styles from './page.module.css';
 import { useState, useRef } from 'react';
 
+// 카테고리 옵션 모달
+function CategoryModal({isOpen, onClose, category, onEdit, onDelete, currentPath}) {
+  if (!isOpen) return null;
+  const [newText, setNewText] = useState(category.name);
+
+  return (
+    <div className={styles.modalOverlay} onClick={onClose}>
+      <div className={styles.textCardModalContent} onClick={(e) => e.stopPropagation()}>
+        <div className={styles.modalHeader}>
+          <h3>카테고리 수정</h3>
+          <button className={styles.closeButton} onClick={onClose}>×</button>
+        </div>
+        <div className={styles.textCardModalBody}>
+          <input 
+            type="text" 
+            value={newText} 
+            onChange={(e) => setNewText(e.target.value)} 
+            className={styles.formInput}
+          />
+          <div className={styles.textCardOptions}>
+            <button 
+              className={styles.textCardOption}
+              onClick={() => {
+                onDelete(category, currentPath);
+                onClose();
+              }}
+            >
+              <span className="material-symbols-outlined">delete</span>
+              삭제
+            </button>
+            <button 
+              className={styles.addSubmitButton}
+              onClick={() => {
+                console.log("edit", onEdit(item.text, newText, cat0Name, cat1Name, cat2Name));
+                onClose();
+                // if (onEdit(item.text, newText, cat0Name, cat1Name, cat2Name)) {
+                //   onClose();
+                // }
+                  
+              }}
+            >
+              수정
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // TextCard 옵션 모달
 function TextCardModal({isOpen, onClose, item, onEdit, onDelete, onBookmark, currentPath, categories}) {
-  const [newText, setNewText] = useState(item.text);
   if (!isOpen) return null;
+  console.log(item);
+  const [newText, setNewText] = useState(item.text);
 
   let cat0Name = "", cat1Name = "", cat2Name = "";
   if (currentPath.length === 0) {
@@ -109,9 +160,10 @@ function TextCardModal({isOpen, onClose, item, onEdit, onDelete, onBookmark, cur
             </button>
             <button 
               className={styles.addSubmitButton}
-              onClick={() => {
-                onEdit(item.text, newText, cat0Name, cat1Name, cat2Name);
-                onClose();
+              onClick={async () => {
+                if(await onEdit(item.text, newText, cat0Name, cat1Name, cat2Name)) {
+                  onClose();
+                }
               }}
             >
               수정
@@ -329,6 +381,86 @@ export function ConversationCard({ item, onTextClick, isNotEnd }) {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         item={item}
+      />
+    </>
+  );
+}
+
+// 카테고리 아이템 컴포넌트
+export function CategoryItem({
+  category,
+  onCategoryClick,
+  onEdit,
+  onDelete,
+  currentPath
+}) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const longPressTimer = useRef(null);
+  const isLongPress = useRef(false);
+
+  // 클릭 핸들러
+  const handleClick = () => {
+    if (!isLongPress.current && onCategoryClick) {
+      onCategoryClick(category);
+    }
+    isLongPress.current = false;
+  };
+
+  // 길게 누르기 시작
+  const handleMouseDown = () => {
+    isLongPress.current = false;
+    longPressTimer.current = setTimeout(() => {
+      isLongPress.current = true;
+      setIsModalOpen(true);
+    }, 500); // 500ms 길게 누르기
+  };
+
+  // 길게 누르기 취소
+  const handleMouseUp = () => {
+    if (longPressTimer.current) {
+      clearTimeout(longPressTimer.current);
+      longPressTimer.current = null;
+    }
+  };
+
+  // 터치 이벤트 핸들러 (모바일)
+  const handleTouchStart = () => {
+    isLongPress.current = false;
+    longPressTimer.current = setTimeout(() => {
+      isLongPress.current = true;
+      setIsModalOpen(true);
+    }, 500);
+  };
+
+  const handleTouchEnd = () => {
+    if (longPressTimer.current) {
+      clearTimeout(longPressTimer.current);
+      longPressTimer.current = null;
+    }
+  };
+
+  return (
+    <>
+      <div 
+        className={styles.categoryItem}
+        onClick={handleClick}
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
+        <span className="material-symbols-outlined">folder</span>
+        <span className={styles.categoryName}>{category.name}</span>
+      </div>
+
+      <CategoryModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        category={category}
+        onEdit={onEdit}
+        onDelete={onDelete}
+        currentPath={currentPath}
       />
     </>
   );

@@ -1,7 +1,6 @@
-import { ConversationCard, TextCard } from "./component";
-import { getRecommendCategory } from "./controller";
+import { ConversationCard, TextCard, CategoryItem } from "./component";
 import styles from "./page.module.css";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 
 
 function Bookmark({
@@ -118,7 +117,7 @@ function Conversation({conversation, onTextClick}) {
   )
 }
 
-function Category({categories, onTextClick, onEdit, onDelete, onBookmark, orderType}) {
+function Category({categories, onTextClick, onEdit, onDelete, onBookmark, onCategoryEdit, onCategoryDelete, orderType}) {
   const [currentPath, setCurrentPath] = useState([]);
   const [currentCategory, setCurrentCategory] = useState(categories);
   const [currentList, setCurrentList] = useState([]);
@@ -136,13 +135,16 @@ function Category({categories, onTextClick, onEdit, onDelete, onBookmark, orderT
 
   // (완성) 카테고리 클릭 시 하위 카테고리로 이동
   const handleCategoryClick = (category) => {
-    if (category.subcategories && category.subcategories.length > 0) {
-      setCurrentPath([...currentPath, category.name]);
-      setCurrentCategory(category.subcategories);
+    console.log("Category clicked:", category.name);
+    setCurrentPath([...currentPath, category.name]);
+    setOriginalCurrentList(category.list || []);
+    setOrder(category.list || []);
 
-      setOriginalCurrentList(category.list);
-      setOrder(category.list);
-    } 
+    if (category.subcategories && category.subcategories.length > 0) {
+      setCurrentCategory(category.subcategories);
+    } else {
+      setCurrentCategory([]);
+    }
   };
 
   // (완성) 경로 클릭 시 해당 카테고리로 이동
@@ -151,24 +153,81 @@ function Category({categories, onTextClick, onEdit, onDelete, onBookmark, orderT
       // 루트 카테고리로 이동
       setCurrentPath([]);
       setCurrentCategory(categories);
+      setOriginalCurrentList([]);
+      setOrder([]);
     } else {
       // 특정 경로로 이동
       const newPath = currentPath.slice(0, index + 1);
       setCurrentPath(newPath);
       
-      // 해당 경로의 카테고리 찾기
+      // 해당 경로의 카테고리와 list 찾기
       let targetCategory = categories;
+      let currentCat = null;
+      
       for (let i = 0; i <= index; i++) {
         const categoryName = newPath[i];
-        targetCategory = targetCategory.find(cat => cat.name === categoryName)?.subcategories || [];
+        currentCat = targetCategory.find(cat => cat.name === categoryName);
+        if (currentCat && currentCat.subcategories) {
+          targetCategory = currentCat.subcategories;
+        }
       }
+      
       setCurrentCategory(targetCategory);
+      
+      // 현재 카테고리의 list 설정
+      if (currentCat && currentCat.list) {
+        setOriginalCurrentList(currentCat.list);
+        setOrder(currentCat.list);
+      } else {
+        setOriginalCurrentList([]);
+        setOrder([]);
+      }
     }
   };
 
   useEffect(() => {
     setOrder(originalCurrentList);
-  }, [orderType, categories]);
+  }, [orderType]);
+
+  // categories가 변경될 때 현재 경로를 기준으로 카테고리 상태 재설정
+  useEffect(() => {
+    if (currentPath.length === 0) {
+      setCurrentCategory(categories);
+      setOriginalCurrentList([]);
+      setOrder([]);
+    } else {
+      // 현재 경로를 기준으로 올바른 카테고리와 list 찾기
+      let targetCategory = categories;
+      let currentCat = null;
+      
+      for (let i = 0; i < currentPath.length; i++) {
+        const categoryName = currentPath[i];
+        currentCat = targetCategory.find(cat => cat.name === categoryName);
+        if (currentCat) {
+          if (i === currentPath.length - 1) {
+            // 마지막 경로인 경우
+            if (currentCat.subcategories && currentCat.subcategories.length > 0) {
+              setCurrentCategory(currentCat.subcategories);
+            } else {
+              setCurrentCategory([]);
+            }
+            setOriginalCurrentList(currentCat.list || []);
+            setOrder(currentCat.list || []);
+          } else {
+            // 중간 경로인 경우
+            targetCategory = currentCat.subcategories || [];
+          }
+        } else {
+          // 경로가 유효하지 않은 경우 루트로 돌아가기
+          setCurrentPath([]);
+          setCurrentCategory(categories);
+          setOriginalCurrentList([]);
+          setOrder([]);
+          break;
+        }
+      }
+    }
+  }, [categories]);
 
   return(
     <div className={styles.categoryContainer}>
@@ -195,10 +254,14 @@ function Category({categories, onTextClick, onEdit, onDelete, onBookmark, orderT
       <div className={styles.categoryList}>
         {currentCategory.map((category, index) => {
           return (
-            <div key={index} className={styles.categoryItem} onClick={() => handleCategoryClick(category)}>
-              <span className="material-symbols-outlined">folder</span>
-              <span className={styles.categoryName}>{category.name}</span>
-            </div>
+            <CategoryItem
+              key={index}
+              category={category}
+              onCategoryClick={handleCategoryClick}
+              onEdit={onCategoryEdit}
+              onDelete={onCategoryDelete}
+              currentPath={currentPath}
+            />
           )
         })}
         {currentList.map((item, index) => {
@@ -229,6 +292,8 @@ export default function Body({
   onEdit, 
   onDelete, 
   onBookmark,
+  onCategoryEdit,
+  onCategoryDelete,
   orderType,
   conversation
 }) {
@@ -257,6 +322,8 @@ export default function Body({
           onEdit={onEdit}
           onDelete={onDelete}
           onBookmark={onBookmark}
+          onCategoryEdit={onCategoryEdit}
+          onCategoryDelete={onCategoryDelete}
           orderType={orderType}
         />
       )}

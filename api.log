@@ -33,3 +33,113 @@
 2025-08-18 22:19:26,655 - INFO -     * wordPart (VARCHAR(12))
 2025-08-18 22:19:26,655 - INFO -     * createdAt (DATETIME)
 2025-08-18 22:19:26,655 - INFO - 데이터베이스 강제 생성 완료!
+2025-08-18 22:23:13,640 - INFO - SQLAlchemy 등록된 모델들: ['users', 'categories', 'common_words', 'common_word_users', 'words', 'sentences']
+2025-08-18 22:23:13,641 - INFO - 현재 존재하는 테이블: ['categories', 'common_word_users', 'common_words', 'sentences', 'users', 'words']
+2025-08-18 22:23:13,641 - INFO - 필요한 테이블: ['users', 'categories', 'common_words', 'common_word_users', 'words', 'sentences']
+2025-08-18 22:23:13,641 - INFO - 모든 필요한 테이블이 존재합니다: ['categories', 'common_word_users', 'common_words', 'sentences', 'users', 'words']
+2025-08-18 22:23:23,479 - INFO - 등록된 라우트들:
+2025-08-18 22:23:23,479 - INFO -   /static/<path:filename> -> static (HEAD, OPTIONS, GET)
+2025-08-18 22:23:23,479 - INFO -   / -> home.home (HEAD, OPTIONS, GET)
+2025-08-18 22:23:23,479 - INFO -   /system/overview -> system.get_system_overview (HEAD, OPTIONS, GET)
+2025-08-18 22:23:23,479 - INFO -   /system/search -> system.search_all (HEAD, OPTIONS, GET)
+2025-08-18 22:23:23,479 - INFO -   /system/export -> system.export_all_data (HEAD, OPTIONS, GET)
+2025-08-18 22:23:23,479 - INFO -   /system/health -> system.health_check (HEAD, OPTIONS, GET)
+2025-08-18 22:23:23,479 - INFO -   /users -> users.get_all_users (HEAD, OPTIONS, GET)
+2025-08-18 22:23:23,479 - INFO -   /users -> users.create_user (POST, OPTIONS)
+2025-08-18 22:23:23,479 - INFO -   /users/<int:user_id> -> users.get_user (HEAD, OPTIONS, GET)
+2025-08-18 22:23:23,479 - INFO -   /users/<int:user_id> -> users.update_user (OPTIONS, PUT)
+2025-08-18 22:23:23,479 - INFO -   /users/<int:user_id> -> users.delete_user (DELETE, OPTIONS)
+2025-08-18 22:23:23,479 - INFO -   /users/<int:user_id>/stats -> users.get_user_stats (HEAD, OPTIONS, GET)
+2025-08-18 22:23:23,479 - INFO -   /users/<int:user_id>/bookmarks -> users.get_user_bookmarks (HEAD, OPTIONS, GET)
+2025-08-18 22:23:23,479 - INFO -   /users/<int:user_id>/dashboard -> users.get_user_dashboard (HEAD, OPTIONS, GET)
+2025-08-18 22:23:23,479 - INFO -   /users/<int:user_id>/usage -> users.update_word_usage (POST, OPTIONS)
+2025-08-18 22:23:23,479 - INFO -   /users/<int:user_id>/bookmark -> users.toggle_bookmark (POST, OPTIONS)
+2025-08-18 22:23:23,479 - INFO -   /categories -> categories.get_all_categories (HEAD, OPTIONS, GET)
+2025-08-18 22:23:23,479 - INFO -   /categories -> categories.create_category (POST, OPTIONS)
+2025-08-18 22:23:23,479 - INFO -   /categories/<int:category_id> -> categories.get_category (HEAD, OPTIONS, GET)
+2025-08-18 22:23:23,479 - INFO -   /categories/<int:category_id> -> categories.update_category (OPTIONS, PUT)
+2025-08-18 22:23:23,479 - INFO -   /categories/<int:category_id> -> categories.delete_category (DELETE, OPTIONS)
+2025-08-18 22:23:23,479 - INFO -   /categories/search -> categories.search_categories (HEAD, OPTIONS, GET)
+2025-08-18 22:23:23,479 - INFO -   /categories/getList -> categories.get_hierarchical_categories (HEAD, OPTIONS, GET)
+2025-08-18 22:23:23,479 - INFO -   /words -> words.get_all_words (HEAD, OPTIONS, GET)
+2025-08-18 22:23:23,479 - INFO -   /words -> words.create_word (POST, OPTIONS)
+2025-08-18 22:23:23,479 - INFO -   /words/<int:word_id> -> words.get_word (HEAD, OPTIONS, GET)
+2025-08-18 22:23:23,479 - INFO -   /words/<int:word_id> -> words.update_word (OPTIONS, PUT)
+2025-08-18 22:23:23,479 - INFO -   /words/<int:word_id> -> words.delete_word (DELETE, OPTIONS)
+2025-08-18 22:23:23,479 - INFO -   /words/by-part -> words.get_words_by_part (HEAD, OPTIONS, GET)
+2025-08-18 22:23:23,479 - INFO -   /words/by-category -> words.get_words_by_category (HEAD, OPTIONS, GET)
+2025-08-18 22:23:23,479 - INFO -   /sentences -> sentences.get_all_sentences (HEAD, OPTIONS, GET)
+2025-08-18 22:23:23,479 - INFO -   /sentences -> sentences.create_sentence (POST, OPTIONS)
+2025-08-18 22:23:23,479 - INFO -   /sentences/<int:sentence_id> -> sentences.get_sentence (HEAD, OPTIONS, GET)
+2025-08-18 22:23:23,479 - INFO -   /sentences/<int:sentence_id> -> sentences.update_sentence (OPTIONS, PUT)
+2025-08-18 22:23:23,479 - INFO -   /sentences/<int:sentence_id> -> sentences.delete_sentence (DELETE, OPTIONS)
+2025-08-18 22:23:23,479 - INFO -   /sentences/by-category -> sentences.get_sentences_by_category (HEAD, OPTIONS, GET)
+2025-08-18 22:23:23,479 - INFO -   /sentences/search -> sentences.search_sentences (HEAD, OPTIONS, GET)
+2025-08-18 22:23:23,480 - INFO -   /sentences/stats -> sentences.get_sentence_stats (HEAD, OPTIONS, GET)
+2025-08-18 22:23:23,480 - INFO -   /bulk/categories -> bulk.bulk_create_categories (POST, OPTIONS)
+2025-08-18 22:23:23,480 - INFO -   /bulk/words -> bulk.bulk_create_words (POST, OPTIONS)
+2025-08-18 22:23:23,480 - INFO -   /bulk/sentences -> bulk.bulk_create_sentences (POST, OPTIONS)
+2025-08-18 22:23:23,480 - INFO -   /api/word/recommend -> word_recommend.recommend_next_words (POST, OPTIONS)
+2025-08-18 22:23:23,480 - INFO -   /api/word/recommend/status -> word_recommend.get_recommend_status (HEAD, OPTIONS, GET)
+2025-08-18 22:23:23,480 - INFO -   /api/word/recommend/initialize -> word_recommend.initialize_recommend_service (POST, OPTIONS)
+2025-08-18 22:23:23,508 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-08-18 22:23:23,508 - INFO - [33mPress CTRL+C to quit[0m
+2025-08-18 22:23:23,508 - INFO -  * Restarting with stat
+2025-08-18 22:23:23,671 - INFO - SQLAlchemy 등록된 모델들: ['users', 'categories', 'common_words', 'common_word_users', 'words', 'sentences']
+2025-08-18 22:23:23,671 - INFO - 현재 존재하는 테이블: ['categories', 'common_word_users', 'common_words', 'sentences', 'users', 'words']
+2025-08-18 22:23:23,671 - INFO - 필요한 테이블: ['users', 'categories', 'common_words', 'common_word_users', 'words', 'sentences']
+2025-08-18 22:23:23,671 - INFO - 모든 필요한 테이블이 존재합니다: ['categories', 'common_word_users', 'common_words', 'sentences', 'users', 'words']
+2025-08-18 22:23:26,045 - INFO - 등록된 라우트들:
+2025-08-18 22:23:26,045 - INFO -   /static/<path:filename> -> static (OPTIONS, GET, HEAD)
+2025-08-18 22:23:26,045 - INFO -   / -> home.home (OPTIONS, GET, HEAD)
+2025-08-18 22:23:26,045 - INFO -   /system/overview -> system.get_system_overview (OPTIONS, GET, HEAD)
+2025-08-18 22:23:26,045 - INFO -   /system/search -> system.search_all (OPTIONS, GET, HEAD)
+2025-08-18 22:23:26,045 - INFO -   /system/export -> system.export_all_data (OPTIONS, GET, HEAD)
+2025-08-18 22:23:26,045 - INFO -   /system/health -> system.health_check (OPTIONS, GET, HEAD)
+2025-08-18 22:23:26,045 - INFO -   /users -> users.get_all_users (OPTIONS, GET, HEAD)
+2025-08-18 22:23:26,045 - INFO -   /users -> users.create_user (OPTIONS, POST)
+2025-08-18 22:23:26,045 - INFO -   /users/<int:user_id> -> users.get_user (OPTIONS, GET, HEAD)
+2025-08-18 22:23:26,045 - INFO -   /users/<int:user_id> -> users.update_user (OPTIONS, PUT)
+2025-08-18 22:23:26,045 - INFO -   /users/<int:user_id> -> users.delete_user (OPTIONS, DELETE)
+2025-08-18 22:23:26,045 - INFO -   /users/<int:user_id>/stats -> users.get_user_stats (OPTIONS, GET, HEAD)
+2025-08-18 22:23:26,045 - INFO -   /users/<int:user_id>/bookmarks -> users.get_user_bookmarks (OPTIONS, GET, HEAD)
+2025-08-18 22:23:26,045 - INFO -   /users/<int:user_id>/dashboard -> users.get_user_dashboard (OPTIONS, GET, HEAD)
+2025-08-18 22:23:26,045 - INFO -   /users/<int:user_id>/usage -> users.update_word_usage (OPTIONS, POST)
+2025-08-18 22:23:26,045 - INFO -   /users/<int:user_id>/bookmark -> users.toggle_bookmark (OPTIONS, POST)
+2025-08-18 22:23:26,045 - INFO -   /categories -> categories.get_all_categories (OPTIONS, GET, HEAD)
+2025-08-18 22:23:26,045 - INFO -   /categories -> categories.create_category (OPTIONS, POST)
+2025-08-18 22:23:26,045 - INFO -   /categories/<int:category_id> -> categories.get_category (OPTIONS, GET, HEAD)
+2025-08-18 22:23:26,045 - INFO -   /categories/<int:category_id> -> categories.update_category (OPTIONS, PUT)
+2025-08-18 22:23:26,045 - INFO -   /categories/<int:category_id> -> categories.delete_category (OPTIONS, DELETE)
+2025-08-18 22:23:26,045 - INFO -   /categories/search -> categories.search_categories (OPTIONS, GET, HEAD)
+2025-08-18 22:23:26,045 - INFO -   /categories/getList -> categories.get_hierarchical_categories (OPTIONS, GET, HEAD)
+2025-08-18 22:23:26,045 - INFO -   /words -> words.get_all_words (OPTIONS, GET, HEAD)
+2025-08-18 22:23:26,045 - INFO -   /words -> words.create_word (OPTIONS, POST)
+2025-08-18 22:23:26,045 - INFO -   /words/<int:word_id> -> words.get_word (OPTIONS, GET, HEAD)
+2025-08-18 22:23:26,045 - INFO -   /words/<int:word_id> -> words.update_word (OPTIONS, PUT)
+2025-08-18 22:23:26,045 - INFO -   /words/<int:word_id> -> words.delete_word (OPTIONS, DELETE)
+2025-08-18 22:23:26,045 - INFO -   /words/by-part -> words.get_words_by_part (OPTIONS, GET, HEAD)
+2025-08-18 22:23:26,045 - INFO -   /words/by-category -> words.get_words_by_category (OPTIONS, GET, HEAD)
+2025-08-18 22:23:26,045 - INFO -   /sentences -> sentences.get_all_sentences (OPTIONS, GET, HEAD)
+2025-08-18 22:23:26,045 - INFO -   /sentences -> sentences.create_sentence (OPTIONS, POST)
+2025-08-18 22:23:26,045 - INFO -   /sentences/<int:sentence_id> -> sentences.get_sentence (OPTIONS, GET, HEAD)
+2025-08-18 22:23:26,045 - INFO -   /sentences/<int:sentence_id> -> sentences.update_sentence (OPTIONS, PUT)
+2025-08-18 22:23:26,045 - INFO -   /sentences/<int:sentence_id> -> sentences.delete_sentence (OPTIONS, DELETE)
+2025-08-18 22:23:26,046 - INFO -   /sentences/by-category -> sentences.get_sentences_by_category (OPTIONS, GET, HEAD)
+2025-08-18 22:23:26,046 - INFO -   /sentences/search -> sentences.search_sentences (OPTIONS, GET, HEAD)
+2025-08-18 22:23:26,046 - INFO -   /sentences/stats -> sentences.get_sentence_stats (OPTIONS, GET, HEAD)
+2025-08-18 22:23:26,046 - INFO -   /bulk/categories -> bulk.bulk_create_categories (OPTIONS, POST)
+2025-08-18 22:23:26,046 - INFO -   /bulk/words -> bulk.bulk_create_words (OPTIONS, POST)
+2025-08-18 22:23:26,046 - INFO -   /bulk/sentences -> bulk.bulk_create_sentences (OPTIONS, POST)
+2025-08-18 22:23:26,046 - INFO -   /api/word/recommend -> word_recommend.recommend_next_words (OPTIONS, POST)
+2025-08-18 22:23:26,046 - INFO -   /api/word/recommend/status -> word_recommend.get_recommend_status (OPTIONS, GET, HEAD)
+2025-08-18 22:23:26,046 - INFO -   /api/word/recommend/initialize -> word_recommend.initialize_recommend_service (OPTIONS, POST)
+2025-08-18 22:23:26,061 - WARNING -  * Debugger is active!
+2025-08-18 22:23:26,082 - INFO -  * Debugger PIN: 135-537-138
+2025-08-18 22:29:43,347 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/ | User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
+2025-08-18 22:29:43,348 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/ | Status: 200 | Duration: 0.002s
+2025-08-18 22:29:43,349 - INFO - 127.0.0.1 - - [18/Aug/2025 22:29:43] "GET / HTTP/1.1" 200 -
+2025-08-18 22:29:43,584 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/favicon.ico | User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
+2025-08-18 22:29:43,584 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/favicon.ico | Status: 404 | Duration: 0.001s
+2025-08-18 22:29:43,585 - INFO - 127.0.0.1 - - [18/Aug/2025 22:29:43] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -

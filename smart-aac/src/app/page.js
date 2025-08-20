@@ -3,6 +3,7 @@ import styles from "./page.module.css";
 import { useState, useEffect, useRef, useCallback } from "react";
 import Body from "./body";
 import { addText, getRecommendCategory, getRecommends, updateBookmark, editText, deleteText } from "./controller";
+import { TextCard } from "./component";
 
 // 화면 상단 두개 보여주는 기록
 function History({history, onClick}) {
@@ -31,9 +32,7 @@ function HistoryModal({isOpen, onClose, history}) {
             <p>기록이 없습니다.</p>
           ) : (
             history.map((text, index) => (
-              <div key={index} className={styles.historyModalItem}>
-                {text}
-              </div>
+              <TextCard key={index} item={{ text }} />
             ))
           )}
         </div>
@@ -627,6 +626,102 @@ export default function Home() {
     setToast({ isVisible: false, message: "", type: "error" });
   };
 
+  // 카테고리 편집 핸들러
+  const handleCategoryEdit = async (currentPath, categoryName, newCategoryName) => {
+    if (!newCategoryName.trim()) {
+      showError("카테고리명을 입력해주세요.");
+      return false;
+    }
+
+    if (newCategoryName.trim() === categoryName.trim()) {
+      showError("변경된 카테고리명이 없습니다.");
+      return false;
+    }
+
+    // 경로에 따라 편집할 카테고리 레벨 결정
+    const pathArray = currentPath.split(' / ').filter(path => path !== '홈');
+    const level = pathArray.length;
+
+    setCategories(prev => {
+      const updatedCategories = prev.map(cat0 => {
+        if (level === 1 && cat0.name === categoryName) {
+          // 최상위 카테고리 편집
+          return { ...cat0, name: newCategoryName };
+        } else if (level === 2 && cat0.name === pathArray[0]) {
+          // 두 번째 레벨 카테고리 편집
+          return {
+            ...cat0,
+            subcategories: cat0.subcategories.map(cat1 => 
+              cat1.name === categoryName ? { ...cat1, name: newCategoryName } : cat1
+            )
+          };
+        } else if (level === 3 && cat0.name === pathArray[0]) {
+          // 세 번째 레벨 카테고리 편집
+          return {
+            ...cat0,
+            subcategories: cat0.subcategories.map(cat1 => 
+              cat1.name === pathArray[1] ? {
+                ...cat1,
+                subcategories: cat1.subcategories.map(cat2 =>
+                  cat2.name === categoryName ? { ...cat2, name: newCategoryName } : cat2
+                )
+              } : cat1
+            )
+          };
+        }
+        return cat0;
+      });
+      
+      localStorage.setItem("categories", JSON.stringify(updatedCategories));
+      return updatedCategories;
+    });
+
+    showInfo(`카테고리가 "${newCategoryName}"(으)로 변경되었습니다.`);
+    return true;
+  };
+
+  // 카테고리 삭제 핸들러
+  const handleCategoryDelete = async (currentPath, categoryName) => {
+    // 경로에 따라 삭제할 카테고리 레벨 결정
+    const pathArray = currentPath.split(' / ').filter(path => path !== '홈');
+    const level = pathArray.length;
+
+    setCategories(prev => {
+      const updatedCategories = prev.filter(cat0 => {
+        if (level === 1 && cat0.name === categoryName) {
+          return false; // 최상위 카테고리 삭제
+        }
+        return true;
+      }).map(cat0 => {
+        if (level === 2 && cat0.name === pathArray[0]) {
+          // 두 번째 레벨 카테고리 삭제
+          return {
+            ...cat0,
+            subcategories: cat0.subcategories.filter(cat1 => cat1.name !== categoryName)
+          };
+        } else if (level === 3 && cat0.name === pathArray[0]) {
+          // 세 번째 레벨 카테고리 삭제
+          return {
+            ...cat0,
+            subcategories: cat0.subcategories.map(cat1 => 
+              cat1.name === pathArray[1] ? {
+                ...cat1,
+                subcategories: cat1.subcategories.filter(cat2 => cat2.name !== categoryName)
+              } : cat1
+            )
+          };
+        }
+        return cat0;
+      });
+      
+      localStorage.setItem("categories", JSON.stringify(updatedCategories));
+      return updatedCategories;
+    });
+
+    showInfo(`"${categoryName}" 카테고리가 삭제되었습니다.`);
+    return true;
+  };
+
   // (완료) TextCard 클릭 핸들러 - input에 텍스트 설정
   const handleTextClick = (text) => {
     setInput(text);
@@ -635,72 +730,127 @@ export default function Home() {
 
   // (완성) TextCard 수정 핸들러
   const handleTextEdit = async (text, newText, cat0Name, cat1Name = "", cat2Name = "") => {
+    let updateSuccess = false;
+    
+    if (newText.trim() === "") {
+      showError("텍스트를 입력해주세요.");
+      return false;
+    }
+
+    if (newText.trim() === text.trim()) {
+      showError("변경된 텍스트가 없습니다.");
+      return false;
+    }
+
     setCategories(prev => {
-      const updatedCategories = prev.map(cat0 => {
-        if (cat0Name === "") {
-          // category1이 ""면 category0의 리스트
-          return {
-            ...cat0,
-            list: cat0.list.map(textItem => 
-              textItem.text === text 
-                ? { ...textItem, text: newText }
-                : textItem
-            )
-          };
-        } else {
-          return {
-            ...cat0,
-            subcategories: cat0.subcategories.map(cat1 => {
-              if (cat2Name === "") {
-                // category2가 ""면 cat1 안의 리스트
-                if (cat1.name === cat1Name) {
-                  return {
-                    ...cat1,
-                    list: cat1.list.map(textItem => 
-                      textItem.text === text 
-                        ? { ...textItem, text: newText }
-                        : textItem
-                    )
-                  };
-                }
-              } else {
-                if (cat1.name === cat1Name) {
-                  return {
-                    ...cat1,
-                    subcategories: cat1.subcategories.map(cat2 => {
-                      if (cat2.name === cat2Name) {
-                        return {
-                          ...cat2,
-                          list: cat2.list.map(textItem => 
-                            textItem.text === text 
-                              ? { ...textItem, text: newText }
-                              : textItem
-                          )
-                        };
-                      }
-                      return cat2;
-                    })
-                  };
+      // 새로운 텍스트가 이미 같은 카테고리에 존재하는지 확인
+      const isDuplicate = prev.some(cat0 => {
+        if (cat0.name === cat0Name) {
+          if (cat1Name === "") {
+            // cat0의 list에서 중복 확인
+            return cat0.list && cat0.list.some(item => item.text === newText && item.text !== text);
+          } else {
+            return cat0.subcategories.some(cat1 => {
+              if (cat1.name === cat1Name) {
+                if (cat2Name === "") {
+                  // cat1의 list에서 중복 확인
+                  return cat1.list && cat1.list.some(item => item.text === newText && item.text !== text);
+                } else {
+                  return cat1.subcategories.some(cat2 => {
+                    if (cat2.name === cat2Name) {
+                      // cat2의 list에서 중복 확인
+                      return cat2.list && cat2.list.some(item => item.text === newText && item.text !== text);
+                    }
+                    return false;
+                  });
                 }
               }
-              return cat1;
-            })
-          };
+              return false;
+            });
+          }
         }
+        return false;
       });
+      
+      // 이미 존재하는 항목이라면 return
+      if (isDuplicate) {
+        showError("이미 존재하는 항목입니다.");
+        return prev; 
+      }
+
+      const updatedCategories = prev.map(cat0 => {
+        if (cat0.name === cat0Name) {
+          if (cat1Name === "") {
+            // category1이 ""면 cat0의 list에서 처리
+            return {
+              ...cat0,
+              list: cat0.list ? cat0.list.map(textItem => 
+                textItem.text === text 
+                  ? { ...textItem, text: newText }
+                  : textItem
+              ) : []
+            };
+          } else {
+            return {
+              ...cat0,
+              subcategories: cat0.subcategories.map(cat1 => {
+                if (cat1.name === cat1Name) {
+                  if (cat2Name === "") {
+                    // category2가 ""면 cat1의 list에서 처리
+                    return {
+                      ...cat1,
+                      list: cat1.list ? cat1.list.map(textItem => 
+                        textItem.text === text 
+                          ? { ...textItem, text: newText }
+                          : textItem
+                      ) : []
+                    };
+                  } else {
+                    // category2가 있는 경우 cat2의 list에서 처리
+                    return {
+                      ...cat1,
+                      subcategories: cat1.subcategories.map(cat2 => {
+                        if (cat2.name === cat2Name) {
+                          return {
+                            ...cat2,
+                            list: cat2.list ? cat2.list.map(textItem => 
+                              textItem.text === text 
+                                ? { ...textItem, text: newText }
+                                : textItem
+                            ) : []
+                          };
+                        }
+                        return cat2;
+                      })
+                    };
+                  }
+                }
+                return cat1;
+              })
+            };
+          }
+        }
+        return cat0;
+      });
+
+      updateSuccess = true;
       return updatedCategories;
     });
 
-    const res = await editText(text, newText, cat0Name, cat1Name, cat2Name);
-    if (res.success) {
-      setCategories(newCats => {
-        localStorage.setItem("categories", JSON.stringify(newCats));
-        return newCats;
-      });
-      showInfo(`"${text}"이(가) "${newText}"로 수정되었습니다.`);
-      return true;
-    } 
-    showError("수정에 실패했습니다.");
+    if (updateSuccess) {
+      const res = await editText(text, newText, cat0Name, cat1Name, cat2Name);
+
+      if (res.success) {
+        setCategories(newCats => {
+          localStorage.setItem("categories", JSON.stringify(newCats));
+          return newCats;
+        });
+        showInfo(`"${text}"이(가) "${newText}"로 수정되었습니다.`);
+        return true;
+      } 
+      showError("수정에 실패했습니다.");
+      return false;
+    }
     return false;
   };
 
@@ -968,7 +1118,6 @@ export default function Home() {
     setInput(newInput);
     
     // 기존 타이머가 있으면 취소
-    console.log(debounceTimeoutRef.current);
     if (debounceTimeoutRef.current) 
       clearTimeout(debounceTimeoutRef.current);
     
@@ -1013,7 +1162,7 @@ export default function Home() {
         {
           name: "안녕",
           subcategories: [ // [Dto, Dto, commonWordUser[]]
-            { name: "안녕하세요", list: [{text:"안녕하세요", bookmark:false, usageCount:1}, {text: "반갑습니다", bookmark:true, usageCount:2}] },
+            { name: "안녕하세요", list: [{text:"안녕하세요", bookmark:false, usageCount:1, }, {text: "반갑습니다", bookmark:true, usageCount:2}] },
             { name: "안녕히 가세요", list: [{text:"안녕히 가세요", bookmark:false, usageCount:1}, {text: "다음에 봐요", bookmark:true, usageCount:2}] },
           ],
           list:[{text:"안녕", bookmark:false, usageCount:1}, {text:"하이", bookmark:true, usageCount:2}, {text:"헬로우", bookmark:false, usageCount:1}]
@@ -1083,6 +1232,8 @@ export default function Home() {
         onEdit={handleTextEdit}
         onDelete={handleTextDelete}
         onBookmark={handleTextBookmark}
+        onCategoryEdit={handleCategoryEdit}
+        onCategoryDelete={handleCategoryDelete}
         orderType={orderType}
         conversation={conversation}
       />
