@@ -2,7 +2,7 @@
 import styles from "./page.module.css";
 import { useState, useEffect, useRef, useCallback } from "react";
 import Body from "./body";
-import { addText, getRecommendCategory, getRecommends, updateBookmark, editText, deleteText } from "./controller";
+import { addText, getRecommendCategory, getRecommends, updateBookmark, editText, deleteText, editCategory, deleteCategory } from "./controller";
 import { TextCard } from "./component";
 
 // 화면 상단 두개 보여주는 기록
@@ -611,6 +611,25 @@ export default function Home() {
   const openAddModal = () => setIsAddModalOpen(true);
   const closeAddModal = () => setIsAddModalOpen(false);
 
+  const controlServer = async (prev, serverFunc, successText, errorText) => {
+    try {
+      const res = await serverFunc();
+
+      if (res.success) {
+        showInfo(successText);
+        return true;
+      } else {
+        setCategories(prev);
+        localStorage.setItem("categories", JSON.stringify(prev));
+        showError(errorText);
+        return false;
+      }
+    } catch (error) {
+      setCategories(prev);
+      localStorage.setItem("categories", JSON.stringify(prev));
+      return false;
+    }
+  }
   // (완료) 오류 팝업 표시 함수
   const showError = (message) => {
     setToast({ isVisible: true, message, type: "error" });
@@ -638,16 +657,34 @@ export default function Home() {
       return false;
     }
 
-    // 경로에 따라 편집할 카테고리 레벨 결정
-    const pathArray = currentPath.split(' / ').filter(path => path !== '홈');
-    const level = pathArray.length;
+    const level = currentPath.length;
+
+    const isDuplicate = categories.some(cat0 => {
+      if (level === 0) {
+        return cat0.name === newCategoryName;
+      } else if (level === 1) {
+        return cat0.subcategories.some(cat1 => cat1.name === newCategoryName);
+      } else {
+        return cat0.subcategories.some(cat1 =>
+          cat1.subcategories.some(cat2 => cat2.name === newCategoryName)
+        );
+      }
+    });
+
+    // 이미 존재하는 항목이라면 return
+    if (isDuplicate) {
+      showError("이미 존재하는 항목입니다.");
+      return false;
+      }
+
+    const prevCategories = [...categories];
 
     setCategories(prev => {
       const updatedCategories = prev.map(cat0 => {
-        if (level === 1 && cat0.name === categoryName) {
+        if (level === 0 && cat0.name === categoryName) {
           // 최상위 카테고리 편집
           return { ...cat0, name: newCategoryName };
-        } else if (level === 2 && cat0.name === pathArray[0]) {
+        } else if (level === 1 && cat0.name === currentPath[0]) {
           // 두 번째 레벨 카테고리 편집
           return {
             ...cat0,
@@ -655,12 +692,12 @@ export default function Home() {
               cat1.name === categoryName ? { ...cat1, name: newCategoryName } : cat1
             )
           };
-        } else if (level === 3 && cat0.name === pathArray[0]) {
+        } else if (level === 2 && cat0.name === currentPath[0]) {
           // 세 번째 레벨 카테고리 편집
           return {
             ...cat0,
             subcategories: cat0.subcategories.map(cat1 => 
-              cat1.name === pathArray[1] ? {
+              cat1.name === currentPath[1] ? {
                 ...cat1,
                 subcategories: cat1.subcategories.map(cat2 =>
                   cat2.name === categoryName ? { ...cat2, name: newCategoryName } : cat2
@@ -676,35 +713,39 @@ export default function Home() {
       return updatedCategories;
     });
 
-    showInfo(`카테고리가 "${newCategoryName}"(으)로 변경되었습니다.`);
-    return true;
+    return await controlServer(
+      prevCategories,
+      async () => {return await editCategory(categoryName, newCategoryName, currentPath.length > 0 ? currentPath[0] : "", currentPath.length > 1 ? currentPath[1] : "");},
+      `카테고리가 "${newCategoryName}"(으)로 변경되었습니다.`,
+      "카테고리 변경에 실패했습니다."
+    );
   };
 
   // 카테고리 삭제 핸들러
   const handleCategoryDelete = async (currentPath, categoryName) => {
-    // 경로에 따라 삭제할 카테고리 레벨 결정
-    const pathArray = currentPath.split(' / ').filter(path => path !== '홈');
-    const level = pathArray.length;
+    const level = currentPath.length;
+
+    const prevCategories = [...categories];
 
     setCategories(prev => {
       const updatedCategories = prev.filter(cat0 => {
-        if (level === 1 && cat0.name === categoryName) {
+        if (level === 0 && cat0.name === categoryName) {
           return false; // 최상위 카테고리 삭제
         }
         return true;
       }).map(cat0 => {
-        if (level === 2 && cat0.name === pathArray[0]) {
+        if (level === 1 && cat0.name === currentPath[0]) {
           // 두 번째 레벨 카테고리 삭제
           return {
             ...cat0,
             subcategories: cat0.subcategories.filter(cat1 => cat1.name !== categoryName)
           };
-        } else if (level === 3 && cat0.name === pathArray[0]) {
+        } else if (level === 2 && cat0.name === currentPath[0]) {
           // 세 번째 레벨 카테고리 삭제
           return {
             ...cat0,
             subcategories: cat0.subcategories.map(cat1 => 
-              cat1.name === pathArray[1] ? {
+              cat1.name === currentPath[1] ? {
                 ...cat1,
                 subcategories: cat1.subcategories.filter(cat2 => cat2.name !== categoryName)
               } : cat1
@@ -718,8 +759,12 @@ export default function Home() {
       return updatedCategories;
     });
 
-    showInfo(`"${categoryName}" 카테고리가 삭제되었습니다.`);
-    return true;
+    return await controlServer(
+      prevCategories,
+      async () => {return await deleteCategory(categoryName, currentPath.length > 0 ? currentPath[0] : "", currentPath.length > 1 ? currentPath[1] : "");},
+      `"${categoryName}" 카테고리가 삭제되었습니다.`,
+      "카테고리 삭제에 실패했습니다."
+    );
   };
 
   // (완료) TextCard 클릭 핸들러 - input에 텍스트 설정
@@ -730,8 +775,6 @@ export default function Home() {
 
   // (완성) TextCard 수정 핸들러
   const handleTextEdit = async (text, newText, cat0Name, cat1Name = "", cat2Name = "") => {
-    let updateSuccess = false;
-    
     if (newText.trim() === "") {
       showError("텍스트를 입력해주세요.");
       return false;
@@ -741,6 +784,8 @@ export default function Home() {
       showError("변경된 텍스트가 없습니다.");
       return false;
     }
+
+    const prevCategories = [...categories];
 
     setCategories(prev => {
       // 새로운 텍스트가 이미 같은 카테고리에 존재하는지 확인
@@ -833,30 +878,23 @@ export default function Home() {
         return cat0;
       });
 
-      updateSuccess = true;
+      localStorage.setItem("categories", JSON.stringify(updatedCategories));
       return updatedCategories;
     });
 
-    if (updateSuccess) {
-      const res = await editText(text, newText, cat0Name, cat1Name, cat2Name);
-
-      if (res.success) {
-        setCategories(newCats => {
-          localStorage.setItem("categories", JSON.stringify(newCats));
-          return newCats;
-        });
-        showInfo(`"${text}"이(가) "${newText}"로 수정되었습니다.`);
-        return true;
-      } 
-      showError("수정에 실패했습니다.");
-      return false;
-    }
-    return false;
+    return await controlServer(
+      prevCategories,
+      async () => {return await editText(text, newText, cat0Name, cat1Name, cat2Name);},
+      `"${text}"이(가) "${newText}"로 수정되었습니다.`,
+      "수정에 실패했습니다."
+    );
   };
 
   // (완성) TextCard 삭제 핸들러
   const handleTextDelete = async (text, cat0Name, cat1Name = "", cat2Name = "") => {
     if (confirm(`"${text}"을(를) 정말 삭제하시겠습니까?`)) {
+      const prevCategories = [...categories];
+
       setCategories(prev => {
         const updatedCategories = prev.map(cat0 => {
           if (cat0.name === cat0Name) {
@@ -898,26 +936,25 @@ export default function Home() {
             };
           }
         });
+
+        localStorage.setItem("categories", JSON.stringify(updatedCategories));
         return updatedCategories;
       });
 
-      const res = await deleteText(item.text, item.category0, item.category1, item.category2);
-      if (res.success) {
-        setCategories(newCat => {
-          localStorage.setItem("categories", JSON.stringify(newCat));
-          return newCat;
-        });
-        showInfo(`"${item.text}"이(가) 삭제되었습니다.`);
-        return true;
-      } 
-      showError("삭제에 실패했습니다.");
-      return false;
+      return controlServer(
+        prevCategories,
+        async () => {return await deleteText(text, cat0Name, cat1Name, cat2Name);},
+        `"${text}"이(가) 삭제되었습니다.`,
+        "삭제에 실패했습니다."
+      );
     }
   };
 
   // (완성) TextCard 즐겨찾기 토글 핸들러
   const handleTextBookmark = async (text, cat0Name, cat1Name = "", cat2Name = "") => {
     let bookmark = false;
+
+    const prevCategories = [...categories];
 
     setCategories(prev => {
       const updatedCategories = prev.map(cat0 => {
@@ -982,23 +1019,17 @@ export default function Home() {
         return cat0;
       });
       
+      localStorage.setItem("categories", JSON.stringify(updatedCategories));
       return updatedCategories;
     });
 
     // 서버 요청
-    const res = await updateBookmark(text, cat0Name, cat1Name, cat2Name, bookmark);
-
-    if (res.success) {
-      // 상태 업데이트 후 localStorage 저장
-      setCategories(currentCategories => {
-        localStorage.setItem("categories", JSON.stringify(currentCategories));
-        return currentCategories;
-      });
-      showInfo(`"${text}"의 즐겨찾기가 ${bookmark ? "추가" : "해제"}되었습니다.`);
-      return true;
-    }
-    showError("즐겨찾기 업데이트에 실패했습니다.");
-    return false;
+    return await controlServer(
+      prevCategories,
+      async () => {return await updateBookmark(text, cat0Name, cat1Name, cat2Name, bookmark);},
+      `"${text}"의 즐겨찾기가 ${bookmark ? "추가" : "해제"}되었습니다.`,
+      "즐겨찾기 업데이트에 실패했습니다."
+    );
   };
 
   // (완성) 카테고리에 새 단어/문장 추가하는 함수
@@ -1007,8 +1038,7 @@ export default function Home() {
     if (addingRef.current) return;
     addingRef.current = true;
 
-    let updateSuccess = false;
-    let newCats;
+    const prevCategories = [...categories];
 
     setCategories(prevCats => {
       // 중복 추가 방지 - 이미 같은 텍스트가 있는지 확인
@@ -1044,7 +1074,7 @@ export default function Home() {
         return prevCats; 
       }
 
-      newCats = [...prevCats];
+      const newCats = [...prevCats];
       
       // 메인 카테고리 찾기 또는 생성
       let cat0Index = newCats.findIndex(cat => cat.name === cat0Name);
@@ -1060,7 +1090,7 @@ export default function Home() {
         newCats[cat0Index].list.push({text:text, bookmark:false, usageCount: 0});
 
         addingRef.current = false; // 플래그 리셋
-        updateSuccess = true;
+        localStorage.setItem("categories", JSON.stringify(newCats));
         return newCats;
       }
 
@@ -1079,7 +1109,7 @@ export default function Home() {
         cat1s[cat1Index].list.push({text:text, bookmark:false, usageCount: 0});
 
         addingRef.current = false; // 플래그 리셋
-        updateSuccess = true;
+        localStorage.setItem("categories", JSON.stringify(newCats));
         return newCats;
       }
 
@@ -1094,23 +1124,16 @@ export default function Home() {
       }
 
       addingRef.current = false; // 플래그 리셋
-      updateSuccess = true;
+      localStorage.setItem("categories", JSON.stringify(newCats));
       return newCats;
     });
 
-    // 서버에 반영
-    if (updateSuccess) {
-      const res = await addText(text, type, cat0Name, cat1Name, cat2Name);
-
-      if (res.success) {
-        localStorage.setItem("categories", JSON.stringify(newCats));
-        showInfo("항목 추가 성공");
-        return true;
-      }
-      showError("항목 추가 실패");
-      return false;
-    }
-    return false;
+    return await controlServer(
+      prevCategories,
+      async () => {return await addText(text, type, cat0Name, cat1Name, cat2Name);},
+      "항목 추가 성공",
+      "항목 추가 실패"
+    );
   };
 
   // (완료) 유저가 타이핑 한 후 0.2초 후 추천 목록 불러오기

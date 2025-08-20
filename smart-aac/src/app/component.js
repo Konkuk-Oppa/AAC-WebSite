@@ -5,47 +5,90 @@ import { useState, useRef } from 'react';
 function CategoryModal({isOpen, onClose, category, onEdit, onDelete, currentPath}) {
   if (!isOpen) return null;
   const [newText, setNewText] = useState(category.name);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+
+  const handleDeleteClick = () => {
+    setShowDeleteConfirm(true);
+  };
+
+  const handleDeleteConfirm = async () => {
+    if (await onDelete(currentPath, category.name)) {
+      setShowDeleteConfirm(false);
+      onClose();
+    }
+  };
+
+  const handleDeleteCancel = () => {
+    setShowDeleteConfirm(false);
+  };
 
   return (
     <div className={styles.modalOverlay} onClick={onClose}>
       <div className={styles.textCardModalContent} onClick={(e) => e.stopPropagation()}>
-        <div className={styles.modalHeader}>
-          <h3>카테고리 수정</h3>
-          <button className={styles.closeButton} onClick={onClose}>×</button>
-        </div>
-        <div className={styles.textCardModalBody}>
-          <input 
-            type="text" 
-            value={newText} 
-            onChange={(e) => setNewText(e.target.value)} 
-            className={styles.formInput}
-          />
-          <div className={styles.textCardOptions}>
-            <button 
-              className={styles.textCardOption}
-              onClick={() => {
-                onDelete(category, currentPath);
-                onClose();
-              }}
-            >
-              <span className="material-symbols-outlined">delete</span>
-              삭제
-            </button>
-            <button 
-              className={styles.addSubmitButton}
-              onClick={() => {
-                console.log("edit", onEdit(item.text, newText, cat0Name, cat1Name, cat2Name));
-                onClose();
-                // if (onEdit(item.text, newText, cat0Name, cat1Name, cat2Name)) {
-                //   onClose();
-                // }
-                  
-              }}
-            >
-              수정
-            </button>
-          </div>
-        </div>
+        {!showDeleteConfirm ? (
+          <>
+            <div className={styles.modalHeader}>
+              <h3>카테고리 수정</h3>
+              <button className={styles.closeButton} onClick={onClose}>×</button>
+            </div>
+            <div className={styles.textCardModalBody}>
+              <input 
+                type="text" 
+                value={newText} 
+                onChange={(e) => setNewText(e.target.value)} 
+                className={styles.formInput}
+              />
+              <div className={styles.textCardOptions}>
+                <button 
+                  className={styles.textCardOption}
+                  onClick={handleDeleteClick}
+                >
+                  <span className="material-symbols-outlined">delete</span>
+                  삭제
+                </button>
+                <button 
+                  className={styles.addSubmitButton}
+                  onClick={async () => {
+                    if (await onEdit(currentPath, category.name, newText)) {
+                      onClose();
+                    }
+                  }}
+                >
+                  수정
+                </button>
+              </div>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className={styles.modalHeader}>
+              <h3>카테고리 삭제 확인</h3>
+              <button className={styles.closeButton} onClick={handleDeleteCancel}>×</button>
+            </div>
+            <div className={styles.textCardModalBody}>
+              <p>정말로 "{category.name}" 카테고리를 삭제하시겠습니까?</p>
+              <p style={{color: '#ff6b6b', fontSize: '14px', marginTop: '10px'}}>
+                카테고리 내의 모든 하위 카테고리와 단어/문장이 함께 삭제됩니다.
+              </p>
+              <div className={styles.textCardOptions} style={{flexDirection: 'row', gap: '12px'}}>
+                <button 
+                  className={styles.textCardOption}
+                  onClick={handleDeleteCancel}
+                  style={{flex: 1, justifyContent: 'center'}}
+                >
+                  취소
+                </button>
+                <button 
+                  className={styles.deleteButton}
+                  onClick={handleDeleteConfirm}
+                  style={{flex: 1}}
+                >
+                  삭제
+                </button>
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
