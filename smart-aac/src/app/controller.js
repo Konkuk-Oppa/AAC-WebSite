@@ -25,6 +25,10 @@ export async function getRecommendCategory({text}) {
     return {success: true, data: recommendCategory};
 }
 
+export async function getTTS({text}) {
+  return { success:true, data: "음성 합성된 텍스트" }
+}
+
 /* TEXT */
 export async function addText(text, type, cat0Name, cat1Name = "", cat2Name = "") {
   // 디버깅 용 코드

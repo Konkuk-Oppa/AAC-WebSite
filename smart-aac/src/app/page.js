@@ -2,7 +2,7 @@
 import styles from "./page.module.css";
 import { useState, useEffect, useRef, useCallback } from "react";
 import Body from "./body";
-import { addText, getRecommendCategory, getRecommends, updateBookmark, editText, deleteText, editCategory, deleteCategory } from "./controller";
+import { addText, getRecommendCategory, getRecommends, updateBookmark, editText, deleteText, editCategory, deleteCategory, getTTS } from "./controller";
 import { TextCard } from "./component";
 
 // 화면 상단 두개 보여주는 기록
@@ -17,7 +17,13 @@ function History({history, onClick}) {
   )
 }
 
-function HistoryModal({isOpen, onClose, history}) {
+function HistoryModal({
+  isOpen, 
+  onClose, 
+  history,
+  onTextClick,
+
+}) {
   if (!isOpen) return null;
 
   return (
@@ -32,7 +38,15 @@ function HistoryModal({isOpen, onClose, history}) {
             <p>기록이 없습니다.</p>
           ) : (
             history.map((text, index) => (
-              <TextCard key={index} item={{ text }} />
+              <TextCard 
+                key={index} 
+                item={{ text }}
+                isNotEnd={history.length != index + 1}
+                onTextClick={onTextClick}
+                onEdit={onEdit}
+                onDelete={onDelete}
+                onBookmark={onBookmark}
+              />
             ))
           )}
         </div>
@@ -103,8 +117,36 @@ function InputSection({
   recommends, 
   openAddModal,
   orderType,
-  setOrderType
+  setOrderType,
+  setConversation,
+  conversation
 }) {
+  const handleSpeakClick = (e) => {
+    e.stopPropagation();
+
+    const prevConversation = [...conversation];
+    setConversation(prev => {
+      if (prev.some(item => item.text === input)) {
+        return prev.map(item => item.text === input ? { ...item, lastUsed: new Date() } : item);
+      }
+      return [...prev, { text: input, lastUsed: new Date() }];
+    });
+
+    
+    // getTTS({text: input});
+    // TODO 더 자연스러운 TTS 구현하기
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      
+      const utterance = new SpeechSynthesisUtterance(input);
+      utterance.lang = 'ko-KR'; // 한국어 설정
+      utterance.rate = 0.8; // 속도 조절
+      window.speechSynthesis.speak(utterance);
+    } else {
+      alert('이 브라우저는 음성 합성을 지원하지 않습니다.');
+    }
+  }
+
   return(
     <div className={styles.bottomSection}>
       <div>
@@ -117,7 +159,12 @@ function InputSection({
               value={input}
               onChange={(e) => onInputChange(e.target.value)}
             />
-            <button className={styles.speakButton}>말하기</button>
+            <button 
+              className={styles.speakButton}
+              onClick={handleSpeakClick}
+            >
+              말하기
+            </button>
           </div>
           <div className={styles.bottomMenu}>
             <div className={styles.menuItem} onClick={openAddModal}>어휘추가</div>
@@ -138,7 +185,7 @@ function InputSection({
   )
 }
 
-function CategorySelectModal({isOpen, onClose, categories, onSelect, recommendCategories}) {
+export function CategorySelectModal({isOpen, onClose, categories, onSelect, recommendCategories}) {
   const [selectedCategory0, setSelectedCategory0] = useState("");
   const [selectedCategory1, setSelectedCategory1] = useState("");
   const [selectedCategory2, setSelectedCategory2] = useState("");
@@ -509,11 +556,11 @@ function AddModal({isOpen, onClose, categories, onAdd}) {
           setSelectedCategory1("");
           setSelectedCategory2("");
           setSelectedCategoryLabel("");
+          onClose();
         }
       } finally {
         // 실행 완료 후 플래그 해제
         setTimeout(() => setIsAdding(false), 100);
-        onClose();
       }
     }
   }, [isAdding, inputText, selectedType, selectedCategory0, selectedCategory1, selectedCategory2, onAdd]);
@@ -892,62 +939,60 @@ export default function Home() {
 
   // (완성) TextCard 삭제 핸들러
   const handleTextDelete = async (text, cat0Name, cat1Name = "", cat2Name = "") => {
-    if (confirm(`"${text}"을(를) 정말 삭제하시겠습니까?`)) {
-      const prevCategories = [...categories];
+    const prevCategories = [...categories];
 
-      setCategories(prev => {
-        const updatedCategories = prev.map(cat0 => {
-          if (cat0.name === cat0Name) {
-            if (cat1Name === "") {
-              // category1이 ""면 category0의 리스트
-              return {
-                ...cat0,
-                list: cat0.list.filter(textItem => textItem.text !== text)
-              };
-            }
-          } else {
+    setCategories(prev => {
+      const updatedCategories = prev.map(cat0 => {
+        if (cat0.name === cat0Name) {
+          if (cat1Name === "") {
+            // category1이 ""면 category0의 리스트
             return {
               ...cat0,
-              subcategories: cat0.subcategories.map(cat1 => {
-                if (cat1.name === cat1Name) {
-                  if (cat2Name === "") {
-                    // category2가 ""면 cat1 안의 리스트
-                    return {
-                      ...cat1,
-                      list: cat1.list.filter(textItem => textItem.text !== item.text)
-                    };
-                  } else {
-                    return {
-                      ...cat1,
-                      subcategories: cat1.subcategories.map(cat2 => {
-                        if (cat2.name === cat2Name) {
-                          return {
-                            ...cat2,
-                            list: cat2.list.filter(textItem => textItem.text !== item.text)
-                          };
-                        }
-                        return cat2;
-                      })
-                    };
-                  }
-                }
-                return cat1;
-              })
+              list: cat0.list.filter(textItem => textItem.text !== text)
             };
           }
-        });
-
-        localStorage.setItem("categories", JSON.stringify(updatedCategories));
-        return updatedCategories;
+        } else {
+          return {
+            ...cat0,
+            subcategories: cat0.subcategories.map(cat1 => {
+              if (cat1.name === cat1Name) {
+                if (cat2Name === "") {
+                  // category2가 ""면 cat1 안의 리스트
+                  return {
+                    ...cat1,
+                    list: cat1.list.filter(textItem => textItem.text !== item.text)
+                  };
+                } else {
+                  return {
+                    ...cat1,
+                    subcategories: cat1.subcategories.map(cat2 => {
+                      if (cat2.name === cat2Name) {
+                        return {
+                          ...cat2,
+                          list: cat2.list.filter(textItem => textItem.text !== item.text)
+                        };
+                      }
+                      return cat2;
+                    })
+                  };
+                }
+              }
+              return cat1;
+            })
+          };
+        }
       });
 
-      return controlServer(
-        prevCategories,
-        async () => {return await deleteText(text, cat0Name, cat1Name, cat2Name);},
-        `"${text}"이(가) 삭제되었습니다.`,
-        "삭제에 실패했습니다."
-      );
-    }
+      localStorage.setItem("categories", JSON.stringify(updatedCategories));
+      return updatedCategories;
+    });
+
+    return controlServer(
+      prevCategories,
+      async () => {return await deleteText(text, cat0Name, cat1Name, cat2Name);},
+      `"${text}"이(가) 삭제되었습니다.`,
+      "삭제에 실패했습니다."
+    );
   };
 
   // (완성) TextCard 즐겨찾기 토글 핸들러
@@ -1036,44 +1081,41 @@ export default function Home() {
   const handleTextAdd = async (text, type, cat0Name, cat1Name = "", cat2Name = "") => {
     // 이미 실행 중이면 무시
     if (addingRef.current) return;
-    addingRef.current = true;
 
     const prevCategories = [...categories];
-
-    setCategories(prevCats => {
-      // 중복 추가 방지 - 이미 같은 텍스트가 있는지 확인
-      const isDuplicate = prevCats.some(cat0 => {
-        if (cat0.name === cat0Name) {
-          if (cat1Name === "") {
-            return cat0.list.some(item => item.text === text);
-          } else {
-            return cat0.subcategories.some(cat1 => {
-              if (cat1.name === cat1Name) {
-                if (cat2Name === "") {
-                  return cat1.list.some(item => item.text === text);
-                } else {
-                  return cat1.subcategories.some(cat2 => {
-                    if (cat2.name === cat2Name) {
-                      return cat2.list.some(item => item.text === text);
-                    }
-                    return false;
-                  });
-                }
+    const isDuplicate = categories.some(cat0 => {
+      if (cat0.name === cat0Name) {
+        if (cat1Name === "") {
+          return cat0.list.some(item => item.text === text);
+        } else {
+          return cat0.subcategories.some(cat1 => {
+            if (cat1.name === cat1Name) {
+              if (cat2Name === "") {
+                return cat1.list.some(item => item.text === text);
+              } else {
+                return cat1.subcategories.some(cat2 => {
+                  if (cat2.name === cat2Name) {
+                    return cat2.list.some(item => item.text === text);
+                  }
+                  return false;
+                });
               }
-              return false;
-            });
-          }
+            }
+            return false;
+          });
         }
-        return false;
-      });
-      
-      // 이미 존재하는 항목이라면 return
-      if (isDuplicate) {
-        showError("이미 존재하는 항목입니다.");
-        addingRef.current = false; 
-        return prevCats; 
       }
+      return false;
+    });
+    
+    // 이미 존재하는 항목이라면 return
+    if (isDuplicate) {
+      showError("이미 존재하는 항목입니다.");
+      return false;
+    }
 
+    addingRef.current = true;
+    setCategories(prevCats => {
       const newCats = [...prevCats];
       
       // 메인 카테고리 찾기 또는 생성
@@ -1237,9 +1279,10 @@ export default function Home() {
   ]);
 
   const [conversation, setConversation] = useState([
-    "input에서 수정한 텍스트",
-    "input에서 입력한 텍스트",
-    "모음"
+    { text: "input에서 수정한 텍스트", lastUsed: new Date(2025, 7, 15), usageCount: 3},
+    { text: "input에서 수정한 텍스트f", lastUsed: new Date(2025, 7, 18), usageCount: 2},
+    { text: "input에서 입력한 텍스트", lastUsed: new Date(2025, 7, 19), usageCount: 1},
+    { text: "모음", lastUsed: new Date(2025, 7, 20), usageCount: 1}
   ]);
 
   return (
@@ -1259,6 +1302,7 @@ export default function Home() {
         onCategoryDelete={handleCategoryDelete}
         orderType={orderType}
         conversation={conversation}
+        onAdd={handleTextAdd}
       />
       <InputSection
         openHistoryModal={openHistoryModal}
@@ -1269,6 +1313,8 @@ export default function Home() {
         recommends={recommends}
         orderType={orderType}
         setOrderType={setOrderType}
+        setConversation={setConversation}
+        conversation={conversation}
       />
       <HistoryModal 
         isOpen={isHistoryModalOpen} 
