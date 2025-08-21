@@ -156,7 +156,6 @@ function Category({categories, onTextClick, onEdit, onDelete, onBookmark, onCate
 
   // (완성) 카테고리 클릭 시 하위 카테고리로 이동
   const handleCategoryClick = (category) => {
-    console.log("Category clicked:", category.name);
     setCurrentPath([...currentPath, category.name]);
     setOriginalCurrentList(category.list || []);
     setOrder(category.list || []);

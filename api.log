@@ -227,3 +227,65 @@
 2025-08-21 21:21:59,038 - INFO - SBERT 모델 다운로드 및 로드 중...
 2025-08-21 21:21:59,051 - INFO - Use pytorch device_name: mps
 2025-08-21 21:21:59,051 - INFO - Load pretrained SentenceTransformer: jhgan/ko-sroberta-multitask
+2025-08-21 21:22:47,643 - INFO - SBERT 모델 로드 완료
+2025-08-21 21:22:47,643 - ERROR - CategorySimilarityService 초기화 실패: 문장 파일을 찾을 수 없습니다: data_source/final_sentences.json
+2025-08-21 21:22:47,643 - ERROR - CategorySimilarityService 즉시 로딩 실패: 문장 파일을 찾을 수 없습니다: data_source/final_sentences.json
+2025-08-21 21:22:47,653 - INFO - 등록된 라우트들:
+2025-08-21 21:22:47,653 - INFO -   /static/<path:filename> -> static (OPTIONS, GET, HEAD)
+2025-08-21 21:22:47,653 - INFO -   / -> home.home (OPTIONS, GET, HEAD)
+2025-08-21 21:22:47,653 - INFO -   /system/overview -> system.get_system_overview (OPTIONS, GET, HEAD)
+2025-08-21 21:22:47,653 - INFO -   /system/search -> system.search_all (OPTIONS, GET, HEAD)
+2025-08-21 21:22:47,653 - INFO -   /system/export -> system.export_all_data (OPTIONS, GET, HEAD)
+2025-08-21 21:22:47,653 - INFO -   /system/health -> system.health_check (OPTIONS, GET, HEAD)
+2025-08-21 21:22:47,653 - INFO -   /users -> users.get_all_users (OPTIONS, GET, HEAD)
+2025-08-21 21:22:47,653 - INFO -   /users -> users.create_user (OPTIONS, POST)
+2025-08-21 21:22:47,653 - INFO -   /users/<int:user_id> -> users.get_user (OPTIONS, GET, HEAD)
+2025-08-21 21:22:47,653 - INFO -   /users/<int:user_id> -> users.update_user (OPTIONS, PUT)
+2025-08-21 21:22:47,653 - INFO -   /users/<int:user_id> -> users.delete_user (DELETE, OPTIONS)
+2025-08-21 21:22:47,653 - INFO -   /users/<int:user_id>/stats -> users.get_user_stats (OPTIONS, GET, HEAD)
+2025-08-21 21:22:47,653 - INFO -   /users/<int:user_id>/bookmarks -> users.get_user_bookmarks (OPTIONS, GET, HEAD)
+2025-08-21 21:22:47,653 - INFO -   /users/<int:user_id>/dashboard -> users.get_user_dashboard (OPTIONS, GET, HEAD)
+2025-08-21 21:22:47,653 - INFO -   /users/<int:user_id>/usage -> users.update_word_usage (OPTIONS, POST)
+2025-08-21 21:22:47,653 - INFO -   /users/<int:user_id>/bookmark -> users.toggle_bookmark (OPTIONS, POST)
+2025-08-21 21:22:47,653 - INFO -   /categories -> categories.get_all_categories (OPTIONS, GET, HEAD)
+2025-08-21 21:22:47,653 - INFO -   /categories -> categories.create_category (OPTIONS, POST)
+2025-08-21 21:22:47,653 - INFO -   /categories/<int:category_id> -> categories.get_category (OPTIONS, GET, HEAD)
+2025-08-21 21:22:47,653 - INFO -   /categories/<int:category_id> -> categories.update_category (OPTIONS, PUT)
+2025-08-21 21:22:47,653 - INFO -   /categories/<int:category_id> -> categories.delete_category (DELETE, OPTIONS)
+2025-08-21 21:22:47,653 - INFO -   /categories/search -> categories.search_categories (OPTIONS, GET, HEAD)
+2025-08-21 21:22:47,653 - INFO -   /categories/getList -> categories.get_hierarchical_categories (OPTIONS, GET, HEAD)
+2025-08-21 21:22:47,653 - INFO -   /words -> words.get_all_words (OPTIONS, GET, HEAD)
+2025-08-21 21:22:47,653 - INFO -   /words -> words.create_word (OPTIONS, POST)
+2025-08-21 21:22:47,653 - INFO -   /words/<int:word_id> -> words.get_word (OPTIONS, GET, HEAD)
+2025-08-21 21:22:47,653 - INFO -   /words/<int:word_id> -> words.update_word (OPTIONS, PUT)
+2025-08-21 21:22:47,653 - INFO -   /words/<int:word_id> -> words.delete_word (DELETE, OPTIONS)
+2025-08-21 21:22:47,653 - INFO -   /words/by-part -> words.get_words_by_part (OPTIONS, GET, HEAD)
+2025-08-21 21:22:47,653 - INFO -   /words/by-category -> words.get_words_by_category (OPTIONS, GET, HEAD)
+2025-08-21 21:22:47,653 - INFO -   /sentences -> sentences.get_all_sentences (OPTIONS, GET, HEAD)
+2025-08-21 21:22:47,653 - INFO -   /sentences -> sentences.create_sentence (OPTIONS, POST)
+2025-08-21 21:22:47,653 - INFO -   /sentences/<int:sentence_id> -> sentences.get_sentence (OPTIONS, GET, HEAD)
+2025-08-21 21:22:47,653 - INFO -   /sentences/<int:sentence_id> -> sentences.update_sentence (OPTIONS, PUT)
+2025-08-21 21:22:47,653 - INFO -   /sentences/<int:sentence_id> -> sentences.delete_sentence (DELETE, OPTIONS)
+2025-08-21 21:22:47,653 - INFO -   /sentences/by-category -> sentences.get_sentences_by_category (OPTIONS, GET, HEAD)
+2025-08-21 21:22:47,653 - INFO -   /sentences/search -> sentences.search_sentences (OPTIONS, GET, HEAD)
+2025-08-21 21:22:47,653 - INFO -   /sentences/stats -> sentences.get_sentence_stats (OPTIONS, GET, HEAD)
+2025-08-21 21:22:47,653 - INFO -   /bulk/categories -> bulk.bulk_create_categories (OPTIONS, POST)
+2025-08-21 21:22:47,653 - INFO -   /bulk/words -> bulk.bulk_create_words (OPTIONS, POST)
+2025-08-21 21:22:47,654 - INFO -   /bulk/sentences -> bulk.bulk_create_sentences (OPTIONS, POST)
+2025-08-21 21:22:47,654 - INFO -   /api/word/recommend -> word_recommend.recommend_next_words (OPTIONS, POST)
+2025-08-21 21:22:47,654 - INFO -   /api/word/recommend/status -> word_recommend.get_recommend_status (OPTIONS, GET, HEAD)
+2025-08-21 21:22:47,654 - INFO -   /api/word/recommend/initialize -> word_recommend.initialize_recommend_service (OPTIONS, POST)
+2025-08-21 21:22:47,654 - INFO -   /api/category/recommend -> category_similarity.recommend_category (OPTIONS, POST)
+2025-08-21 21:22:47,654 - INFO -   /api/category/recommend/status -> category_similarity.get_similarity_status (OPTIONS, GET, HEAD)
+2025-08-21 21:22:47,654 - INFO -   /api/category/recommend/initialize -> category_similarity.initialize_similarity_service (OPTIONS, POST)
+2025-08-21 21:22:47,654 - INFO -   /common-word/usage -> common_word.update_common_word_usage (OPTIONS, POST)
+2025-08-21 21:22:47,654 - INFO -   /conversation -> conversation.get_conversations (OPTIONS, GET, HEAD)
+2025-08-21 21:22:47,654 - INFO -   /conversation -> conversation.create_conversation (OPTIONS, POST)
+2025-08-21 21:22:47,654 - INFO -   /conversation/<int:conv_id> -> conversation.delete_conversation_route (DELETE, OPTIONS)
+2025-08-21 21:22:47,654 - INFO - 🌟 서버가 완전히 준비되었습니다!
+2025-08-21 21:22:47,661 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-08-21 21:22:47,661 - INFO - [33mPress CTRL+C to quit[0m
+2025-08-21 21:23:12,226 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/ | User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
+2025-08-21 21:23:12,229 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/ | Status: 200 | Duration: 0.003s
+2025-08-21 21:23:12,231 - INFO - 127.0.0.1 - - [21/Aug/2025 21:23:12] "GET / HTTP/1.1" 200 -

@@ -710,7 +710,8 @@ export default function Home() {
           subcategories: [
             { id: 2000, name: "밥류", list: [{id: 2200, text:"밥 주세요", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id: 2201, text:"비빔밥 주세요", bookmark:true, usageCount:2, lastUseDate: new Date()}] },
             { id: 2001, name: "국물", list: [{id: 2220, text:"김치찌개 주세요", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id: 2221, text:"된장찌개 주세요", bookmark:true, usageCount:2, lastUseDate: new Date()}] }
-          ]
+          ],
+          list: []
         },
         {
           id: 220,
@@ -1303,7 +1304,6 @@ export default function Home() {
       if (cat1Name === "") {
         newCats[cat0Index].list.push({text:text, bookmark:false, usageCount: 0});
 
-        addingRef.current = false; // 플래그 리셋
         localStorage.setItem("categories", JSON.stringify(newCats));
         return newCats;
       }
@@ -1322,7 +1322,6 @@ export default function Home() {
       if (cat2Name === "") {
         cat1s[cat1Index].list.push({text:text, bookmark:false, usageCount: 0});
 
-        addingRef.current = false; // 플래그 리셋
         localStorage.setItem("categories", JSON.stringify(newCats));
         return newCats;
       }
@@ -1337,17 +1336,20 @@ export default function Home() {
         cat2s[cat2ArrIndex].list.push({text:text, bookmark:false, usageCount: 0});
       }
 
-      addingRef.current = false; // 플래그 리셋
       localStorage.setItem("categories", JSON.stringify(newCats));
       return newCats;
     });
 
-    return await controlServer(
-      prevCategories,
-      async () => {return await addText(text, type, cat0Name, cat1Name, cat2Name);},
-      "항목 추가 성공",
-      "항목 추가 실패"
-    );
+    try{
+      return await controlServer(
+        prevCategories,
+        async () => {return await addText(text, type, cat0Name, cat1Name, cat2Name);},
+        "항목 추가 성공",
+        "항목 추가 실패"
+      );
+    } finally {
+      addingRef.current = false;
+    }
   };
 
   // (완료) 유저가 타이핑 한 후 0.2초 후 추천 목록 불러오기
