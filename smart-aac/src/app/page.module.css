@@ -213,7 +213,6 @@
   padding: 13px;
   max-height: 60vh;
   overflow-y: auto;
-  gap:6px;
 }
 
 .historyModalItem {

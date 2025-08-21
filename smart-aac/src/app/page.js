@@ -1,8 +1,8 @@
 'use client'
 import styles from "./page.module.css";
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import Body from "./body";
-import { addText, getRecommendCategory, getRecommends, updateBookmark, editText, deleteText, editCategory, deleteCategory, getTTS } from "./controller";
+import { addText, getRecommendCategory, getRecommends, updateBookmark, editText, deleteText, editCategory, deleteCategory, getTTS, addConversation } from "./controller";
 import { TextCard } from "./component";
 
 // 화면 상단 두개 보여주는 기록
@@ -10,8 +10,8 @@ function History({history, onClick}) {
   return (
     <div className={styles.history} onClick={onClick}>
       {history.length == 0 && "기록"}
-      {history.slice(-2).map((text, index) => {
-        return <div key={index}>{text}</div>
+      {history.slice(-2).map((item, index) => {
+        return <div key={index}>{item.text}</div>
       })}
     </div>
   )
@@ -22,7 +22,9 @@ function HistoryModal({
   onClose, 
   history,
   onTextClick,
-
+  onEdit,
+  onDelete,
+  onBookmark
 }) {
   if (!isOpen) return null;
 
@@ -37,15 +39,16 @@ function HistoryModal({
           {history.length === 0 ? (
             <p>기록이 없습니다.</p>
           ) : (
-            history.map((text, index) => (
+            history.map((item, index) => (
               <TextCard 
                 key={index} 
-                item={{ text }}
+                item={item}
                 isNotEnd={history.length != index + 1}
                 onTextClick={onTextClick}
                 onEdit={onEdit}
                 onDelete={onDelete}
                 onBookmark={onBookmark}
+                currentPath={[]}
               />
             ))
           )}
@@ -121,17 +124,29 @@ function InputSection({
   setConversation,
   conversation
 }) {
-  const handleSpeakClick = (e) => {
+  const handleSpeakClick = async (e) => {
     e.stopPropagation();
 
     const prevConversation = [...conversation];
     setConversation(prev => {
+      
       if (prev.some(item => item.text === input)) {
-        return prev.map(item => item.text === input ? { ...item, lastUsed: new Date() } : item);
+        return prev.map(item => item.text === input ? { ...item, lastUseDate: new Date() } : item);
       }
-      return [...prev, { text: input, lastUsed: new Date() }];
+      return [...prev, { text: input, lastUseDate: new Date() }];
     });
+    
+    try {
+      const res = await addConversation(input);
 
+      if (!res.success) {
+        showError("대화 추가에 실패했습니다.");
+        setConversation(prevConversation);
+      } 
+    } catch (error) {
+      showError("서버 연결에 실패했습니다.");
+      setConversation(prevConversation);
+    }
     
     // getTTS({text: input});
     // TODO 더 자연스러운 TTS 구현하기
@@ -650,6 +665,7 @@ export default function Home() {
   const [recommends, setRecommends] = useState([]);
   const [toast, setToast] = useState({ isVisible: false, message: "", type: "error" }); // 토스트 팝업 상태
   const [orderType, setOrderType] = useState("default");          // 정렬 기능
+
   const debounceTimeoutRef = useRef(null);          // 너무 낮은 recommend 불러오기 방지용
   const addingRef = useRef(false);                  // 추가 중 여부 체크용
   const openHistoryModal = () => setIsHistoryModalOpen(true);
@@ -657,6 +673,141 @@ export default function Home() {
   const selectMenu = (menuName) => setMenu(menuName);
   const openAddModal = () => setIsAddModalOpen(true);
   const closeAddModal = () => setIsAddModalOpen(false);
+
+  const [categories, setCategories] = useState([
+    {
+      id: 1000,
+      name: "인사",
+      subcategories: [
+        {
+          id: 1100,
+          name: "안녕",
+          subcategories: [ // [Dto, Dto, commonWordUser[]]
+            { id: 1110, name: "안녕하세요", list: [{id: 13, text:"안녕하세요", bookmark:false, usageCount:1, lastUseDate: new Date(2025, 7, 15)}, {id: 14, text: "반갑습니다", bookmark:true, usageCount:2, lastUseDate: new Date(2025, 7, 18)}] },
+            { id: 1120, name: "안녕히 가세요", list: [{id: 15, text:"안녕히 가세요", bookmark:false, usageCount:1, lastUseDate: new Date(2025, 7, 19)}, {id: 16, text: "다음에 봐요", bookmark:true, usageCount:2, lastUseDate: new Date(2025, 7, 20)}] },
+          ],
+          list:[{id: 17, text:"안녕", bookmark:false, usageCount:0, lastUseDate: null}, {id: 18, text:"하이", bookmark:true, usageCount:2, lastUseDate: new Date(2025, 7, 22)}, {id: 19, text:"헬로우", bookmark:false, usageCount:1, lastUseDate: new Date(2025, 7, 23)}]
+        },
+        {
+          id: 1001,
+          name: "감사",
+          subcategories: [
+            { id: 1200, name: "고맙습니다", list: [{id: 20, text:"고맙습니다", bookmark:false, usageCount:1, lastUseDate: new Date(2025, 7, 24)}, {id: 21, text: "감사해요", bookmark:true, usageCount:2, lastUseDate: new Date(2025, 7, 25)}] },
+            { id: 1220, name: "죄송합니다", list: [{id: 22, text:"죄송합니다", bookmark:false, usageCount:1, lastUseDate: new Date(2025, 7, 26)}, {id: 23, text: "미안해요", bookmark:true, usageCount:2, lastUseDate: new Date(2025, 7, 27)}] },
+          ],
+          list: [{id: 24, text:"빠른 감사", bookmark:false, usageCount:1, lastUseDate: new Date(2025, 7, 28)}, {id: 25, text:"정말 감사합니다", bookmark:true, usageCount:2, lastUseDate: new Date(2025, 7, 29)}]
+        },
+      ],
+      list: [{id: 26, text:"빠른 인사", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id: 27, text:"안녕", bookmark:true, usageCount:2, lastUseDate: new Date()}]
+    },
+    {
+      id:200,
+      name: "음식",
+      subcategories: [
+        {
+          id: 210,
+          name: "한식",
+          subcategories: [
+            { id: 2000, name: "밥류", list: [{id: 2200, text:"밥 주세요", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id: 2201, text:"비빔밥 주세요", bookmark:true, usageCount:2, lastUseDate: new Date()}] },
+            { id: 2001, name: "국물", list: [{id: 2220, text:"김치찌개 주세요", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id: 2221, text:"된장찌개 주세요", bookmark:true, usageCount:2, lastUseDate: new Date()}] }
+          ]
+        },
+        {
+          id: 220,
+          name: "양식",
+          subcategories: [
+            { id: 2200, name: "파스타", list: [{id: 2200, text:"스파게티 주세요", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id: 2201, text:"카르보나라 주세요", bookmark:true, usageCount:2, lastUseDate: new Date()}] },
+            { id: 2300, name: "피자", list: [{id: 2300, text:"피자 주세요", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id: 2301, text:"치즈피자 주세요", bookmark:true, usageCount:2, lastUseDate: new Date()}] }
+          ]
+        }
+      ],
+      list: [{id: 2400, text:"음식 주문", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id: 2401, text:"메뉴 추천해주세요", bookmark:true, usageCount:2, lastUseDate: new Date()}]
+    },
+    {
+      id: 3000,
+      name: "일상",
+      subcategories: [
+        {
+          id: 3100,
+          name: "병원",
+          subcategories: [
+            { id: 3110, name: "증상", list: [{id:3111, text:"아파요", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id:3112, text:"열이 나요", bookmark:true, usageCount:2, lastUseDate: new Date()}, {id:3113, text:"머리가 아파요", bookmark:false, usageCount:1, lastUseDate: new Date()}] },
+            { id: 3120, name: "예약", list: [{id:3121, text:"예약하고 싶어요", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id:3122, text:"진료 받고 싶어요", bookmark:true, usageCount:2, lastUseDate: new Date()}] },
+          ],
+          list: [{id: 3130, text:"괜찮아요", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id: 3131, text:"별일 아니에요", bookmark:true, usageCount:2, lastUseDate: new Date()}]
+        }
+      ]
+    }
+  ]);
+  
+  const history = useMemo(() => {
+    const allItems = [];
+    console.log(categories);
+  
+    categories.forEach(cat0 => {
+      console.log(cat0);
+      // cat0 list 처리
+      if (cat0.list) {
+        cat0.list.forEach(item => {
+          if (item.usageCount > 0) {
+            allItems.push({
+              text: item.text,
+              usageCount: item.usageCount,
+              lastUseDate: item.lastUseDate,
+              category0: cat0.name,
+              category1: "",
+              category2: "",
+              bookmark: item.bookmark
+            });
+          }
+        });
+      }
+      // cat1들 처리
+      cat0.subcategories.forEach(cat1 => {
+        if (cat1.list) {
+          cat1.list.forEach(item => {
+            if (item.usageCount > 0) {
+              allItems.push({
+                text: item.text,
+                usageCount: item.usageCount,
+                lastUseDate: item.lastUseDate,
+                category0: cat0.name,
+                category1: cat1.name,
+                category2: "",
+                bookmark: item.bookmark
+              });
+            }
+          });
+        }
+      
+        // cat2들 처리
+        cat1.subcategories?.forEach(cat2 => {
+          if (cat2.list) {
+            cat2.list.forEach(item => {
+              if (item.usageCount > 0) {
+                allItems.push({
+                  text: item.text,
+                  usageCount: item.usageCount,
+                  lastUseDate: item.lastUseDate,
+                  category0: cat0.name,
+                  category1: cat1.name,
+                  category2: cat2.name,
+                  bookmark: item.bookmark
+                });
+              }
+            });
+          }
+        });
+      });
+    });
+  
+    // lastUseDate 기준 내림차순 정렬
+    return allItems.sort((a, b) => {
+      const dateA = a.lastUseDate instanceof Date ? a.lastUseDate : new Date(a.lastUseDate || 0);
+      const dateB = b.lastUseDate instanceof Date ? b.lastUseDate : new Date(b.lastUseDate || 0);
+      return dateB.getTime() - dateA.getTime();
+    });
+  }, [categories]);
 
   const controlServer = async (prev, serverFunc, successText, errorText) => {
     try {
@@ -674,6 +825,7 @@ export default function Home() {
     } catch (error) {
       setCategories(prev);
       localStorage.setItem("categories", JSON.stringify(prev));
+      showError("서버 연결에 실패했습니다.");
       return false;
     }
   }
@@ -878,7 +1030,7 @@ export default function Home() {
               ...cat0,
               list: cat0.list ? cat0.list.map(textItem => 
                 textItem.text === text 
-                  ? { ...textItem, text: newText }
+                  ? { ...textItem, text: newText, usageCount: 0, lastUseDate: new Date() }
                   : textItem
               ) : []
             };
@@ -893,7 +1045,7 @@ export default function Home() {
                       ...cat1,
                       list: cat1.list ? cat1.list.map(textItem => 
                         textItem.text === text 
-                          ? { ...textItem, text: newText }
+                          ? { ...textItem, text: newText, usageCount: 0, lastUseDate: new Date() }
                           : textItem
                       ) : []
                     };
@@ -907,7 +1059,7 @@ export default function Home() {
                             ...cat2,
                             list: cat2.list ? cat2.list.map(textItem => 
                               textItem.text === text 
-                                ? { ...textItem, text: newText }
+                                ? { ...textItem, text: newText, usageCount: 0, lastUseDate: new Date() }
                                 : textItem
                             ) : []
                           };
@@ -940,48 +1092,68 @@ export default function Home() {
   // (완성) TextCard 삭제 핸들러
   const handleTextDelete = async (text, cat0Name, cat1Name = "", cat2Name = "") => {
     const prevCategories = [...categories];
+    const level = cat2Name === "" ? cat1Name === "" ? 0 : 1 : 2;
 
     setCategories(prev => {
-      const updatedCategories = prev.map(cat0 => {
-        if (cat0.name === cat0Name) {
-          if (cat1Name === "") {
-            // category1이 ""면 category0의 리스트
+      let updatedCategories;
+      if (level === 0) {
+        // category0의 list에서 직접 처리
+        updatedCategories = prev.map(cat0 => {
+          if (cat0.name === cat0Name) {
             return {
               ...cat0,
               list: cat0.list.filter(textItem => textItem.text !== text)
             };
           }
-        } else {
-          return {
-            ...cat0,
-            subcategories: cat0.subcategories.map(cat1 => {
-              if (cat1.name === cat1Name) {
-                if (cat2Name === "") {
-                  // category2가 ""면 cat1 안의 리스트
+          return cat0;
+        });
+      } else if (level === 1) {
+        // category1의 list에서 처리
+        updatedCategories = prev.map(cat0 => {
+          if (cat0.name === cat0Name) {
+            return {
+              ...cat0,
+              subcategories: cat0.subcategories.map(cat1 => {
+                if (cat1.name === cat1Name) {
                   return {
                     ...cat1,
-                    list: cat1.list.filter(textItem => textItem.text !== item.text)
+                    list: cat1.list.filter(textItem => textItem.text !== text)
                   };
-                } else {
+                }
+                return cat1;
+              })
+            };
+          }
+          return cat0;
+        });
+      } else if (level === 2) {
+        // category2의 list에서 처리
+        updatedCategories = prev.map(cat0 => {
+          if (cat0.name === cat0Name) {
+            return {
+              ...cat0,
+              subcategories: cat0.subcategories.map(cat1 => {
+                if (cat1.name === cat1Name) {
                   return {
                     ...cat1,
                     subcategories: cat1.subcategories.map(cat2 => {
                       if (cat2.name === cat2Name) {
                         return {
                           ...cat2,
-                          list: cat2.list.filter(textItem => textItem.text !== item.text)
+                          list: cat2.list.filter(textItem => textItem.text !== text)
                         };
                       }
                       return cat2;
                     })
                   };
                 }
-              }
-              return cat1;
-            })
-          };
-        }
-      });
+                return cat1;
+              })
+            };
+          }
+          return cat0;
+        });
+      }
 
       localStorage.setItem("categories", JSON.stringify(updatedCategories));
       return updatedCategories;
@@ -1212,77 +1384,12 @@ export default function Home() {
   }, []);
 
   /* 목업 데이터 */
-  const [history, setHistory] = useState([
-    "안녕하세요", "권구현",
-    "안녕하세요", "권구현",
-    "안녕하세요", "권구현",
-    "안녕하세요", "권구현",
-    "안녕하세요", "권구현",
-  ]);
-
-  const [categories, setCategories] = useState([
-    {
-      name: "인사",
-      subcategories: [
-        {
-          name: "안녕",
-          subcategories: [ // [Dto, Dto, commonWordUser[]]
-            { name: "안녕하세요", list: [{text:"안녕하세요", bookmark:false, usageCount:1, }, {text: "반갑습니다", bookmark:true, usageCount:2}] },
-            { name: "안녕히 가세요", list: [{text:"안녕히 가세요", bookmark:false, usageCount:1}, {text: "다음에 봐요", bookmark:true, usageCount:2}] },
-          ],
-          list:[{text:"안녕", bookmark:false, usageCount:1}, {text:"하이", bookmark:true, usageCount:2}, {text:"헬로우", bookmark:false, usageCount:1}]
-        },
-        {
-          name: "감사",
-          subcategories: [
-            { name: "고맙습니다", list: [{text:"고맙습니다", bookmark:false, usageCount:1}, {text: "감사해요", bookmark:true, usageCount:2}] },
-            { name: "죄송합니다", list: [{text:"죄송합니다", bookmark:false, usageCount:1}, {text: "미안해요", bookmark:true, usageCount:2}] },
-          ],
-          list: [{text:"빠른 감사", bookmark:false, usageCount:1}, {text:"정말 감사합니다", bookmark:true, usageCount:2}]
-        },
-      ],
-      list: [{text:"빠른 인사", bookmark:false, usageCount:1}, {text:"안녕", bookmark:true, usageCount:2}]
-    },
-    {
-      name: "음식",
-      subcategories: [
-        {
-          name: "한식",
-          subcategories: [
-            { name: "밥류", list: [{text:"밥 주세요", bookmark:false, usageCount:1}, {text:"비빔밥 주세요", bookmark:true, usageCount:2}] },
-            { name: "국물", list: [{text:"김치찌개 주세요", bookmark:false, usageCount:1}, {text:"된장찌개 주세요", bookmark:true, usageCount:2}] }
-          ]
-        },
-        {
-          name: "양식",
-          subcategories: [
-            { name: "파스타", list: [{text:"스파게티 주세요", bookmark:false, usageCount:1}, {text:"카르보나라 주세요", bookmark:true, usageCount:2}] },
-            { name: "피자", list: [{text:"피자 주세요", bookmark:false, usageCount:1}, {text:"치즈피자 주세요", bookmark:true, usageCount:2}] }
-          ]
-        }
-      ],
-      list: [{text:"음식 주문", bookmark:false, usageCount:1}, {text:"메뉴 추천해주세요", bookmark:true, usageCount:2}]
-    },
-    {
-      name: "일상",
-      subcategories: [
-        {
-          name: "병원",
-          subcategories: [
-            { name: "증상", list: [{text:"아파요", bookmark:false, usageCount:1}, {text:"열이 나요", bookmark:true, usageCount:2}, {text:"머리가 아파요", bookmark:false, usageCount:1}] },
-            { name: "예약", list: [{text:"예약하고 싶어요", bookmark:false, usageCount:1}, {text:"진료 받고 싶어요", bookmark:true, usageCount:2}] },
-          ],
-          list: [{text:"괜찮아요", bookmark:false, usageCount:1}, {text:"별일 아니에요", bookmark:true, usageCount:2}]
-        }
-      ]
-    }
-  ]);
 
   const [conversation, setConversation] = useState([
-    { text: "input에서 수정한 텍스트", lastUsed: new Date(2025, 7, 15), usageCount: 3},
-    { text: "input에서 수정한 텍스트f", lastUsed: new Date(2025, 7, 18), usageCount: 2},
-    { text: "input에서 입력한 텍스트", lastUsed: new Date(2025, 7, 19), usageCount: 1},
-    { text: "모음", lastUsed: new Date(2025, 7, 20), usageCount: 1}
+    { text: "input에서 수정한 텍스트", lastUseDate: new Date(2025, 7, 15), usageCount: 3},
+    { text: "input에서 수정한 텍스트f", lastUseDate: new Date(2025, 7, 18), usageCount: 2},
+    { text: "input에서 입력한 텍스트", lastUseDate: new Date(2025, 7, 19), usageCount: 1},
+    { text: "모음", lastUseDate: new Date(2025, 7, 20), usageCount: 1}
   ]);
 
   return (
@@ -1320,6 +1427,10 @@ export default function Home() {
         isOpen={isHistoryModalOpen} 
         onClose={closeHistoryModal} 
         history={history}
+        onTextClick={handleTextClick}
+        onDelete={handleTextDelete}
+        onBookmark={handleTextBookmark}
+        onEdit={handleTextEdit}
       />
       <AddModal
         isOpen={isAddModalOpen}

@@ -110,7 +110,7 @@ function Conversation({conversation, onTextClick, onAdd, categories, orderType})
     } else if (orderType === "abc") {
       setCurrentList([...list].sort((a, b) => a.text.localeCompare(b.text)) || []);
     } else {
-      setCurrentList([...list].sort((a, b) => b.lastUsed - a.lastUsed) || []);
+      setCurrentList([...list].sort((a, b) => b.lastUseDate - a.lastUseDate) || []);
     }
   }
 

@@ -181,8 +181,6 @@ function TextCardModal({isOpen, onClose, item, onEdit, onDelete, onBookmark, cur
 
   const isBookmarked = getCurrentBookmarkState();
 
-
-
   return (
     <div className={styles.modalOverlay} onClick={onClose}>
       <div className={styles.textCardModalContent} onClick={(e) => e.stopPropagation()}>

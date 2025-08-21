@@ -202,3 +202,9 @@ export async function deleteCategory(cat, cat0Name = "", cat1Name = "") {
     return { success: false, error: error.message };
   }
 }
+
+/* CONVERSATION */
+export async function addConversation(text) {
+  return { success: true };
+  
+}
