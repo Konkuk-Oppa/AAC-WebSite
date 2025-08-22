@@ -823,26 +823,6 @@ export default function Home() {
     });
   }, [categories]);
 
-  const controlServer = async (prev, serverFunc, successText, errorText) => {
-    try {
-      const res = await serverFunc();
-
-      if (res.success) {
-        showInfo(successText);
-        return true;
-      } else {
-        setCategories(prev);
-        localStorage.setItem("categories", JSON.stringify(prev));
-        showError(errorText);
-        return false;
-      }
-    } catch (error) {
-      setCategories(prev);
-      localStorage.setItem("categories", JSON.stringify(prev));
-      showError("서버 연결에 실패했습니다.");
-      return false;
-    }
-  }
   // (완료) 오류 팝업 표시 함수
   const showError = (message) => {
     setToast({ isVisible: true, message, type: "error" });
@@ -859,79 +839,73 @@ export default function Home() {
   };
 
   // 카테고리 편집 핸들러
-  const handleCategoryEdit = async (currentPath, categoryName, newCategoryName) => {
-    if (!newCategoryName.trim()) {
-      showError("카테고리명을 입력해주세요.");
-      return false;
-    }
-
-    if (newCategoryName.trim() === categoryName.trim()) {
-      showError("변경된 카테고리명이 없습니다.");
-      return false;
-    }
-
-    const level = currentPath.length;
-
-    const isDuplicate = categories.some(cat0 => {
-      if (level === 0) {
-        return cat0.name === newCategoryName;
-      } else if (level === 1) {
-        return cat0.subcategories.some(cat1 => cat1.name === newCategoryName);
-      } else {
-        return cat0.subcategories.some(cat1 =>
-          cat1.subcategories.some(cat2 => cat2.name === newCategoryName)
-        );
-      }
-    });
-
-    // 이미 존재하는 항목이라면 return
-    if (isDuplicate) {
-      showError("이미 존재하는 항목입니다.");
-      return false;
+  const handleCategoryEdit = async (currentPath, categoryName, newCategoryName, categoryID) => {
+    try{
+      // 빈 카테고리 명 검사
+      if (!newCategoryName.trim()) {
+        showError("카테고리명을 입력해주세요.");
+        return false;
       }
 
-    const prevCategories = [...categories];
+      // 변경된 카테고리명 검사
+      if (newCategoryName.trim() === categoryName.trim()) {
+        showError("변경된 카테고리명이 없습니다.");
+        return false;
+      }
 
-    setCategories(prev => {
-      const updatedCategories = prev.map(cat0 => {
-        if (level === 0 && cat0.name === categoryName) {
-          // 최상위 카테고리 편집
-          return { ...cat0, name: newCategoryName };
-        } else if (level === 1 && cat0.name === currentPath[0]) {
-          // 두 번째 레벨 카테고리 편집
-          return {
-            ...cat0,
-            subcategories: cat0.subcategories.map(cat1 => 
-              cat1.name === categoryName ? { ...cat1, name: newCategoryName } : cat1
-            )
-          };
-        } else if (level === 2 && cat0.name === currentPath[0]) {
-          // 세 번째 레벨 카테고리 편집
-          return {
-            ...cat0,
-            subcategories: cat0.subcategories.map(cat1 => 
-              cat1.name === currentPath[1] ? {
-                ...cat1,
-                subcategories: cat1.subcategories.map(cat2 =>
-                  cat2.name === categoryName ? { ...cat2, name: newCategoryName } : cat2
-                )
-              } : cat1
-            )
-          };
+      const res = await editCategory(categoryID, newCategoryName);
+
+      if (!res.success) {
+        if (res.error === "중복") {
+          showError("이미 존재하는 카테고리명입니다.");
+        } else {
+          showError("카테고리 수정에 실패했습니다.");
         }
-        return cat0;
-      });
-      
-      localStorage.setItem("categories", JSON.stringify(updatedCategories));
-      return updatedCategories;
-    });
+        return false;
+      }
 
-    return await controlServer(
-      prevCategories,
-      async () => {return await editCategory(categoryName, newCategoryName, currentPath.length > 0 ? currentPath[0] : "", currentPath.length > 1 ? currentPath[1] : "");},
-      `카테고리가 "${newCategoryName}"(으)로 변경되었습니다.`,
-      "카테고리 변경에 실패했습니다."
-    );
+      const level = currentPath.length;
+
+      setCategories(prev => {
+        const updatedCategories = prev.map(cat0 => {
+          if (level === 0 && cat0.name === categoryName) {
+            // 최상위 카테고리 편집
+            return { ...cat0, name: newCategoryName };
+          } else if (level === 1 && cat0.name === currentPath[0]) {
+            // 두 번째 레벨 카테고리 편집
+            return {
+              ...cat0,
+              subcategories: cat0.subcategories.map(cat1 => 
+                cat1.name === categoryName ? { ...cat1, name: newCategoryName } : cat1
+              )
+            };
+          } else if (level === 2 && cat0.name === currentPath[0]) {
+            // 세 번째 레벨 카테고리 편집
+            return {
+              ...cat0,
+              subcategories: cat0.subcategories.map(cat1 => 
+                cat1.name === currentPath[1] ? {
+                  ...cat1,
+                  subcategories: cat1.subcategories.map(cat2 =>
+                    cat2.name === categoryName ? { ...cat2, name: newCategoryName } : cat2
+                  )
+                } : cat1
+              )
+            };
+          }
+          return cat0;
+        });
+        
+        localStorage.setItem("categories", JSON.stringify(updatedCategories));
+        return updatedCategories;
+      });
+      showInfo(`카테고리가 "${newCategoryName}"(으)로 변경되었습니다.`);
+      return true; 
+    } catch (error) {
+      console.error("error: ", error);
+      showError("작업 중 오류가 발생했습니다.");
+      return false;
+    }
   };
 
   /**** 완료 **** 카테고리 삭제 핸들러 ****/

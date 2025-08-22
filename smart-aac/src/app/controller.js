@@ -326,25 +326,29 @@ export async function deleteCategory(catID) {
   }
 }
 
-export async function editCategory(oldCatName, newCatName, cat0Name = "", cat1Name = "") {
-  // 디버깅용 코드
-  return { success: true };
+export async function editCategory(catID, newCatName) {
   try {
-    const response = await fetch('/edit-category', {
-      method: 'POST',
+    const response = await fetch(`${BASE_URL}/categories/${catID}`, {
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        oldCat: oldCatName,
-        newCat: newCatName,
-        cat0Name: cat0Name,
-        cat1Name: cat1Name,
+        value: newCatName
       })
     });
 
+    if (response.status === 400) {
+      return { success: false, error: "중복" };
+    }
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    const result = await response.json();
+
+    if (!result.success) {
+      return { success: false, error: result.error };
     }
 
     return { success: true };

@@ -51,7 +51,7 @@ function CategoryModal({isOpen, onClose, category, onEdit, onDelete, currentPath
                 <button 
                   className={styles.addSubmitButton}
                   onClick={async () => {
-                    if (await onEdit(currentPath, category.name, newText)) {
+                    if (await onEdit(currentPath, category.name, newText, category.id)) {
                       onClose();
                     }
                   }}
