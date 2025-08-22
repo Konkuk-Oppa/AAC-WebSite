@@ -9,6 +9,76 @@ export async function getRecommends({text}) {
   return {success: true, data: recommends};
 }
 
+/* USER */
+export async function makeUser(formData) {
+  try{
+    const response = await fetch(`${BASE_URL}/users`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({email: formData.email})
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.error}`);
+    }
+
+    const data = await response.json();
+    return { success: true, data: data };
+  } catch (error) {
+    console.error('Error fetching user:', error);
+    return { success: false, error: error.message };
+  }
+}
+
+export async function getUser({email}) {
+  try {
+    const response = await fetch(`${BASE_URL}/users?email=${email}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return { success: true, data: data.user };
+  } catch (error) {
+    console.error('Error fetching user by email:', error);
+    return { success: false, error: error.message };
+  }
+}
+
+export async function checkEmailAvailable(email) {
+  try {
+    const response = await fetch(`${BASE_URL}/users/by-email`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email })
+    });
+
+    if (response.status === 404) {
+      // 404는 사용자가 없다는 뜻이므로 사용 가능한 이메일
+      return { success: true, available: true };
+    } else if (response.ok) {
+      // 200은 사용자가 존재한다는 뜻이므로 사용 불가능한 이메일
+      return { success: true, available: false };
+    } else {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+  } catch (error) {
+    console.error('Error checking email availability:', error);
+    return { success: false, error: error.message };
+  }
+}
+
+
 // 입력한 단어 및 문장에 따라 카테고리 추천
 export async function getRecommendCategory({text}) {
   // 목업용 데이터
@@ -206,5 +276,5 @@ export async function deleteCategory(cat, cat0Name = "", cat1Name = "") {
 /* CONVERSATION */
 export async function addConversation(text) {
   return { success: true };
-  
+
 }
