@@ -389,7 +389,52 @@ export async function editCategory(catID, newCatName) {
 }
 
 /* CONVERSATION */
-export async function addConversation(text) {
-  return { success: true };
+export async function getConversations() {
+  try {
+    const response = await fetch(`${BASE_URL}/conversation`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
 
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    if (!data.success) {
+      return { success: false, error: data.error };
+    }
+
+    return { success: true, data: data.conversations };
+  } catch (error) {
+    console.error('Error fetching conversations:', error);
+    return { success: false, error: error.message };
+  }
+}
+
+export async function addConversation(userID, text) {
+  try {
+    const response = await fetch(`${BASE_URL}/conversation`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ userId: userID, value: text })
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    if (!data.success) {
+      return { success: false, error: data.error };
+    }
+    return { success: true };
+  } catch (error) {
+    console.error('Error adding conversation:', error);
+    return { success: false, error: error.message };
+  }
 }

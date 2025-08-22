@@ -2,7 +2,7 @@
 import styles from "./page.module.css";
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import Body from "./body";
-import { addText, getRecommendCategory, getRecommends, updateBookmark, editText, deleteText, editCategory, deleteCategory, getTTS, addConversation, getCategories, addCategory, updateText } from "./controller";
+import { addText, getRecommendCategory, getRecommends, updateBookmark, editText, deleteText, editCategory, deleteCategory, getTTS, addConversation, getCategories, addCategory, updateText, getConversations } from "./controller";
 import { TextCard } from "./component";
 import useStore from "./categoryID";
 
@@ -124,47 +124,8 @@ function InputSection({
   openAddModal,
   orderType,
   setOrderType,
-  setConversation,
-  conversation
+  onConversationAdd
 }) {
-  const handleSpeakClick = async (e) => {
-    e.stopPropagation();
-
-    const prevConversation = [...conversation];
-    setConversation(prev => {
-      
-      if (prev.some(item => item.text === input)) {
-        return prev.map(item => item.text === input ? { ...item, lastUseDate: new Date() } : item);
-      }
-      return [...prev, { text: input, lastUseDate: new Date() }];
-    });
-    
-    try {
-      const res = await addConversation(input);
-
-      if (!res.success) {
-        showError("대화 추가에 실패했습니다.");
-        setConversation(prevConversation);
-      } 
-    } catch (error) {
-      showError("서버 연결에 실패했습니다.");
-      setConversation(prevConversation);
-    }
-    
-    // getTTS({text: input});
-    // TODO 더 자연스러운 TTS 구현하기
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-      
-      const utterance = new SpeechSynthesisUtterance(input);
-      utterance.lang = 'ko-KR'; // 한국어 설정
-      utterance.rate = 0.8; // 속도 조절
-      window.speechSynthesis.speak(utterance);
-    } else {
-      alert('이 브라우저는 음성 합성을 지원하지 않습니다.');
-    }
-  }
-
   return(
     <div className={styles.bottomSection}>
       <div>
@@ -179,7 +140,7 @@ function InputSection({
             />
             <button 
               className={styles.speakButton}
-              onClick={handleSpeakClick}
+              onClick={(e) => {e.stopPropagation(); onConversationAdd(input);}}
             >
               말하기
             </button>
@@ -669,6 +630,7 @@ export default function Home() {
   const [toast, setToast] = useState({ isVisible: false, message: "", type: "error" }); // 토스트 팝업 상태
   const [orderType, setOrderType] = useState("default");          // 정렬 기능
   const [categories, setCategories] = useState([]); // 카테고리 목록
+  const [conversation, setConversation] = useState([]);
 
   const debounceTimeoutRef = useRef(null);          // 너무 낮은 recommend 불러오기 방지용
   const openHistoryModal = () => setIsHistoryModalOpen(true);
@@ -679,81 +641,13 @@ export default function Home() {
 
   const { categoryID, setCategoryID } = useStore();
 
-  /* 목업 데이터 */
-  // const [categories, setCategories] = useState([
-  //   {
-  //     id: 1000,
-  //     name: "인사",
-  //     subcategories: [
-  //       {
-  //         id: 1100,
-  //         name: "안녕",
-  //         subcategories: [ // [Dto, Dto, commonWordUser[]]
-  //           { id: 1110, name: "안녕하세요", list: [{id: 13, text:"안녕하세요", bookmark:false, usageCount:1, lastUseDate: new Date(2025, 7, 15)}, {id: 14, text: "반갑습니다", bookmark:true, usageCount:2, lastUseDate: new Date(2025, 7, 18)}] },
-  //           { id: 1120, name: "안녕히 가세요", list: [{id: 15, text:"안녕히 가세요", bookmark:false, usageCount:1, lastUseDate: new Date(2025, 7, 19)}, {id: 16, text: "다음에 봐요", bookmark:true, usageCount:2, lastUseDate: new Date(2025, 7, 20)}] },
-  //         ],
-  //         list:[{id: 17, text:"안녕", bookmark:false, usageCount:0, lastUseDate: null}, {id: 18, text:"하이", bookmark:true, usageCount:2, lastUseDate: new Date(2025, 7, 22)}, {id: 19, text:"헬로우", bookmark:false, usageCount:1, lastUseDate: new Date(2025, 7, 23)}]
-  //       },
-  //       {
-  //         id: 1001,
-  //         name: "감사",
-  //         subcategories: [
-  //           { id: 1200, name: "고맙습니다", list: [{id: 20, text:"고맙습니다", bookmark:false, usageCount:1, lastUseDate: new Date(2025, 7, 24)}, {id: 21, text: "감사해요", bookmark:true, usageCount:2, lastUseDate: new Date(2025, 7, 25)}] },
-  //           { id: 1220, name: "죄송합니다", list: [{id: 22, text:"죄송합니다", bookmark:false, usageCount:1, lastUseDate: new Date(2025, 7, 26)}, {id: 23, text: "미안해요", bookmark:true, usageCount:2, lastUseDate: new Date(2025, 7, 27)}] },
-  //         ],
-  //         list: [{id: 24, text:"빠른 감사", bookmark:false, usageCount:1, lastUseDate: new Date(2025, 7, 28)}, {id: 25, text:"정말 감사합니다", bookmark:true, usageCount:2, lastUseDate: new Date(2025, 7, 29)}]
-  //       },
-  //     ],
-  //     list: [{id: 26, text:"빠른 인사", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id: 27, text:"안녕", bookmark:true, usageCount:2, lastUseDate: new Date()}]
-  //   },
-  //   {
-  //     id:200,
-  //     name: "음식",
-  //     subcategories: [
-  //       {
-  //         id: 210,
-  //         name: "한식",
-  //         subcategories: [
-  //           { id: 2000, name: "밥류", list: [{id: 2200, text:"밥 주세요", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id: 2201, text:"비빔밥 주세요", bookmark:true, usageCount:2, lastUseDate: new Date()}] },
-  //           { id: 2001, name: "국물", list: [{id: 2220, text:"김치찌개 주세요", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id: 2221, text:"된장찌개 주세요", bookmark:true, usageCount:2, lastUseDate: new Date()}] }
-  //         ],
-  //         list: []
-  //       },
-  //       {
-  //         id: 220,
-  //         name: "양식",
-  //         subcategories: [
-  //           { id: 2200, name: "파스타", list: [{id: 2200, text:"스파게티 주세요", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id: 2201, text:"카르보나라 주세요", bookmark:true, usageCount:2, lastUseDate: new Date()}] },
-  //           { id: 2300, name: "피자", list: [{id: 2300, text:"피자 주세요", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id: 2301, text:"치즈피자 주세요", bookmark:true, usageCount:2, lastUseDate: new Date()}] }
-  //         ]
-  //       }
-  //     ],
-  //     list: [{id: 2400, text:"음식 주문", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id: 2401, text:"메뉴 추천해주세요", bookmark:true, usageCount:2, lastUseDate: new Date()}]
-  //   },
-  //   {
-  //     id: 3000,
-  //     name: "일상",
-  //     subcategories: [
-  //       {
-  //         id: 3100,
-  //         name: "병원",
-  //         subcategories: [
-  //           { id: 3110, name: "증상", list: [{id:3111, text:"아파요", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id:3112, text:"열이 나요", bookmark:true, usageCount:2, lastUseDate: new Date()}, {id:3113, text:"머리가 아파요", bookmark:false, usageCount:1, lastUseDate: new Date()}] },
-  //           { id: 3120, name: "예약", list: [{id:3121, text:"예약하고 싶어요", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id:3122, text:"진료 받고 싶어요", bookmark:true, usageCount:2, lastUseDate: new Date()}] },
-  //         ],
-  //         list: [{id: 3130, text:"괜찮아요", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id: 3131, text:"별일 아니에요", bookmark:true, usageCount:2, lastUseDate: new Date()}]
-  //       }
-  //     ]
-  //   }
-  // ]);
   
-
-  const [conversation, setConversation] = useState([
-    { text: "input에서 수정한 텍스트", lastUseDate: new Date(2025, 7, 15), usageCount: 3},
-    { text: "input에서 수정한 텍스트f", lastUseDate: new Date(2025, 7, 18), usageCount: 2},
-    { text: "input에서 입력한 텍스트", lastUseDate: new Date(2025, 7, 19), usageCount: 1},
-    { text: "모음", lastUseDate: new Date(2025, 7, 20), usageCount: 1}
-  ]);
+  // const [conversation, setConversation] = useState([
+  //   { text: "input에서 수정한 텍스트", lastUseDate: new Date(2025, 7, 15), usageCount: 3},
+  //   { text: "input에서 수정한 텍스트f", lastUseDate: new Date(2025, 7, 18), usageCount: 2},
+  //   { text: "input에서 입력한 텍스트", lastUseDate: new Date(2025, 7, 19), usageCount: 1},
+  //   { text: "모음", lastUseDate: new Date(2025, 7, 20), usageCount: 1}
+  // ]);
 
   const history = useMemo(() => {
     const allItems = [];
@@ -1415,6 +1309,38 @@ export default function Home() {
     }, 200);
   };
 
+  const handleConversationAdd = async (text) => {
+    try{
+      const res = await addConversation(Number(JSON.parse(localStorage.getItem('user'))), text);
+      if (!res.success) {
+        showError("대화 추가에 실패했습니다.");
+        return;
+      }
+    } catch(error) {
+      console.error("대화 추가 중 오류 발생:", error);
+    }
+
+    setConversation(prev => {
+      if (prev.some(item => item.value === text)) {
+        return prev.map(item => item.value === text ? { ...item, lastUseDate: new Date(), usageCount: item.usageCount + 1 } : item);
+      }
+      return [...prev, { value: text, lastUseDate: new Date(), usageCount: 1 }];
+    });
+
+    // getTTS({text: text});
+    // TODO 더 자연스러운 TTS 구현하기
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'ko-KR'; // 한국어 설정
+      utterance.rate = 0.8; // 속도 조절
+      window.speechSynthesis.speak(utterance);
+    } else {
+      alert('이 브라우저는 음성 합성을 지원하지 않습니다.');
+    }
+  }
+
   // 컴포넌트 언마운트 시 타이머 정리
   useEffect(() => {
     async function fetchCategories() {
@@ -1437,7 +1363,20 @@ export default function Home() {
       });
     }
 
+    async function fetchConversation() {
+      const res = await getConversations();
+      
+      if (!res.success) {
+        showError("대화 기록 불러오기 실패");
+        return;
+      }
+
+      res.data.sort((a, b) => new Date(b.lastUseDate) - new Date(a.lastUseDate));
+      setConversation(res.data);
+    }
+
     fetchCategories();
+    fetchConversation();
 
     // 여기에 사용자 어휘들 불러오는 컨트롤러
     return () => {
@@ -1466,6 +1405,7 @@ export default function Home() {
         conversation={conversation}
         onAdd={handleTextAdd}
         onUpdate={handleTextUpdate}
+        onConversationAdd={handleConversationAdd}
       />
       <InputSection
         openHistoryModal={openHistoryModal}
@@ -1476,8 +1416,7 @@ export default function Home() {
         recommends={recommends}
         orderType={orderType}
         setOrderType={setOrderType}
-        setConversation={setConversation}
-        conversation={conversation}
+        onConversationAdd={handleConversationAdd}
       />
       <HistoryModal 
         isOpen={isHistoryModalOpen} 

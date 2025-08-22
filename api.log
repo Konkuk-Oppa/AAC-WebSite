@@ -4433,3 +4433,1053 @@
 2025-08-22 23:22:07,318 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/common-word/usage | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
 2025-08-22 23:22:07,323 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/common-word/usage | Status: 200 | Duration: 0.005s
 2025-08-22 23:22:07,323 - INFO - 127.0.0.1 - - [22/Aug/2025 23:22:07] "POST /common-word/usage HTTP/1.1" 200 -
+2025-08-22 23:23:35,842 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:23:35,843 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:23:35,845 - INFO - 127.0.0.1 - - [22/Aug/2025 23:23:35] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:23:35,846 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:23:35,854 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.008s
+2025-08-22 23:23:35,855 - INFO - 127.0.0.1 - - [22/Aug/2025 23:23:35] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:24:50,105 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:24:50,107 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.003s
+2025-08-22 23:24:50,108 - INFO - 127.0.0.1 - - [22/Aug/2025 23:24:50] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:24:50,109 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:24:50,119 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.010s
+2025-08-22 23:24:50,120 - INFO - 127.0.0.1 - - [22/Aug/2025 23:24:50] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:25:33,537 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:25:33,537 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:25:33,538 - INFO - 127.0.0.1 - - [22/Aug/2025 23:25:33] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:25:33,540 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:25:33,548 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.007s
+2025-08-22 23:25:33,549 - INFO - 127.0.0.1 - - [22/Aug/2025 23:25:33] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:25:49,686 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:25:49,686 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:25:49,687 - INFO - 127.0.0.1 - - [22/Aug/2025 23:25:49] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:25:49,688 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:25:49,694 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.006s
+2025-08-22 23:25:49,695 - INFO - 127.0.0.1 - - [22/Aug/2025 23:25:49] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:25:51,809 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:25:51,812 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.003s
+2025-08-22 23:25:51,812 - INFO - 127.0.0.1 - - [22/Aug/2025 23:25:51] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:25:58,738 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:25:58,738 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:25:58,739 - INFO - 127.0.0.1 - - [22/Aug/2025 23:25:58] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:25:58,741 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:25:58,743 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:25:58,743 - INFO - 127.0.0.1 - - [22/Aug/2025 23:25:58] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:26:05,275 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:26:05,275 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.000s
+2025-08-22 23:26:05,276 - INFO - 127.0.0.1 - - [22/Aug/2025 23:26:05] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:26:05,277 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:26:05,278 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:26:05,279 - INFO - 127.0.0.1 - - [22/Aug/2025 23:26:05] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:26:07,915 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:26:07,917 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:26:07,917 - INFO - 127.0.0.1 - - [22/Aug/2025 23:26:07] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:26:12,563 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:26:12,564 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:26:12,564 - INFO - 127.0.0.1 - - [22/Aug/2025 23:26:12] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:26:12,565 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:26:12,567 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:26:12,567 - INFO - 127.0.0.1 - - [22/Aug/2025 23:26:12] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:26:24,851 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:26:24,851 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:26:24,853 - INFO - 127.0.0.1 - - [22/Aug/2025 23:26:24] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:26:24,855 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:26:24,859 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.004s
+2025-08-22 23:26:24,859 - INFO - 127.0.0.1 - - [22/Aug/2025 23:26:24] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:27:07,488 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:27:07,493 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.007s
+2025-08-22 23:27:07,493 - INFO - 127.0.0.1 - - [22/Aug/2025 23:27:07] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:27:07,519 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:27:07,556 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.037s
+2025-08-22 23:27:07,557 - INFO - 127.0.0.1 - - [22/Aug/2025 23:27:07] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:27:17,500 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:27:17,501 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:27:17,501 - INFO - 127.0.0.1 - - [22/Aug/2025 23:27:17] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:27:17,503 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:27:17,506 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:27:17,506 - INFO - 127.0.0.1 - - [22/Aug/2025 23:27:17] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:27:28,234 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:27:28,234 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:27:28,234 - INFO - 127.0.0.1 - - [22/Aug/2025 23:27:28] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:27:28,236 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:27:28,239 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.003s
+2025-08-22 23:27:28,239 - INFO - 127.0.0.1 - - [22/Aug/2025 23:27:28] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:27:33,004 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:27:33,006 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.003s
+2025-08-22 23:27:33,006 - INFO - 127.0.0.1 - - [22/Aug/2025 23:27:33] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:27:38,256 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:27:38,256 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:27:38,256 - INFO - 127.0.0.1 - - [22/Aug/2025 23:27:38] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:27:38,260 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:27:38,263 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.003s
+2025-08-22 23:27:38,263 - INFO - 127.0.0.1 - - [22/Aug/2025 23:27:38] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:27:39,398 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:27:39,399 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:27:39,400 - INFO - 127.0.0.1 - - [22/Aug/2025 23:27:39] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:27:52,511 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:27:52,512 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:27:52,512 - INFO - 127.0.0.1 - - [22/Aug/2025 23:27:52] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:27:52,514 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:27:52,516 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:27:52,516 - INFO - 127.0.0.1 - - [22/Aug/2025 23:27:52] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:28:21,285 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:28:21,286 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:28:21,286 - INFO - 127.0.0.1 - - [22/Aug/2025 23:28:21] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:28:21,288 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:28:21,292 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.005s
+2025-08-22 23:28:21,293 - INFO - 127.0.0.1 - - [22/Aug/2025 23:28:21] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:28:23,155 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:28:23,157 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.003s
+2025-08-22 23:28:23,158 - INFO - 127.0.0.1 - - [22/Aug/2025 23:28:23] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:28:37,076 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:28:37,079 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.005s
+2025-08-22 23:28:37,082 - INFO - 127.0.0.1 - - [22/Aug/2025 23:28:37] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:28:37,086 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:28:37,096 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.011s
+2025-08-22 23:28:37,097 - INFO - 127.0.0.1 - - [22/Aug/2025 23:28:37] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:28:37,969 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:28:37,970 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:28:37,970 - INFO - 127.0.0.1 - - [22/Aug/2025 23:28:37] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:29:02,857 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:29:02,857 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:29:02,858 - INFO - 127.0.0.1 - - [22/Aug/2025 23:29:02] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:29:02,859 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:29:02,863 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.004s
+2025-08-22 23:29:02,864 - INFO - 127.0.0.1 - - [22/Aug/2025 23:29:02] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:29:04,788 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:29:04,791 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.003s
+2025-08-22 23:29:04,791 - INFO - 127.0.0.1 - - [22/Aug/2025 23:29:04] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:29:07,363 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:29:07,364 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversations | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:29:07,367 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversations | Status: 404 | Duration: 0.003s
+2025-08-22 23:29:07,368 - INFO - 127.0.0.1 - - [22/Aug/2025 23:29:07] "[33mOPTIONS /conversations HTTP/1.1[0m" 404 -
+2025-08-22 23:29:07,369 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.006s
+2025-08-22 23:29:07,369 - INFO - 127.0.0.1 - - [22/Aug/2025 23:29:07] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:29:24,279 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:29:24,280 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversations | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:29:24,280 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:29:24,280 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversations | Status: 404 | Duration: 0.001s
+2025-08-22 23:29:24,281 - INFO - 127.0.0.1 - - [22/Aug/2025 23:29:24] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:29:24,281 - INFO - 127.0.0.1 - - [22/Aug/2025 23:29:24] "[33mOPTIONS /conversations HTTP/1.1[0m" 404 -
+2025-08-22 23:29:24,283 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:29:24,287 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.004s
+2025-08-22 23:29:24,287 - INFO - 127.0.0.1 - - [22/Aug/2025 23:29:24] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:29:53,148 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:29:53,150 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.003s
+2025-08-22 23:29:53,151 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversations | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:29:53,152 - INFO - 127.0.0.1 - - [22/Aug/2025 23:29:53] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:29:53,153 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversations | Status: 404 | Duration: 0.002s
+2025-08-22 23:29:53,154 - INFO - 127.0.0.1 - - [22/Aug/2025 23:29:53] "[33mOPTIONS /conversations HTTP/1.1[0m" 404 -
+2025-08-22 23:29:53,157 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:29:53,187 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.031s
+2025-08-22 23:29:53,188 - INFO - 127.0.0.1 - - [22/Aug/2025 23:29:53] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:29:55,541 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:29:55,541 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversations | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:29:55,542 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversations | Status: 404 | Duration: 0.001s
+2025-08-22 23:29:55,543 - INFO - 127.0.0.1 - - [22/Aug/2025 23:29:55] "[33mOPTIONS /conversations HTTP/1.1[0m" 404 -
+2025-08-22 23:29:55,544 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.003s
+2025-08-22 23:29:55,545 - INFO - 127.0.0.1 - - [22/Aug/2025 23:29:55] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:30:54,280 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:30:54,284 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversations | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:30:54,284 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.007s
+2025-08-22 23:30:54,285 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversations | Status: 404 | Duration: 0.001s
+2025-08-22 23:30:54,285 - INFO - 127.0.0.1 - - [22/Aug/2025 23:30:54] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:30:54,285 - INFO - 127.0.0.1 - - [22/Aug/2025 23:30:54] "[33mOPTIONS /conversations HTTP/1.1[0m" 404 -
+2025-08-22 23:30:54,288 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:30:54,302 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.015s
+2025-08-22 23:30:54,303 - INFO - 127.0.0.1 - - [22/Aug/2025 23:30:54] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:31:08,342 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:31:08,342 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversations | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:31:08,342 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:31:08,343 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversations | Status: 404 | Duration: 0.001s
+2025-08-22 23:31:08,343 - INFO - 127.0.0.1 - - [22/Aug/2025 23:31:08] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:31:08,343 - INFO - 127.0.0.1 - - [22/Aug/2025 23:31:08] "[33mOPTIONS /conversations HTTP/1.1[0m" 404 -
+2025-08-22 23:31:08,345 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:31:08,349 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.005s
+2025-08-22 23:31:08,350 - INFO - 127.0.0.1 - - [22/Aug/2025 23:31:08] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:31:13,136 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:31:13,136 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversations | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:31:13,137 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversations | Status: 404 | Duration: 0.000s
+2025-08-22 23:31:13,137 - INFO - 127.0.0.1 - - [22/Aug/2025 23:31:13] "[33mOPTIONS /conversations HTTP/1.1[0m" 404 -
+2025-08-22 23:31:13,138 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:31:13,138 - INFO - 127.0.0.1 - - [22/Aug/2025 23:31:13] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:31:22,895 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:31:22,896 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversations | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:31:22,896 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:31:22,896 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversations | Status: 404 | Duration: 0.001s
+2025-08-22 23:31:22,896 - INFO - 127.0.0.1 - - [22/Aug/2025 23:31:22] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:31:22,897 - INFO - 127.0.0.1 - - [22/Aug/2025 23:31:22] "[33mOPTIONS /conversations HTTP/1.1[0m" 404 -
+2025-08-22 23:31:22,898 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:31:22,900 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:31:22,900 - INFO - 127.0.0.1 - - [22/Aug/2025 23:31:22] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:31:28,220 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversations | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:31:28,220 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:31:28,220 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversations | Status: 404 | Duration: 0.001s
+2025-08-22 23:31:28,221 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:31:28,221 - INFO - 127.0.0.1 - - [22/Aug/2025 23:31:28] "[33mOPTIONS /conversations HTTP/1.1[0m" 404 -
+2025-08-22 23:31:28,221 - INFO - 127.0.0.1 - - [22/Aug/2025 23:31:28] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:31:28,224 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:31:28,227 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.004s
+2025-08-22 23:31:28,228 - INFO - 127.0.0.1 - - [22/Aug/2025 23:31:28] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:31:37,064 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:31:37,065 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversations | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:31:37,065 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:31:37,065 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversations | Status: 404 | Duration: 0.000s
+2025-08-22 23:31:37,065 - INFO - 127.0.0.1 - - [22/Aug/2025 23:31:37] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:31:37,065 - INFO - 127.0.0.1 - - [22/Aug/2025 23:31:37] "[33mOPTIONS /conversations HTTP/1.1[0m" 404 -
+2025-08-22 23:31:37,067 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:31:37,070 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.003s
+2025-08-22 23:31:37,071 - INFO - 127.0.0.1 - - [22/Aug/2025 23:31:37] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:32:05,073 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:32:05,074 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversations | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:32:05,074 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:32:05,075 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversations | Status: 404 | Duration: 0.001s
+2025-08-22 23:32:05,075 - INFO - 127.0.0.1 - - [22/Aug/2025 23:32:05] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:32:05,075 - INFO - 127.0.0.1 - - [22/Aug/2025 23:32:05] "[33mOPTIONS /conversations HTTP/1.1[0m" 404 -
+2025-08-22 23:32:05,077 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:32:05,091 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.014s
+2025-08-22 23:32:05,092 - INFO - 127.0.0.1 - - [22/Aug/2025 23:32:05] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:32:13,062 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:32:13,063 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversations | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:32:13,063 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:32:13,064 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversations | Status: 404 | Duration: 0.000s
+2025-08-22 23:32:13,064 - INFO - 127.0.0.1 - - [22/Aug/2025 23:32:13] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:32:13,064 - INFO - 127.0.0.1 - - [22/Aug/2025 23:32:13] "[33mOPTIONS /conversations HTTP/1.1[0m" 404 -
+2025-08-22 23:32:13,065 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:32:13,067 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:32:13,067 - INFO - 127.0.0.1 - - [22/Aug/2025 23:32:13] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:32:19,085 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:32:19,087 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversations | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:32:19,088 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.004s
+2025-08-22 23:32:19,089 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversations | Status: 404 | Duration: 0.002s
+2025-08-22 23:32:19,090 - INFO - 127.0.0.1 - - [22/Aug/2025 23:32:19] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:32:19,090 - INFO - 127.0.0.1 - - [22/Aug/2025 23:32:19] "[33mOPTIONS /conversations HTTP/1.1[0m" 404 -
+2025-08-22 23:32:19,094 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:32:19,110 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.017s
+2025-08-22 23:32:19,111 - INFO - 127.0.0.1 - - [22/Aug/2025 23:32:19] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:33:46,248 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:33:46,249 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversations | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:33:46,249 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:33:46,250 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversations | Status: 404 | Duration: 0.001s
+2025-08-22 23:33:46,250 - INFO - 127.0.0.1 - - [22/Aug/2025 23:33:46] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:33:46,250 - INFO - 127.0.0.1 - - [22/Aug/2025 23:33:46] "[33mOPTIONS /conversations HTTP/1.1[0m" 404 -
+2025-08-22 23:33:46,252 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:33:46,296 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.044s
+2025-08-22 23:33:46,296 - INFO - 127.0.0.1 - - [22/Aug/2025 23:33:46] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:33:52,332 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:33:52,333 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversations | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:33:52,333 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:33:52,333 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversations | Status: 404 | Duration: 0.001s
+2025-08-22 23:33:52,333 - INFO - 127.0.0.1 - - [22/Aug/2025 23:33:52] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:33:52,334 - INFO - 127.0.0.1 - - [22/Aug/2025 23:33:52] "[33mOPTIONS /conversations HTTP/1.1[0m" 404 -
+2025-08-22 23:33:52,335 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:33:52,339 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.004s
+2025-08-22 23:33:52,340 - INFO - 127.0.0.1 - - [22/Aug/2025 23:33:52] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:34:22,833 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:34:22,839 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.007s
+2025-08-22 23:34:22,841 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversations | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:34:22,842 - INFO - 127.0.0.1 - - [22/Aug/2025 23:34:22] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:34:22,843 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversations | Status: 404 | Duration: 0.002s
+2025-08-22 23:34:22,843 - INFO - 127.0.0.1 - - [22/Aug/2025 23:34:22] "[33mOPTIONS /conversations HTTP/1.1[0m" 404 -
+2025-08-22 23:34:22,845 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:34:22,864 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.020s
+2025-08-22 23:34:22,865 - INFO - 127.0.0.1 - - [22/Aug/2025 23:34:22] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:34:37,714 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:34:37,715 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:34:37,715 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:34:37,715 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.000s
+2025-08-22 23:34:37,716 - INFO - 127.0.0.1 - - [22/Aug/2025 23:34:37] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:34:37,716 - INFO - 127.0.0.1 - - [22/Aug/2025 23:34:37] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:34:37,718 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:34:37,720 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:34:37,752 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.033s
+2025-08-22 23:34:37,753 - INFO - 127.0.0.1 - - [22/Aug/2025 23:34:37] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:34:37,755 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.034s
+2025-08-22 23:34:37,755 - INFO - 127.0.0.1 - - [22/Aug/2025 23:34:37] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:34:41,936 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:34:41,938 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:34:41,952 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.013s
+2025-08-22 23:34:41,965 - INFO - 127.0.0.1 - - [22/Aug/2025 23:34:41] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:34:42,034 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.097s
+2025-08-22 23:34:42,037 - INFO - 127.0.0.1 - - [22/Aug/2025 23:34:42] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:34:43,462 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:34:43,462 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:34:43,463 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:34:43,463 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:34:43,464 - INFO - 127.0.0.1 - - [22/Aug/2025 23:34:43] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:34:43,464 - INFO - 127.0.0.1 - - [22/Aug/2025 23:34:43] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:34:43,467 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:34:43,473 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:34:43,486 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.013s
+2025-08-22 23:34:43,488 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.022s
+2025-08-22 23:34:43,490 - INFO - 127.0.0.1 - - [22/Aug/2025 23:34:43] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:34:43,490 - INFO - 127.0.0.1 - - [22/Aug/2025 23:34:43] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:35:13,305 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:35:13,306 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:35:13,306 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:35:13,307 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:35:13,307 - INFO - 127.0.0.1 - - [22/Aug/2025 23:35:13] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:35:13,307 - INFO - 127.0.0.1 - - [22/Aug/2025 23:35:13] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:35:13,310 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:35:13,310 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:35:13,333 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.023s
+2025-08-22 23:35:13,337 - INFO - 127.0.0.1 - - [22/Aug/2025 23:35:13] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:35:13,338 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.027s
+2025-08-22 23:35:13,338 - INFO - 127.0.0.1 - - [22/Aug/2025 23:35:13] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:35:20,325 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:35:20,326 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:35:20,326 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:35:20,326 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:35:20,327 - INFO - 127.0.0.1 - - [22/Aug/2025 23:35:20] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:35:20,327 - INFO - 127.0.0.1 - - [22/Aug/2025 23:35:20] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:35:20,330 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:35:20,330 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:35:20,331 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:35:20,331 - INFO - 127.0.0.1 - - [22/Aug/2025 23:35:20] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:35:20,332 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.003s
+2025-08-22 23:35:20,333 - INFO - 127.0.0.1 - - [22/Aug/2025 23:35:20] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:35:37,255 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:35:37,257 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:35:37,266 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.011s
+2025-08-22 23:35:37,266 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.009s
+2025-08-22 23:35:37,267 - INFO - 127.0.0.1 - - [22/Aug/2025 23:35:37] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:35:37,268 - INFO - 127.0.0.1 - - [22/Aug/2025 23:35:37] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:35:37,271 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:35:37,271 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:35:37,277 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.006s
+2025-08-22 23:35:37,280 - INFO - 127.0.0.1 - - [22/Aug/2025 23:35:37] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:35:37,284 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.013s
+2025-08-22 23:35:37,285 - INFO - 127.0.0.1 - - [22/Aug/2025 23:35:37] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:35:38,337 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:35:38,338 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:35:38,341 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.002s
+2025-08-22 23:35:38,341 - INFO - 127.0.0.1 - - [22/Aug/2025 23:35:38] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:35:38,342 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.005s
+2025-08-22 23:35:38,343 - INFO - 127.0.0.1 - - [22/Aug/2025 23:35:38] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:35:45,188 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:35:45,190 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:35:45,190 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.003s
+2025-08-22 23:35:45,190 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:35:45,190 - INFO - 127.0.0.1 - - [22/Aug/2025 23:35:45] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:35:45,191 - INFO - 127.0.0.1 - - [22/Aug/2025 23:35:45] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:35:45,192 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:35:45,195 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:35:45,197 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:35:45,198 - INFO - 127.0.0.1 - - [22/Aug/2025 23:35:45] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:35:45,199 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.007s
+2025-08-22 23:35:45,199 - INFO - 127.0.0.1 - - [22/Aug/2025 23:35:45] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:35:51,089 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:35:51,092 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:35:51,094 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.005s
+2025-08-22 23:35:51,094 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.002s
+2025-08-22 23:35:51,095 - INFO - 127.0.0.1 - - [22/Aug/2025 23:35:51] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:35:51,095 - INFO - 127.0.0.1 - - [22/Aug/2025 23:35:51] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:35:51,097 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:35:51,099 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:35:51,102 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.005s
+2025-08-22 23:35:51,102 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.003s
+2025-08-22 23:35:51,102 - INFO - 127.0.0.1 - - [22/Aug/2025 23:35:51] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:35:51,103 - INFO - 127.0.0.1 - - [22/Aug/2025 23:35:51] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:35:59,956 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:35:59,957 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:35:59,957 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:35:59,957 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.000s
+2025-08-22 23:35:59,958 - INFO - 127.0.0.1 - - [22/Aug/2025 23:35:59] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:35:59,958 - INFO - 127.0.0.1 - - [22/Aug/2025 23:35:59] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:35:59,959 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:35:59,962 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:35:59,965 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.002s
+2025-08-22 23:35:59,965 - INFO - 127.0.0.1 - - [22/Aug/2025 23:35:59] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:35:59,966 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.006s
+2025-08-22 23:35:59,966 - INFO - 127.0.0.1 - - [22/Aug/2025 23:35:59] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:36:07,253 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:36:07,254 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:36:07,255 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.003s
+2025-08-22 23:36:07,256 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.002s
+2025-08-22 23:36:07,256 - INFO - 127.0.0.1 - - [22/Aug/2025 23:36:07] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:36:07,256 - INFO - 127.0.0.1 - - [22/Aug/2025 23:36:07] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:36:07,258 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:36:07,259 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:36:07,263 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.005s
+2025-08-22 23:36:07,265 - INFO - 127.0.0.1 - - [22/Aug/2025 23:36:07] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:36:07,265 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.007s
+2025-08-22 23:36:07,266 - INFO - 127.0.0.1 - - [22/Aug/2025 23:36:07] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:36:11,638 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:36:11,643 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.005s
+2025-08-22 23:36:11,643 - INFO - 127.0.0.1 - - [22/Aug/2025 23:36:11] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:36:11,645 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:36:11,654 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.009s
+2025-08-22 23:36:11,655 - INFO - 127.0.0.1 - - [22/Aug/2025 23:36:11] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:36:34,241 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:36:34,242 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.002s
+2025-08-22 23:36:34,243 - INFO - 127.0.0.1 - - [22/Aug/2025 23:36:34] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:36:34,246 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:36:34,247 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 400 | Duration: 0.002s
+2025-08-22 23:36:34,249 - INFO - 127.0.0.1 - - [22/Aug/2025 23:36:34] "[31m[1mPOST /conversation HTTP/1.1[0m" 400 -
+2025-08-22 23:37:14,868 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:37:14,869 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:37:14,869 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:37:14,869 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:37:14,870 - INFO - 127.0.0.1 - - [22/Aug/2025 23:37:14] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:37:14,870 - INFO - 127.0.0.1 - - [22/Aug/2025 23:37:14] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:37:14,871 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:37:14,871 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:37:14,879 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.008s
+2025-08-22 23:37:14,884 - INFO - 127.0.0.1 - - [22/Aug/2025 23:37:14] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:37:14,886 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.014s
+2025-08-22 23:37:14,886 - INFO - 127.0.0.1 - - [22/Aug/2025 23:37:14] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:37:19,691 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:37:19,705 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.014s
+2025-08-22 23:37:19,705 - INFO - 127.0.0.1 - - [22/Aug/2025 23:37:19] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:37:21,588 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:37:21,589 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:37:21,590 - INFO - 127.0.0.1 - - [22/Aug/2025 23:37:21] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:37:21,595 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:37:21,600 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.005s
+2025-08-22 23:37:21,601 - INFO - 127.0.0.1 - - [22/Aug/2025 23:37:21] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:37:23,849 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:37:23,849 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.000s
+2025-08-22 23:37:23,850 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:37:23,850 - INFO - 127.0.0.1 - - [22/Aug/2025 23:37:23] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:37:23,851 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.002s
+2025-08-22 23:37:23,852 - INFO - 127.0.0.1 - - [22/Aug/2025 23:37:23] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:37:23,852 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:37:24,241 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.389s
+2025-08-22 23:37:24,241 - INFO - 127.0.0.1 - - [22/Aug/2025 23:37:24] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:37:43,543 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:37:43,544 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:37:43,544 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:37:43,545 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:37:43,545 - INFO - 127.0.0.1 - - [22/Aug/2025 23:37:43] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:37:43,546 - INFO - 127.0.0.1 - - [22/Aug/2025 23:37:43] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:37:43,548 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:37:43,550 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:37:43,555 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.005s
+2025-08-22 23:37:43,556 - INFO - 127.0.0.1 - - [22/Aug/2025 23:37:43] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:37:43,556 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.008s
+2025-08-22 23:37:43,556 - INFO - 127.0.0.1 - - [22/Aug/2025 23:37:43] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:37:43,884 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:37:43,885 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:37:43,886 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:37:43,886 - INFO - 127.0.0.1 - - [22/Aug/2025 23:37:43] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:37:43,887 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.003s
+2025-08-22 23:37:43,887 - INFO - 127.0.0.1 - - [22/Aug/2025 23:37:43] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:40:12,296 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:40:12,298 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:40:12,299 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.006s
+2025-08-22 23:40:12,299 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:40:12,300 - INFO - 127.0.0.1 - - [22/Aug/2025 23:40:12] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:40:12,300 - INFO - 127.0.0.1 - - [22/Aug/2025 23:40:12] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:40:12,302 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:40:12,303 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:40:12,317 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.014s
+2025-08-22 23:40:12,317 - INFO - 127.0.0.1 - - [22/Aug/2025 23:40:12] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:40:12,318 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.016s
+2025-08-22 23:40:12,318 - INFO - 127.0.0.1 - - [22/Aug/2025 23:40:12] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:40:16,655 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:40:16,656 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:40:16,656 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:40:16,658 - INFO - 127.0.0.1 - - [22/Aug/2025 23:40:16] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:40:16,659 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.003s
+2025-08-22 23:40:16,659 - INFO - 127.0.0.1 - - [22/Aug/2025 23:40:16] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:40:34,876 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:40:34,887 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:40:34,887 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.011s
+2025-08-22 23:40:34,887 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:40:34,891 - INFO - 127.0.0.1 - - [22/Aug/2025 23:40:34] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:40:34,891 - INFO - 127.0.0.1 - - [22/Aug/2025 23:40:34] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:40:34,893 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:40:34,901 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:40:34,904 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.003s
+2025-08-22 23:40:34,906 - INFO - 127.0.0.1 - - [22/Aug/2025 23:40:34] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:40:34,908 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.015s
+2025-08-22 23:40:34,909 - INFO - 127.0.0.1 - - [22/Aug/2025 23:40:34] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:40:49,759 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:40:49,760 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:40:49,760 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:40:49,760 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.000s
+2025-08-22 23:40:49,760 - INFO - 127.0.0.1 - - [22/Aug/2025 23:40:49] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:40:49,760 - INFO - 127.0.0.1 - - [22/Aug/2025 23:40:49] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:40:49,763 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:40:49,763 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:40:49,765 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:40:49,765 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.003s
+2025-08-22 23:40:49,766 - INFO - 127.0.0.1 - - [22/Aug/2025 23:40:49] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:40:49,766 - INFO - 127.0.0.1 - - [22/Aug/2025 23:40:49] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:40:51,055 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:40:51,055 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:40:51,056 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:40:51,057 - INFO - 127.0.0.1 - - [22/Aug/2025 23:40:51] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:40:51,057 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:40:51,058 - INFO - 127.0.0.1 - - [22/Aug/2025 23:40:51] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:40:52,629 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:40:52,630 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:40:52,630 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:40:52,631 - INFO - 127.0.0.1 - - [22/Aug/2025 23:40:52] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:40:52,632 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.003s
+2025-08-22 23:40:52,632 - INFO - 127.0.0.1 - - [22/Aug/2025 23:40:52] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:40:59,043 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:40:59,043 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:40:59,043 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.000s
+2025-08-22 23:40:59,043 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.000s
+2025-08-22 23:40:59,043 - INFO - 127.0.0.1 - - [22/Aug/2025 23:40:59] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:40:59,044 - INFO - 127.0.0.1 - - [22/Aug/2025 23:40:59] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:40:59,045 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:40:59,045 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:40:59,046 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:40:59,046 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:40:59,047 - INFO - 127.0.0.1 - - [22/Aug/2025 23:40:59] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:40:59,047 - INFO - 127.0.0.1 - - [22/Aug/2025 23:40:59] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:41:08,730 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:41:08,731 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:41:08,731 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:41:08,732 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.000s
+2025-08-22 23:41:08,732 - INFO - 127.0.0.1 - - [22/Aug/2025 23:41:08] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:41:08,732 - INFO - 127.0.0.1 - - [22/Aug/2025 23:41:08] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:41:08,733 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:41:08,735 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:41:08,735 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.002s
+2025-08-22 23:41:08,736 - INFO - 127.0.0.1 - - [22/Aug/2025 23:41:08] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:41:08,739 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.004s
+2025-08-22 23:41:08,739 - INFO - 127.0.0.1 - - [22/Aug/2025 23:41:08] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:41:10,988 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:41:10,990 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:41:10,991 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:41:10,991 - INFO - 127.0.0.1 - - [22/Aug/2025 23:41:10] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:41:10,991 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.003s
+2025-08-22 23:41:10,992 - INFO - 127.0.0.1 - - [22/Aug/2025 23:41:10] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:41:45,964 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:41:45,965 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:41:45,965 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:41:45,965 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:41:45,970 - INFO - 127.0.0.1 - - [22/Aug/2025 23:41:45] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:41:45,970 - INFO - 127.0.0.1 - - [22/Aug/2025 23:41:45] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:41:45,972 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:41:45,972 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:41:45,979 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.007s
+2025-08-22 23:41:45,982 - INFO - 127.0.0.1 - - [22/Aug/2025 23:41:45] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:41:45,984 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.012s
+2025-08-22 23:41:45,985 - INFO - 127.0.0.1 - - [22/Aug/2025 23:41:45] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:41:48,608 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:41:48,610 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:41:48,611 - INFO - 127.0.0.1 - - [22/Aug/2025 23:41:48] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:41:48,611 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:41:48,612 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:41:48,612 - INFO - 127.0.0.1 - - [22/Aug/2025 23:41:48] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:41:56,263 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:41:56,264 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:41:56,264 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:41:56,264 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.000s
+2025-08-22 23:41:56,264 - INFO - 127.0.0.1 - - [22/Aug/2025 23:41:56] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:41:56,264 - INFO - 127.0.0.1 - - [22/Aug/2025 23:41:56] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:41:56,268 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:41:56,269 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:41:56,270 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:41:56,271 - INFO - 127.0.0.1 - - [22/Aug/2025 23:41:56] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:41:56,271 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.003s
+2025-08-22 23:41:56,272 - INFO - 127.0.0.1 - - [22/Aug/2025 23:41:56] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:42:06,227 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:42:06,228 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:42:06,229 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:42:06,230 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:42:06,230 - INFO - 127.0.0.1 - - [22/Aug/2025 23:42:06] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:42:06,231 - INFO - 127.0.0.1 - - [22/Aug/2025 23:42:06] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:42:06,232 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:42:06,239 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:42:06,254 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.015s
+2025-08-22 23:42:06,265 - INFO - 127.0.0.1 - - [22/Aug/2025 23:42:06] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:42:06,269 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.036s
+2025-08-22 23:42:06,270 - INFO - 127.0.0.1 - - [22/Aug/2025 23:42:06] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:42:16,232 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:42:16,233 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:42:16,233 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:42:16,233 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.000s
+2025-08-22 23:42:16,233 - INFO - 127.0.0.1 - - [22/Aug/2025 23:42:16] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:42:16,233 - INFO - 127.0.0.1 - - [22/Aug/2025 23:42:16] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:42:16,235 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:42:16,235 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:42:16,237 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:42:16,237 - INFO - 127.0.0.1 - - [22/Aug/2025 23:42:16] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:42:16,237 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:42:16,238 - INFO - 127.0.0.1 - - [22/Aug/2025 23:42:16] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:42:28,776 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:42:28,777 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:42:28,780 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.004s
+2025-08-22 23:42:28,780 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.003s
+2025-08-22 23:42:28,782 - INFO - 127.0.0.1 - - [22/Aug/2025 23:42:28] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:42:28,782 - INFO - 127.0.0.1 - - [22/Aug/2025 23:42:28] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:42:28,784 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:42:28,784 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:42:28,794 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.010s
+2025-08-22 23:42:28,796 - INFO - 127.0.0.1 - - [22/Aug/2025 23:42:28] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:42:28,803 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.019s
+2025-08-22 23:42:28,803 - INFO - 127.0.0.1 - - [22/Aug/2025 23:42:28] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:42:39,426 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:42:39,427 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:42:39,427 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:42:39,427 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.000s
+2025-08-22 23:42:39,427 - INFO - 127.0.0.1 - - [22/Aug/2025 23:42:39] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:42:39,427 - INFO - 127.0.0.1 - - [22/Aug/2025 23:42:39] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:42:39,429 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:42:39,430 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:42:39,431 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:42:39,431 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:42:39,432 - INFO - 127.0.0.1 - - [22/Aug/2025 23:42:39] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:42:39,432 - INFO - 127.0.0.1 - - [22/Aug/2025 23:42:39] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:42:41,160 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:42:41,161 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:42:41,162 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:42:41,162 - INFO - 127.0.0.1 - - [22/Aug/2025 23:42:41] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:42:41,163 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.003s
+2025-08-22 23:42:41,163 - INFO - 127.0.0.1 - - [22/Aug/2025 23:42:41] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:42:48,354 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:42:48,354 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:42:48,354 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.000s
+2025-08-22 23:42:48,354 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.000s
+2025-08-22 23:42:48,354 - INFO - 127.0.0.1 - - [22/Aug/2025 23:42:48] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:42:48,355 - INFO - 127.0.0.1 - - [22/Aug/2025 23:42:48] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:42:48,356 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:42:48,356 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:42:48,357 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:42:48,357 - INFO - 127.0.0.1 - - [22/Aug/2025 23:42:48] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:42:48,358 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:42:48,358 - INFO - 127.0.0.1 - - [22/Aug/2025 23:42:48] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:42:52,853 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:42:52,854 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:42:52,854 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:42:52,855 - INFO - 127.0.0.1 - - [22/Aug/2025 23:42:52] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:42:52,856 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:42:52,856 - INFO - 127.0.0.1 - - [22/Aug/2025 23:42:52] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:42:55,840 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:42:55,840 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:42:55,840 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.000s
+2025-08-22 23:42:55,840 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.000s
+2025-08-22 23:42:55,841 - INFO - 127.0.0.1 - - [22/Aug/2025 23:42:55] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:42:55,841 - INFO - 127.0.0.1 - - [22/Aug/2025 23:42:55] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:42:55,842 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:42:55,842 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:42:55,842 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:42:55,843 - INFO - 127.0.0.1 - - [22/Aug/2025 23:42:55] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:42:55,843 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:42:55,843 - INFO - 127.0.0.1 - - [22/Aug/2025 23:42:55] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:42:57,947 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:42:57,948 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:42:57,949 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:42:57,949 - INFO - 127.0.0.1 - - [22/Aug/2025 23:42:57] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:42:57,949 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:42:57,950 - INFO - 127.0.0.1 - - [22/Aug/2025 23:42:57] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:43:00,518 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:43:00,518 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:43:00,519 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:43:00,519 - INFO - 127.0.0.1 - - [22/Aug/2025 23:43:00] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:43:00,520 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:43:00,520 - INFO - 127.0.0.1 - - [22/Aug/2025 23:43:00] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:44:37,458 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:44:37,459 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:44:37,459 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:44:37,460 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:44:37,461 - INFO - 127.0.0.1 - - [22/Aug/2025 23:44:37] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:44:37,461 - INFO - 127.0.0.1 - - [22/Aug/2025 23:44:37] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:44:37,465 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:44:37,465 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:44:37,476 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.010s
+2025-08-22 23:44:37,477 - INFO - 127.0.0.1 - - [22/Aug/2025 23:44:37] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:44:37,478 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.013s
+2025-08-22 23:44:37,479 - INFO - 127.0.0.1 - - [22/Aug/2025 23:44:37] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:44:38,791 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:44:38,792 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:44:38,796 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.004s
+2025-08-22 23:44:38,796 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.005s
+2025-08-22 23:44:38,796 - INFO - 127.0.0.1 - - [22/Aug/2025 23:44:38] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:44:38,797 - INFO - 127.0.0.1 - - [22/Aug/2025 23:44:38] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:44:42,069 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:44:42,080 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.011s
+2025-08-22 23:44:42,081 - INFO - 127.0.0.1 - - [22/Aug/2025 23:44:42] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:44:56,949 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:44:56,950 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:44:56,951 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:44:56,951 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:44:56,951 - INFO - 127.0.0.1 - - [22/Aug/2025 23:44:56] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:44:56,951 - INFO - 127.0.0.1 - - [22/Aug/2025 23:44:56] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:44:56,953 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:44:56,953 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:44:56,959 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.006s
+2025-08-22 23:44:56,959 - INFO - 127.0.0.1 - - [22/Aug/2025 23:44:56] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:44:56,960 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.007s
+2025-08-22 23:44:56,961 - INFO - 127.0.0.1 - - [22/Aug/2025 23:44:56] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:45:13,110 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:45:13,113 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.003s
+2025-08-22 23:45:13,114 - INFO - 127.0.0.1 - - [22/Aug/2025 23:45:13] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:45:13,116 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:45:13,127 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.011s
+2025-08-22 23:45:13,127 - INFO - 127.0.0.1 - - [22/Aug/2025 23:45:13] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:45:18,370 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:45:18,372 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:45:18,372 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:45:18,373 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:45:18,373 - INFO - 127.0.0.1 - - [22/Aug/2025 23:45:18] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:45:18,373 - INFO - 127.0.0.1 - - [22/Aug/2025 23:45:18] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:45:18,374 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:45:18,375 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:45:18,379 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.004s
+2025-08-22 23:45:18,381 - INFO - 127.0.0.1 - - [22/Aug/2025 23:45:18] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:45:18,389 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.015s
+2025-08-22 23:45:18,390 - INFO - 127.0.0.1 - - [22/Aug/2025 23:45:18] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:45:44,519 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:45:44,520 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:45:44,520 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:45:44,520 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:45:44,521 - INFO - 127.0.0.1 - - [22/Aug/2025 23:45:44] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:45:44,521 - INFO - 127.0.0.1 - - [22/Aug/2025 23:45:44] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:45:44,523 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:45:44,524 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:45:44,531 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.008s
+2025-08-22 23:45:44,532 - INFO - 127.0.0.1 - - [22/Aug/2025 23:45:44] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:45:44,532 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.009s
+2025-08-22 23:45:44,533 - INFO - 127.0.0.1 - - [22/Aug/2025 23:45:44] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:45:48,497 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:45:48,498 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:45:48,499 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:45:48,499 - INFO - 127.0.0.1 - - [22/Aug/2025 23:45:48] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:45:48,499 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.003s
+2025-08-22 23:45:48,500 - INFO - 127.0.0.1 - - [22/Aug/2025 23:45:48] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:45:50,087 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:45:50,087 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:45:50,087 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.000s
+2025-08-22 23:45:50,087 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.000s
+2025-08-22 23:45:50,087 - INFO - 127.0.0.1 - - [22/Aug/2025 23:45:50] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:45:50,088 - INFO - 127.0.0.1 - - [22/Aug/2025 23:45:50] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:45:50,089 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:45:50,089 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:45:50,090 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:45:50,090 - INFO - 127.0.0.1 - - [22/Aug/2025 23:45:50] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:45:50,091 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:45:50,091 - INFO - 127.0.0.1 - - [22/Aug/2025 23:45:50] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:46:12,040 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:46:12,042 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:46:12,044 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.005s
+2025-08-22 23:46:12,045 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.003s
+2025-08-22 23:46:12,046 - INFO - 127.0.0.1 - - [22/Aug/2025 23:46:12] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:46:12,046 - INFO - 127.0.0.1 - - [22/Aug/2025 23:46:12] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:46:12,049 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:46:12,060 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:46:12,063 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.003s
+2025-08-22 23:46:12,064 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.015s
+2025-08-22 23:46:12,064 - INFO - 127.0.0.1 - - [22/Aug/2025 23:46:12] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:46:12,064 - INFO - 127.0.0.1 - - [22/Aug/2025 23:46:12] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:46:15,590 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:46:15,598 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.008s
+2025-08-22 23:46:15,599 - INFO - 127.0.0.1 - - [22/Aug/2025 23:46:15] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:46:16,832 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:46:16,840 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.008s
+2025-08-22 23:46:16,841 - INFO - 127.0.0.1 - - [22/Aug/2025 23:46:16] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:46:17,607 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:46:17,608 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:46:17,608 - INFO - 127.0.0.1 - - [22/Aug/2025 23:46:17] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:46:17,610 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:46:17,617 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.007s
+2025-08-22 23:46:17,618 - INFO - 127.0.0.1 - - [22/Aug/2025 23:46:17] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:46:21,928 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:46:21,934 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.007s
+2025-08-22 23:46:21,935 - INFO - 127.0.0.1 - - [22/Aug/2025 23:46:21] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:46:22,886 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:46:22,886 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:46:22,887 - INFO - 127.0.0.1 - - [22/Aug/2025 23:46:22] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:46:22,889 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:46:22,896 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.007s
+2025-08-22 23:46:22,896 - INFO - 127.0.0.1 - - [22/Aug/2025 23:46:22] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:46:23,987 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:46:23,995 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.007s
+2025-08-22 23:46:23,995 - INFO - 127.0.0.1 - - [22/Aug/2025 23:46:23] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:46:24,774 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:46:24,780 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.007s
+2025-08-22 23:46:24,781 - INFO - 127.0.0.1 - - [22/Aug/2025 23:46:24] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:46:26,065 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:46:26,072 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.007s
+2025-08-22 23:46:26,073 - INFO - 127.0.0.1 - - [22/Aug/2025 23:46:26] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:46:29,363 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:46:29,363 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:46:29,364 - INFO - 127.0.0.1 - - [22/Aug/2025 23:46:29] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:46:29,366 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:46:29,372 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.006s
+2025-08-22 23:46:29,373 - INFO - 127.0.0.1 - - [22/Aug/2025 23:46:29] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:46:38,169 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:46:38,171 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.002s
+2025-08-22 23:46:38,171 - INFO - 127.0.0.1 - - [22/Aug/2025 23:46:38] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:46:38,174 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:46:38,181 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.008s
+2025-08-22 23:46:38,182 - INFO - 127.0.0.1 - - [22/Aug/2025 23:46:38] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:46:39,349 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:46:39,353 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.004s
+2025-08-22 23:46:39,353 - INFO - 127.0.0.1 - - [22/Aug/2025 23:46:39] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:46:40,500 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:46:40,506 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.006s
+2025-08-22 23:46:40,506 - INFO - 127.0.0.1 - - [22/Aug/2025 23:46:40] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:46:44,461 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:46:44,463 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.002s
+2025-08-22 23:46:44,464 - INFO - 127.0.0.1 - - [22/Aug/2025 23:46:44] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:46:44,465 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:46:44,471 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.006s
+2025-08-22 23:46:44,472 - INFO - 127.0.0.1 - - [22/Aug/2025 23:46:44] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:46:45,876 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:46:45,882 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.006s
+2025-08-22 23:46:45,883 - INFO - 127.0.0.1 - - [22/Aug/2025 23:46:45] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:46:46,674 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:46:46,680 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.006s
+2025-08-22 23:46:46,681 - INFO - 127.0.0.1 - - [22/Aug/2025 23:46:46] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:46:53,428 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:46:53,430 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.002s
+2025-08-22 23:46:53,430 - INFO - 127.0.0.1 - - [22/Aug/2025 23:46:53] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:46:53,432 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:46:53,438 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.006s
+2025-08-22 23:46:53,440 - INFO - 127.0.0.1 - - [22/Aug/2025 23:46:53] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:47:06,087 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:47:06,088 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:47:06,088 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:47:06,088 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:47:06,091 - INFO - 127.0.0.1 - - [22/Aug/2025 23:47:06] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:47:06,091 - INFO - 127.0.0.1 - - [22/Aug/2025 23:47:06] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:47:06,096 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:47:06,096 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:47:06,098 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:47:06,099 - INFO - 127.0.0.1 - - [22/Aug/2025 23:47:06] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:47:06,100 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.004s
+2025-08-22 23:47:06,101 - INFO - 127.0.0.1 - - [22/Aug/2025 23:47:06] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:48:53,652 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:48:53,653 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:48:53,655 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.005s
+2025-08-22 23:48:53,656 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.003s
+2025-08-22 23:48:53,658 - INFO - 127.0.0.1 - - [22/Aug/2025 23:48:53] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:48:53,659 - INFO - 127.0.0.1 - - [22/Aug/2025 23:48:53] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:48:53,664 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:48:53,664 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:48:53,678 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.013s
+2025-08-22 23:48:53,680 - INFO - 127.0.0.1 - - [22/Aug/2025 23:48:53] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:48:53,682 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.019s
+2025-08-22 23:48:53,683 - INFO - 127.0.0.1 - - [22/Aug/2025 23:48:53] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:49:05,728 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:49:05,729 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:49:05,730 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:49:05,730 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:49:05,731 - INFO - 127.0.0.1 - - [22/Aug/2025 23:49:05] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:49:05,731 - INFO - 127.0.0.1 - - [22/Aug/2025 23:49:05] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:49:05,733 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:49:05,735 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:49:05,741 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.005s
+2025-08-22 23:49:05,741 - INFO - 127.0.0.1 - - [22/Aug/2025 23:49:05] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:49:05,742 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.009s
+2025-08-22 23:49:05,742 - INFO - 127.0.0.1 - - [22/Aug/2025 23:49:05] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:49:08,117 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:49:08,118 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:49:08,119 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.002s
+2025-08-22 23:49:08,119 - INFO - 127.0.0.1 - - [22/Aug/2025 23:49:08] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:49:08,120 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:49:08,120 - INFO - 127.0.0.1 - - [22/Aug/2025 23:49:08] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:49:12,055 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:49:12,055 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:49:12,055 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:49:12,056 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.000s
+2025-08-22 23:49:12,056 - INFO - 127.0.0.1 - - [22/Aug/2025 23:49:12] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:49:12,056 - INFO - 127.0.0.1 - - [22/Aug/2025 23:49:12] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:49:12,060 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:49:12,060 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:49:12,061 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:49:12,062 - INFO - 127.0.0.1 - - [22/Aug/2025 23:49:12] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:49:12,062 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.003s
+2025-08-22 23:49:12,063 - INFO - 127.0.0.1 - - [22/Aug/2025 23:49:12] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:49:58,504 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:49:58,505 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:49:58,505 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:49:58,506 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:49:58,506 - INFO - 127.0.0.1 - - [22/Aug/2025 23:49:58] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:49:58,507 - INFO - 127.0.0.1 - - [22/Aug/2025 23:49:58] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:49:58,508 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:49:58,508 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:49:58,512 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.004s
+2025-08-22 23:49:58,512 - INFO - 127.0.0.1 - - [22/Aug/2025 23:49:58] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:49:58,512 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.004s
+2025-08-22 23:49:58,512 - INFO - 127.0.0.1 - - [22/Aug/2025 23:49:58] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:51:07,819 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:51:07,820 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:51:07,820 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:51:07,820 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:51:07,821 - INFO - 127.0.0.1 - - [22/Aug/2025 23:51:07] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:51:07,821 - INFO - 127.0.0.1 - - [22/Aug/2025 23:51:07] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:51:07,823 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:51:07,825 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:51:07,827 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.002s
+2025-08-22 23:51:07,827 - INFO - 127.0.0.1 - - [22/Aug/2025 23:51:07] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:51:07,827 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.005s
+2025-08-22 23:51:07,828 - INFO - 127.0.0.1 - - [22/Aug/2025 23:51:07] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:51:10,979 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:51:10,988 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.009s
+2025-08-22 23:51:10,989 - INFO - 127.0.0.1 - - [22/Aug/2025 23:51:10] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:51:11,830 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:51:11,837 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.007s
+2025-08-22 23:51:11,838 - INFO - 127.0.0.1 - - [22/Aug/2025 23:51:11] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:51:12,623 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:51:12,629 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.006s
+2025-08-22 23:51:12,630 - INFO - 127.0.0.1 - - [22/Aug/2025 23:51:12] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:51:13,325 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:51:13,326 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:51:13,326 - INFO - 127.0.0.1 - - [22/Aug/2025 23:51:13] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:51:13,328 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:51:13,335 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.007s
+2025-08-22 23:51:13,336 - INFO - 127.0.0.1 - - [22/Aug/2025 23:51:13] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:51:17,746 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:51:17,752 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.006s
+2025-08-22 23:51:17,752 - INFO - 127.0.0.1 - - [22/Aug/2025 23:51:17] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:51:40,714 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:51:40,716 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.003s
+2025-08-22 23:51:40,718 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:51:40,719 - INFO - 127.0.0.1 - - [22/Aug/2025 23:51:40] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:51:40,719 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:51:40,719 - INFO - 127.0.0.1 - - [22/Aug/2025 23:51:40] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:51:40,721 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:51:40,721 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:51:40,730 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.009s
+2025-08-22 23:51:40,736 - INFO - 127.0.0.1 - - [22/Aug/2025 23:51:40] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:51:40,737 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.016s
+2025-08-22 23:51:40,737 - INFO - 127.0.0.1 - - [22/Aug/2025 23:51:40] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:51:53,804 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:51:53,804 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:51:53,805 - INFO - 127.0.0.1 - - [22/Aug/2025 23:51:53] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:51:53,807 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:51:53,814 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.007s
+2025-08-22 23:51:53,815 - INFO - 127.0.0.1 - - [22/Aug/2025 23:51:53] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:51:55,360 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:51:55,366 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.007s
+2025-08-22 23:51:55,367 - INFO - 127.0.0.1 - - [22/Aug/2025 23:51:55] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:08,180 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:08,180 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:08,181 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:52:08,181 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.000s
+2025-08-22 23:52:08,181 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:08] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:52:08,181 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:08] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:08,183 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:08,183 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:08,189 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.006s
+2025-08-22 23:52:08,190 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:08] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:08,190 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.007s
+2025-08-22 23:52:08,190 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:08] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:52:22,117 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:22,117 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:22,117 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:52:22,117 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.000s
+2025-08-22 23:52:22,118 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:22] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:52:22,118 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:22] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:22,119 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:22,119 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:22,121 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:52:22,121 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:22] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:22,121 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:52:22,122 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:22] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:52:25,075 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:25,076 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:25,077 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:52:25,078 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.003s
+2025-08-22 23:52:25,078 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:25] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:25,078 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:25] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:52:30,291 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:30,292 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.001s
+2025-08-22 23:52:30,293 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:30,294 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:30] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:52:30,294 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:52:30,294 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:30] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:30,296 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:30,296 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:30,298 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.002s
+2025-08-22 23:52:30,299 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:30] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:30,300 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.004s
+2025-08-22 23:52:30,301 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:30] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:52:34,130 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:34,131 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:34,132 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:52:34,133 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:34] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:34,133 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.003s
+2025-08-22 23:52:34,133 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:34] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:52:40,511 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:40,512 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.002s
+2025-08-22 23:52:40,512 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:40,513 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:40] "OPTIONS /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:52:40,513 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:52:40,513 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:40] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:40,515 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:40,515 - INFO - [REQUEST] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:40,521 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.006s
+2025-08-22 23:52:40,524 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: GET | Endpoint: http://127.0.0.1:5000/categories/getList?userId=1 | Status: 200 | Duration: 0.010s
+2025-08-22 23:52:40,525 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:40] "GET /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:40,526 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:40] "GET /categories/getList?userId=1 HTTP/1.1" 200 -
+2025-08-22 23:52:41,972 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:41,984 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.012s
+2025-08-22 23:52:41,984 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:41] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:44,504 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:44,511 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.007s
+2025-08-22 23:52:44,512 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:44] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:45,485 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:45,491 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.006s
+2025-08-22 23:52:45,492 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:45] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:46,444 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:46,444 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:52:46,445 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:46] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:46,447 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:46,454 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.007s
+2025-08-22 23:52:46,455 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:46] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:47,276 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:47,281 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.005s
+2025-08-22 23:52:47,282 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:47] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:48,088 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:48,094 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.006s
+2025-08-22 23:52:48,095 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:48] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:48,762 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:48,768 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.007s
+2025-08-22 23:52:48,769 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:48] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:50,175 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:50,181 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.006s
+2025-08-22 23:52:50,182 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:50] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:50,772 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:50,779 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.006s
+2025-08-22 23:52:50,779 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:50] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:51,768 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:51,768 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:52:51,768 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:51] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:51,770 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:51,775 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.005s
+2025-08-22 23:52:51,776 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:51] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:52,256 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:52,262 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.006s
+2025-08-22 23:52:52,263 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:52] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:52,733 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:52,739 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.006s
+2025-08-22 23:52:52,739 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:52] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:53,168 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:53,172 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.004s
+2025-08-22 23:52:53,173 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:53] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:53,657 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:53,663 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.006s
+2025-08-22 23:52:53,664 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:53] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:54,075 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:54,079 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.005s
+2025-08-22 23:52:54,080 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:54] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:54,526 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:54,530 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.004s
+2025-08-22 23:52:54,531 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:54] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:54,987 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:54,993 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.006s
+2025-08-22 23:52:54,994 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:54] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:56,318 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:56,325 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.006s
+2025-08-22 23:52:56,326 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:56] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:56,994 - INFO - [REQUEST] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:56,995 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: OPTIONS | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.001s
+2025-08-22 23:52:56,996 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:56] "OPTIONS /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:56,998 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:57,003 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.006s
+2025-08-22 23:52:57,004 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:57] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:57,586 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:57,591 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.005s
+2025-08-22 23:52:57,592 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:57] "POST /conversation HTTP/1.1" 200 -
+2025-08-22 23:52:57,937 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1
+2025-08-22 23:52:57,943 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/conversation | Status: 200 | Duration: 0.006s
+2025-08-22 23:52:57,944 - INFO - 127.0.0.1 - - [22/Aug/2025 23:52:57] "POST /conversation HTTP/1.1" 200 -

@@ -533,33 +533,15 @@ function ConversationCardModal({isOpen, onClose, categories, onAdd, item}) {
   )
 }
 
-export function ConversationCard({ item, onTextClick, isNotEnd, onAdd, categories }) {
+export function ConversationCard({ item, onTextClick, isNotEnd, onAdd, categories, onConversationAdd }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const longPressTimer = useRef(null);
   const isLongPress = useRef(false);
 
-  // TTS 기능
-  const handleTTS = (e) => {
-    e.stopPropagation(); 
-    
-    // getTTS({text: item.text})
-    // TODO 더 자연스러운 TTS 구현하기
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-      
-      const utterance = new SpeechSynthesisUtterance(item.text);
-      utterance.lang = 'ko-KR'; // 한국어 설정
-      utterance.rate = 0.8; // 속도 조절
-      window.speechSynthesis.speak(utterance);
-    } else {
-      alert('이 브라우저는 음성 합성을 지원하지 않습니다.');
-    }
-  };
-
   // 클릭 핸들러
   const handleClick = () => {
     if (!isLongPress.current && onTextClick) {
-      onTextClick(item.text);
+      onTextClick(item.value);
     }
     isLongPress.current = false;
   };
@@ -608,10 +590,10 @@ export function ConversationCard({ item, onTextClick, isNotEnd, onAdd, categorie
         onTouchEnd={handleTouchEnd}
       >
         <div className={styles.textCardContent}>
-          <p>{item.text}</p>
+          <p>{item.value}</p>
           <button 
             className={styles.ttsButton}
-            onClick={handleTTS}
+            onClick={(e)=>{e.stopPropagation(); onConversationAdd(item.value);}}
             title="텍스트 읽기"
           >
             <span className="material-symbols-outlined">volume_up</span>
@@ -623,7 +605,7 @@ export function ConversationCard({ item, onTextClick, isNotEnd, onAdd, categorie
       <ConversationCardModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        item={item.text}
+        item={item.value}
         onAdd={onAdd}
         categories={categories}
       />

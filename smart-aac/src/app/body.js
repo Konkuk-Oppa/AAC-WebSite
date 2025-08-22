@@ -107,15 +107,15 @@ function Bookmark({
   )
 }
 
-function Conversation({conversation, onTextClick, onAdd, categories, orderType}) {
+function Conversation({conversation, onTextClick, onAdd, categories, orderType, onConversationAdd}) {
   const [currentList, setCurrentList] = useState(conversation);
   const setOrder = (list) => {
     if (orderType === "usageCount") {
       setCurrentList([...list].sort((a, b) => b.usageCount - a.usageCount) || []);
     } else if (orderType === "abc") {
-      setCurrentList([...list].sort((a, b) => a.text.localeCompare(b.text)) || []);
+      setCurrentList([...list].sort((a, b) => a.value.localeCompare(b.value)) || []);
     } else {
-      setCurrentList([...list].sort((a, b) => b.lastUseDate - a.lastUseDate) || []);
+      setCurrentList([...list].sort((a, b) => new Date(b.lastUseDate) - new Date(a.lastUseDate)) || []);
     }
   }
 
@@ -137,6 +137,7 @@ function Conversation({conversation, onTextClick, onAdd, categories, orderType})
           isNotEnd={currentList.length != index+1}
           onAdd={onAdd}
           categories={categories}
+          onConversationAdd={onConversationAdd}
         />
       ))}
     </div>
@@ -323,7 +324,8 @@ export default function Body({
   orderType,
   conversation,
   onAdd,
-  onUpdate
+  onUpdate,
+  onConversationAdd
 }) {
   return (
     <div className={styles.bodyContainer}>
@@ -345,6 +347,7 @@ export default function Body({
           onTextClick={onTextClick} 
           categories={categories}
           orderType={orderType}
+          onConversationAdd={onConversationAdd}
         />
       )}
       {menu === "category" && (
