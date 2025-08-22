@@ -54,9 +54,9 @@ export async function getUser({email}) {
 }
 
 /* CATEGORY */
-export async function getCategories() {
+export async function getCategories(userID) {
   try {
-    const response = await fetch(`${BASE_URL}/categories/getList`, {
+    const response = await fetch(`${BASE_URL}/categories/getList?userId=${userID}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -160,6 +160,10 @@ export async function addText(text, type, cat0ID, cat1ID = null, cat2ID = null) 
       });
     }
 
+    if (response.status === 400) {
+      return {success: false, error: "이미 존재"}
+    }
+
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -177,6 +181,7 @@ export async function addText(text, type, cat0ID, cat1ID = null, cat2ID = null) 
 }
 
 export async function updateBookmark(userID, textID) {
+  console.log("controller", userID, textID)
   try {
     const response = await fetch(`${BASE_URL}/users/${userID}/bookmark`, {
       method: 'POST',

@@ -1173,171 +1173,174 @@ export default function Home() {
     );
   };
 
-  // TextCard 즐겨찾기 토글 핸들러
-  const handleTextBookmark = async (textID) => {
-    let bookmark = false;
+  /**** 완료 **** TextCard 즐겨찾기 토글 핸들러 ****/
+  const handleTextBookmark = async (textID, text, cat0Name, cat1Name = "", cat2Name = "") => {
+    try{
+      const userID = JSON.parse(localStorage.getItem('user'));
+      const res = await updateBookmark(Number(userID), textID);
 
-    const userID = JSON.parse(localStorage.getItem('user'));
-    updateBookmark(userID, textID)
-
-
-    const prevCategories = [...categories];
-
-    setCategories(prev => {
-      const updatedCategories = prev.map(cat0 => {
-        if (cat0.name === cat0Name) {
-          if (cat1Name === "") {
-            // category1이 ""면 cat0의 list에서 직접 처리
-            return {
-              ...cat0,
-              list: cat0.list ? cat0.list.map(textItem => {
-                if (textItem.text === text) {
-                  bookmark = !textItem.bookmark;
-                  return { ...textItem, bookmark: !textItem.bookmark };
-                }
-                return textItem;
-              }) : []
-            };
-          } else {
-            // category1이 있는 경우
-            return {
-              ...cat0,
-              subcategories: cat0.subcategories.map(cat1 => {
-                if (cat1.name === cat1Name) {
-                  if (cat2Name === "") {
-                    // category2가 ""면 cat1의 list에서 처리
-                    return {
-                      ...cat1,
-                      list: cat1.list ? cat1.list.map(textItem => {
-                        if (textItem.text === text) {
-                          bookmark = !textItem.bookmark;
-                          return { ...textItem, bookmark: !textItem.bookmark };
-                        }
-                        return textItem;
-                      }) : []
-                    };
-                  } else {
-                    // category2가 있는 경우
-                    return {
-                      ...cat1,
-                      subcategories: cat1.subcategories.map(cat2 => {
-                        if (cat2.name === cat2Name) {
-                          return {
-                            ...cat2,
-                            list: cat2.list ? cat2.list.map(textItem => {
-                              if (textItem.text === text) {
-                                bookmark = !textItem.bookmark;
-                                return { ...textItem, bookmark: !textItem.bookmark };
-                              }
-                              return textItem;
-                            }) : []
-                          };
-                        }
-                        return cat2;
-                      })
-                    };
-                  }
-                }
-                return cat1;
-              })
-            };
-          }
-        }
-        return cat0;
-      });
-      
-      localStorage.setItem("categories", JSON.stringify(updatedCategories));
-      return updatedCategories;
-    });
-
-    // 서버 요청
-    return await controlServer(
-      prevCategories,
-      async () => {return await updateBookmark(text, cat0Name, cat1Name, cat2Name, bookmark);},
-      `"${text}"의 즐겨찾기가 ${bookmark ? "추가" : "해제"}되었습니다.`,
-      "즐겨찾기 업데이트에 실패했습니다."
-    );
-  };
-
-  /**** 완료 **** 카테고리에 새 단어/문장 추가하는 함수 ****/
-  const handleTextAdd = async (text, type, cat0Name, cat1Name = "", cat2Name = "") => {
-  try {
-    const newCatNames = [];
-    console.log(categoryID);
-    if (!categoryID?.[cat0Name]) newCatNames.push(cat0Name);
-    if (cat1Name && !categoryID?.[cat1Name]) newCatNames.push(cat1Name);
-    if (cat2Name && !categoryID?.[cat2Name]) newCatNames.push(cat2Name);
-
-    if (newCatNames.length > 0) {
-      const res = await addCategory({ catNames: newCatNames });
       if (!res.success) {
-        showError("카테고리 추가에 실패했습니다.");
+        showError("즐겨찾기 업데이트에 실패했습니다.");
         return false;
       }
 
-      for (const catName in res.data) {
-        categoryID[catName] = res.data[catName];
-      }
-    }
+      const bookmark = res.data;
 
-    const cat0ID = categoryID[cat0Name];
-    const cat1ID = cat1Name ? categoryID[cat1Name] : null;
-    const cat2ID = cat2Name ? categoryID[cat2Name] : null;
+      setCategories(prev => {
+        const updatedCategories = prev.map(cat0 => {
+          if (cat0.name === cat0Name) {
+            if (cat1Name === "") {
+              // category1이 ""면 cat0의 list에서 직접 처리
+              return {
+                ...cat0,
+                list: cat0.list ? cat0.list.map(textItem => {
+                  if (textItem.text === text) {
+                    return { ...textItem, bookmark: bookmark };
+                  }
+                  return textItem;
+                }) : []
+              };
+            } else {
+              // category1이 있는 경우
+              return {
+                ...cat0,
+                subcategories: cat0.subcategories.map(cat1 => {
+                  if (cat1.name === cat1Name) {
+                    if (cat2Name === "") {
+                      // category2가 ""면 cat1의 list에서 처리
+                      return {
+                        ...cat1,
+                        list: cat1.list ? cat1.list.map(textItem => {
+                          if (textItem.text === text) {
+                            return { ...textItem, bookmark: bookmark };
+                          }
+                          return textItem;
+                        }) : []
+                      };
+                    } else {
+                      // category2가 있는 경우
+                      return {
+                        ...cat1,
+                        subcategories: cat1.subcategories.map(cat2 => {
+                          if (cat2.name === cat2Name) {
+                            return {
+                              ...cat2,
+                              list: cat2.list ? cat2.list.map(textItem => {
+                                if (textItem.text === text) {
+                                  return { ...textItem, bookmark: bookmark };
+                                }
+                                return textItem;
+                              }) : []
+                            };
+                          }
+                          return cat2;
+                        })
+                      };
+                    }
+                  }
+                  return cat1;
+                })
+              };
+            }
+          }
+          return cat0;
+        });
+        
+        localStorage.setItem("categories", JSON.stringify(updatedCategories));
+        return updatedCategories;
+      });
 
-    const textRes = await addText(text, type, cat0ID, cat1ID, cat2ID);
-    if (!textRes.success) {
-      showError("어휘가 추가되지 않았습니다.");
+      showInfo(`"${text}"의 즐겨찾기가 ${bookmark ? "추가" : "해제"}되었습니다.`);
+      return true; 
+    } catch (error) {
+      console.error("error: ", error);
+      showError("작업 중 오류가 발생했습니다.");
       return false;
     }
-    const textID = textRes.data.id;
-    
-    setCategories(prevCats => {
-      const newCats = JSON.parse(JSON.stringify(prevCats));
-      const newText = { id: textID, text, bookmark: false, usageCount: 0, lastUseDate: null };
+  };
 
-      let cat0 = newCats.find(cat => cat.id === cat0ID);
-      if (!cat0) {
-        cat0 = { id: cat0ID, name: cat0Name, subcategories: [], list: [] };
-        newCats.push(cat0);
-      }
 
-      // 1차 하위 카테고리에 추가
-      if (cat1ID === null) {
-        cat0.list.push(newText);
-      } else {
-        let cat1 = cat0.subcategories.find(cat => cat.id === cat1ID);
-        if (!cat1) {
-          cat1 = { id: cat1ID, name: cat1Name, subcategories: [], list: [] };
-          cat0.subcategories.push(cat1);
+  /**** 완료 **** 카테고리에 새 단어/문장 추가하는 함수 ****/
+  const handleTextAdd = async (text, type, cat0Name, cat1Name = "", cat2Name = "") => {
+    try {
+      const newCatNames = [];
+      console.log(categoryID);
+      if (!categoryID?.[cat0Name]) newCatNames.push(cat0Name);
+      if (cat1Name && !categoryID?.[cat1Name]) newCatNames.push(cat1Name);
+      if (cat2Name && !categoryID?.[cat2Name]) newCatNames.push(cat2Name);
+
+      if (newCatNames.length > 0) {
+        const res = await addCategory({ catNames: newCatNames });
+        if (!res.success) {
+          showError("카테고리 추가에 실패했습니다.");
+          return false;
         }
 
-        // 2차 하위 카테고리에 추가
-        if (cat2ID === null) {
-          cat1.list.push(newText);
-        } else {
-          let cat2 = cat1.subcategories.find(cat => cat.id === cat2ID);
-          if (!cat2) {
-            cat2 = { id: cat2ID, name: cat2Name, list: [] };
-            cat1.subcategories.push(cat2);
-          }
-          cat2.list.push(newText);
+        for (const catName in res.data) {
+          categoryID[catName] = res.data[catName];
         }
       }
+
+      const cat0ID = categoryID[cat0Name];
+      const cat1ID = cat1Name ? categoryID[cat1Name] : null;
+      const cat2ID = cat2Name ? categoryID[cat2Name] : null;
+
+      const textRes = await addText(text, type, cat0ID, cat1ID, cat2ID);
+      if (!textRes.success) {
+        console.log(textRes.error);
+        if (textRes.error === "이미 존재") showError("이미 존재하는 어휘입니다.");
+        else showError("어휘가 추가되지 않았습니다.");
+        return false;
+      }
+      const textID = textRes.data.id;
       
-      // 최종적으로 계산된 새로운 상태를 로컬 스토리지에 저장하고 반환
-      localStorage.setItem("categories", JSON.stringify(newCats));
-      return newCats;
-    });
+      setCategories(prevCats => {
+        const newCats = JSON.parse(JSON.stringify(prevCats));
+        const newText = { id: textID, text, bookmark: false, usageCount: 0, lastUseDate: null };
 
-    showInfo("어휘가 추가되었습니다.");
-    return true; // 성공적으로 모든 작업 완료
+        let cat0 = newCats.find(cat => cat.id === cat0ID);
+        if (!cat0) {
+          cat0 = { id: cat0ID, name: cat0Name, subcategories: [], list: [] };
+          newCats.push(cat0);
+        }
 
-  } catch (error) {
-    console.error("An error occurred in handleTextAdd:", error);
-    showError("작업 중 오류가 발생했습니다.");
-    return false;
-  }
-};
+        // 1차 하위 카테고리에 추가
+        if (cat1ID === null) {
+          cat0.list.push(newText);
+        } else {
+          let cat1 = cat0.subcategories.find(cat => cat.id === cat1ID);
+          if (!cat1) {
+            cat1 = { id: cat1ID, name: cat1Name, subcategories: [], list: [] };
+            cat0.subcategories.push(cat1);
+          }
+
+          // 2차 하위 카테고리에 추가
+          if (cat2ID === null) {
+            cat1.list.push(newText);
+          } else {
+            let cat2 = cat1.subcategories.find(cat => cat.id === cat2ID);
+            if (!cat2) {
+              cat2 = { id: cat2ID, name: cat2Name, list: [] };
+              cat1.subcategories.push(cat2);
+            }
+            cat2.list.push(newText);
+          }
+        }
+        
+        // 최종적으로 계산된 새로운 상태를 로컬 스토리지에 저장하고 반환
+        localStorage.setItem("categories", JSON.stringify(newCats));
+        return newCats;
+      });
+
+      showInfo("어휘가 추가되었습니다.");
+      return true; // 성공적으로 모든 작업 완료
+
+    } catch (error) {
+      console.error("An error occurred in handleTextAdd:", error);
+      showError("작업 중 오류가 발생했습니다.");
+      return false;
+    }
+  };
 
   // 유저가 타이핑 한 후 0.2초 후 추천 목록 불러오기
   const handleInputChange = (newInput) => {
@@ -1365,7 +1368,7 @@ export default function Home() {
   // 컴포넌트 언마운트 시 타이머 정리
   useEffect(() => {
     async function fetchCategories() {
-      const res = await getCategories();
+      const res = await getCategories(Number(JSON.parse(localStorage.getItem('user'))));
       
       if (!res.success) {
         showError("카테고리 불러오기 실패");

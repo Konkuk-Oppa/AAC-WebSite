@@ -33,6 +33,7 @@ function Bookmark({
           cat2.list.map((item) => {
             if (item.bookmark) {
               list.push({
+                id: item.id,
                 text: item.text,
                 category0: cat0.name,
                 category1: cat1.name,
@@ -47,6 +48,7 @@ function Bookmark({
         cat1.list.map((item) => {
           if (item.bookmark) {
             list.push({
+              id:item.id,
               text: item.text,
               category0: cat0.name,
               category1: cat1.name,
@@ -61,6 +63,7 @@ function Bookmark({
       cat0.list.map((item) => {
         if (item.bookmark) {
           list.push({
+            id: item.id,
             text: item.text,
             category0: cat0.name,
             category1: '',

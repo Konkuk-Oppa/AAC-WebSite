@@ -208,7 +208,7 @@ function TextCardModal({isOpen, onClose, item, onEdit, onDelete, onBookmark, cur
                 <button 
                   className={styles.textCardOption}
                   onClick={() => {
-                    onBookmark(item.id);
+                    onBookmark(item.id, item.text, cat0Name, cat1Name, cat2Name);
                     onClose();
                   }}
                 >
