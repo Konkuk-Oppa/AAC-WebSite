@@ -1,5 +1,25 @@
 const BASE_URL = "http://127.0.0.1:5000";
 
+/* BULK */
+export async function addBulk() {
+  try{
+    let response = await fetch(`${BASE_URL}/bulk/file`, {
+      method: 'POST',
+    });
+
+    if (!response.ok) {
+      const result = await response.json();
+      throw new Error(`HTTP error! status: ${response.status} ${result.error}`);
+    }
+
+    const data = await response.json();
+    return {success: true, data: data};
+  } catch (error) {
+    console.error('Error adding bulk data:', error);
+    return {success: false, error: error.message};
+  }
+}
+
 /* RECOMMEND */
 export async function getRecommends({text}) {
   // 목업용 데이터

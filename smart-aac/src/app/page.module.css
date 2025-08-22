@@ -118,6 +118,10 @@
   font-size: large;
 }
 
+.noGap{
+  padding: 3px 5px 0 5px;
+}
+
 .sentenceItem hr{
   margin: 7px 3px 0 3px;
   background: #C1C1C1;

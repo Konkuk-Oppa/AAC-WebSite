@@ -303,6 +303,7 @@ function Category({categories, onTextClick, onEdit, onDelete, onBookmark, onCate
               currentPath={currentPath}
               categories={categories}
               onUpdate={onUpdate}
+              isCategory={true}
             />
           )
         })}

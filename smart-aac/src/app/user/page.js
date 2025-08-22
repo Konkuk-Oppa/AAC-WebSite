@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import styles from './user.module.css';
-import { makeUser, getUser } from '../controller';
+import { makeUser, getUser, addBulk } from '../controller';
 
 export default function Login() {
   const router = useRouter();
@@ -73,6 +73,7 @@ export default function Login() {
     res = await getUser({ email: formData.email });
     if (res.success) {
       localStorage.setItem('user', JSON.stringify(res.data.id));
+      addBulk();
       router.push('/');
     } else {
       setErrors({ email: '서버 연결 실패' });

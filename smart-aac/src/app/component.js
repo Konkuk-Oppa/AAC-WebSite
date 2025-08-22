@@ -274,7 +274,8 @@ export function TextCard({
   onBookmark, 
   currentPath,
   categories,
-  onUpdate
+  onUpdate,
+  isCategory = false
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const longPressTimer = useRef(null);
@@ -354,7 +355,7 @@ export function TextCard({
   return(
     <>
       <div 
-        className={styles.sentenceItem}
+        className={`${styles.sentenceItem} ${isCategory ? styles.noGap : ''}`}
         onClick={handleClick}
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
