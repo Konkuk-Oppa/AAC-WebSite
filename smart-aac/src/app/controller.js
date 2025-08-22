@@ -301,6 +301,31 @@ export async function editText(textID, newText, cat0ID, cat1ID = null, cat2ID = 
 }
 
 /* CATEGORY */
+export async function deleteCategory(catID) {
+  try {
+    const response = await fetch(`${BASE_URL}/categories/${catID}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const result = await response.json();
+    if (!result.success) {
+      return { success: false, error: result.error };
+    }
+
+    return { success: true };
+  } catch (error) {
+    console.error('Error deleting category:', error);
+    return { success: false, error: error.message };
+  }
+}
+
 export async function editCategory(oldCatName, newCatName, cat0Name = "", cat1Name = "") {
   // 디버깅용 코드
   return { success: true };
@@ -329,32 +354,7 @@ export async function editCategory(oldCatName, newCatName, cat0Name = "", cat1Na
   }
 }
 
-export async function deleteCategory(cat, cat0Name = "", cat1Name = "") {
-  // 디버깅용 코드
-  return { success: true };
-  try {
-    const response = await fetch('/delete-category', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        cat: cat,
-        cat0Name: cat0Name,
-        cat1Name: cat1Name,
-      })
-    });
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    return { success: true };
-  } catch (error) {
-    console.error('Error deleting category:', error);
-    return { success: false, error: error.message };
-  }
-}
 
 /* CONVERSATION */
 export async function addConversation(text) {

@@ -934,50 +934,57 @@ export default function Home() {
     );
   };
 
-  // 카테고리 삭제 핸들러
-  const handleCategoryDelete = async (currentPath, categoryName) => {
-    const level = currentPath.length;
+  /**** 완료 **** 카테고리 삭제 핸들러 ****/
+  const handleCategoryDelete = async (currentPath, categoryName, categoryID) => {
+    try{
+      const res = await deleteCategory(categoryID);
 
-    const prevCategories = [...categories];
+      if (!res.success) {
+        showError("카테고리 삭제에 실패했습니다.");
+        return false;
+      }
 
-    setCategories(prev => {
-      const updatedCategories = prev.filter(cat0 => {
-        if (level === 0 && cat0.name === categoryName) {
-          return false; // 최상위 카테고리 삭제
-        }
-        return true;
-      }).map(cat0 => {
-        if (level === 1 && cat0.name === currentPath[0]) {
-          // 두 번째 레벨 카테고리 삭제
-          return {
-            ...cat0,
-            subcategories: cat0.subcategories.filter(cat1 => cat1.name !== categoryName)
-          };
-        } else if (level === 2 && cat0.name === currentPath[0]) {
-          // 세 번째 레벨 카테고리 삭제
-          return {
-            ...cat0,
-            subcategories: cat0.subcategories.map(cat1 => 
-              cat1.name === currentPath[1] ? {
-                ...cat1,
-                subcategories: cat1.subcategories.filter(cat2 => cat2.name !== categoryName)
-              } : cat1
-            )
-          };
-        }
-        return cat0;
+      const level = currentPath.length;
+
+      setCategories(prev => {
+        const updatedCategories = prev.filter(cat0 => {
+          if (level === 0 && cat0.name === categoryName) {
+            return false; // 최상위 카테고리 삭제
+          }
+          return true;
+        }).map(cat0 => {
+          if (level === 1 && cat0.name === currentPath[0]) {
+            // 두 번째 레벨 카테고리 삭제
+            return {
+              ...cat0,
+              subcategories: cat0.subcategories.filter(cat1 => cat1.name !== categoryName)
+            };
+          } else if (level === 2 && cat0.name === currentPath[0]) {
+            // 세 번째 레벨 카테고리 삭제
+            return {
+              ...cat0,
+              subcategories: cat0.subcategories.map(cat1 => 
+                cat1.name === currentPath[1] ? {
+                  ...cat1,
+                  subcategories: cat1.subcategories.filter(cat2 => cat2.name !== categoryName)
+                } : cat1
+              )
+            };
+          }
+          return cat0;
+        });
+        
+        localStorage.setItem("categories", JSON.stringify(updatedCategories));
+        return updatedCategories;
       });
-      
-      localStorage.setItem("categories", JSON.stringify(updatedCategories));
-      return updatedCategories;
-    });
 
-    return await controlServer(
-      prevCategories,
-      async () => {return await deleteCategory(categoryName, currentPath.length > 0 ? currentPath[0] : "", currentPath.length > 1 ? currentPath[1] : "");},
-      `"${categoryName}" 카테고리가 삭제되었습니다.`,
-      "카테고리 삭제에 실패했습니다."
-    );
+      showInfo(`"${categoryName}" 카테고리가 삭제되었습니다.`);
+      return true; 
+    } catch (error) {
+      console.error("error: ", error);
+      showError("작업 중 오류가 발생했습니다.");
+      return false;
+    }
   };
 
   // TextCard 클릭 핸들러 - input에 텍스트 설정

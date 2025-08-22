@@ -14,7 +14,7 @@ function CategoryModal({isOpen, onClose, category, onEdit, onDelete, currentPath
   };
 
   const handleDeleteConfirm = async () => {
-    if (await onDelete(currentPath, category.name)) {
+    if (await onDelete(currentPath, category.name, category.id)) {
       setShowDeleteConfirm(false);
       onClose();
     }
