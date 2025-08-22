@@ -120,7 +120,7 @@ function TextCardModal({isOpen, onClose, item, onEdit, onDelete, onBookmark, cur
   };
 
   const handleDeleteConfirm = async () => {
-    if (await onDelete(item.text, cat0Name, cat1Name, cat2Name)) {
+    if (await onDelete(item.id, item.text, cat0Name, cat1Name, cat2Name)) {
       setShowDeleteConfirm(false);
       onClose();
     }
@@ -220,7 +220,7 @@ function TextCardModal({isOpen, onClose, item, onEdit, onDelete, onBookmark, cur
                 <button 
                   className={styles.addSubmitButton}
                   onClick={async () => {
-                    if(await onEdit(item.text, newText, cat0Name, cat1Name, cat2Name)) {
+                    if(await onEdit(item.id, item.text, newText, cat0Name, cat1Name, cat2Name)) {
                       onClose();
                     }
                   }}

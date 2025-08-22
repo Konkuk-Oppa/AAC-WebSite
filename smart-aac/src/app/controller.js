@@ -120,6 +120,9 @@ export async function addCategory({catNames}) {
     for (let cat of result.data.created_categories) {
       createdID[cat.value] = cat.id;
     }
+    for (let cat of result.data.skipped_categories) {
+      createdID[cat.value] = cat.id; 
+    }
 
     return { success: true, data: createdID };
   } catch (error) {
@@ -181,7 +184,6 @@ export async function addText(text, type, cat0ID, cat1ID = null, cat2ID = null) 
 }
 
 export async function updateBookmark(userID, textID) {
-  console.log("controller", userID, textID)
   try {
     const response = await fetch(`${BASE_URL}/users/${userID}/bookmark`, {
       method: 'POST',
@@ -205,25 +207,38 @@ export async function updateBookmark(userID, textID) {
   }
 }
 
-export async function deleteText(text, cat0Name, cat1Name = "", cat2Name = "") {
-  // 디버깅용 코드
-  return { success: true };
+export async function deleteText(textID) {
   try {
-    const response = await fetch('/delete', {
-      method: 'POST',
+    let response;
+
+    response = await fetch(`${BASE_URL}/sentences/${textID}`, {
+      method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        text: text,
-        cat0Name: cat0Name,
-        cat1Name: cat1Name,
-        cat2Name: cat2Name
-      })
+      }
     });
+    
+    if (response.status === 404) {
+      response = await fetch(`${BASE_URL}/words/${textID}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+
+      if (response.status === 404) {
+        return { success: false, error: "해당 텍스트가 존재하지 않습니다." };
+      }
+    }
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const result = await response.json();
+
+    if (!result.success) {
+      return { success: false, error: result.error };
     }
 
     return { success: true };
@@ -233,31 +248,54 @@ export async function deleteText(text, cat0Name, cat1Name = "", cat2Name = "") {
   }
 }
 
-export async function editText(oldText, newText, cat0Name, cat1Name = "", cat2Name = "") {
-  // 디버깅용 코드
-  return { success: true };
+export async function editText(textID, newText, cat0ID, cat1ID = null, cat2ID = null) {
   try {
-    const response = await fetch('/edit', {
-      method: 'POST',
+    let response;
+    const body = JSON.stringify({
+      value: newText,
+      category0_id: cat0ID,
+      category1_id: cat1ID,
+      category2_id: cat2ID
+    });
+
+    response = await fetch(`${BASE_URL}/sentences/${textID}`, {
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        oldText: oldText,
-        newText: newText,
-        cat0Name: cat0Name,
-        cat1Name: cat1Name,
-        cat2Name: cat2Name
-      })
+      body: body
     });
+    
+    if (response.status === 404) {
+      response = await fetch(`${BASE_URL}/words/${textID}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: body
+      });
 
+      if (response.status === 404) {
+        return { success: false, error: "해당 텍스트가 존재하지 않습니다." };
+      }
+    }
+
+    if (response.status === 400) {
+      return { success: false, error: "중복" };
+    }
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
+    const result = await response.json();
+
+    if (!result.success) {
+      return { success: false, error: result.error };
+    }
+
     return { success: true };
   } catch (error) {
-    console.error('Error editing text:', error);
+    console.error('Error deleting text:', error);
     return { success: false, error: error.message };
   }
 }
