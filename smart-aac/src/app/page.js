@@ -488,8 +488,17 @@ function AddModal({isOpen, onClose, categories, onAdd}) {
   const [isCategoryModalOpen, setIsCategoryModalOpen] = useState(false);
   const [isAdding, setIsAdding] = useState(false); // 중복 실행 방지
   const [recommendCategories, setRecommendCategories] = useState([]);
+  const [toast, setToast] = useState({ isVisible: false, message: "", type: "error" }); // 토스트 팝업 상태
+
+  const hideToast = () => {
+    setToast({ isVisible: false, message: "", type: "error" });
+  };
 
   const openCategoryModal = async () => {
+    if (!inputText.trim()) {
+      setToast({ isVisible: true, message: "추가할 단어나 문장을 입력하세요", type: "error" });
+      return;
+    }
     setIsCategoryModalOpen(true);
   
     // 추가할 단어 및 문장의 추천 카테고리 가져오기
@@ -616,6 +625,12 @@ function AddModal({isOpen, onClose, categories, onAdd}) {
           />
         </div>
       </div>
+      <Toast
+        isVisible={toast.isVisible}
+        message={toast.message}
+        type={toast.type}
+        onClose={hideToast}
+      />
     </div>
   )
 }
@@ -640,14 +655,6 @@ export default function Home() {
   const closeAddModal = () => setIsAddModalOpen(false);
 
   const { categoryID, setCategoryID } = useStore();
-
-  
-  // const [conversation, setConversation] = useState([
-  //   { text: "input에서 수정한 텍스트", lastUseDate: new Date(2025, 7, 15), usageCount: 3},
-  //   { text: "input에서 수정한 텍스트f", lastUseDate: new Date(2025, 7, 18), usageCount: 2},
-  //   { text: "input에서 입력한 텍스트", lastUseDate: new Date(2025, 7, 19), usageCount: 1},
-  //   { text: "모음", lastUseDate: new Date(2025, 7, 20), usageCount: 1}
-  // ]);
 
   const history = useMemo(() => {
     const allItems = [];

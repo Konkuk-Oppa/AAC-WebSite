@@ -1,5 +1,6 @@
 const BASE_URL = "http://127.0.0.1:5000";
 
+/* RECOMMEND */
 export async function getRecommends({text}) {
   // 목업용 데이터
   const recommends = [
@@ -7,6 +8,33 @@ export async function getRecommends({text}) {
     "~한 상황",
   ]
   return {success: true, data: recommends};
+}
+
+export async function getRecommendCategory({text}) {
+  try{
+    const response = await fetch(`${BASE_URL}/api/category/recommend`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ text })
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return {success: true, data: data.recommendations};
+  } catch (error) {
+    console.error('Error fetching recommended categories:', error);
+    return {success: false, error: error.message};
+  }
+}
+
+/* TTS */
+export async function getTTS({text}) {
+  return { success:true, data: "음성 합성된 텍스트" }
 }
 
 /* USER */
@@ -51,49 +79,6 @@ export async function getUser({email}) {
     console.error('Error fetching user by email:', error);
     return { success: false, error: error.message };
   }
-}
-
-/* CATEGORY */
-export async function getCategories(userID) {
-  try {
-    const response = await fetch(`${BASE_URL}/categories/getList?userId=${userID}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const data = await response.json();
-
-    return { success: true, data: data };
-  } catch (error) {
-    console.error('Error fetching categories:', error);
-    return { success: false, error: error.message };
-  }
-}
-
-// 입력한 단어 및 문장에 따라 카테고리 추천
-export async function getRecommendCategory({text}) {
-  // 목업용 데이터
-  const recommendCategory = [
-    {
-      category0:"인사",
-      category1:"안녕",
-      category2:"안녕하세요"
-    }, {
-      category0:"음식",
-      category1:"한식",
-      category2:""
-    }];
-    return {success: true, data: recommendCategory};
-}
-
-export async function getTTS({text}) {
-  return { success:true, data: "음성 합성된 텍스트" }
 }
 
 /* TEXT */
@@ -331,6 +316,28 @@ export async function updateText(userID, textID) {
 }
 
 /* CATEGORY */
+export async function getCategories(userID) {
+  try {
+    const response = await fetch(`${BASE_URL}/categories/getList?userId=${userID}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    return { success: true, data: data };
+  } catch (error) {
+    console.error('Error fetching categories:', error);
+    return { success: false, error: error.message };
+  }
+}
+
 export async function deleteCategory(catID) {
   try {
     const response = await fetch(`${BASE_URL}/categories/${catID}`, {
