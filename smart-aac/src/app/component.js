@@ -1,4 +1,4 @@
-import { getRecommendCategory, getTTS } from './controller';
+import { getRecommendCategory, getTTS, updateText } from './controller';
 import { CategorySelectModal } from './page';
 import styles from './page.module.css';
 import { useState, useRef, useCallback } from 'react';
@@ -99,7 +99,7 @@ function CategoryModal({isOpen, onClose, category, onEdit, onDelete, currentPath
 // TextCard 옵션 모달
 function TextCardModal({isOpen, onClose, item, onEdit, onDelete, onBookmark, currentPath, categories}) {
   if (!isOpen) return null;
-  console.log(item);
+
   const [newText, setNewText] = useState(item.text);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
@@ -273,17 +273,30 @@ export function TextCard({
   onDelete, 
   onBookmark, 
   currentPath,
-  categories
+  categories,
+  onUpdate
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const longPressTimer = useRef(null);
   const isLongPress = useRef(false);
 
   // TTS 기능
-  const handleTTS = (e) => {
+  const handleTTS = async (e) => {
     e.stopPropagation(); 
 
-    getTTS({text: item.text})
+    let cat0Name = "", cat1Name = "", cat2Name = "";
+    if (currentPath.length === 0) {
+      cat0Name = item.category0;
+      cat1Name = item.category1;
+      cat2Name = item.category2;
+    } else {
+      if (currentPath.length > 0) cat0Name = currentPath[0];
+      if (currentPath.length > 1) cat1Name = currentPath[1];
+      if (currentPath.length > 2) cat2Name = currentPath[2];
+    }
+    onUpdate(item.id, cat0Name, cat1Name, cat2Name);
+
+    // getTTS({text: item.text})
     // TODO 더 자연스러운 TTS 구현하기
     if ('speechSynthesis' in window) {
       window.speechSynthesis.cancel();

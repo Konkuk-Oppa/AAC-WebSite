@@ -2,7 +2,7 @@
 import styles from "./page.module.css";
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import Body from "./body";
-import { addText, getRecommendCategory, getRecommends, updateBookmark, editText, deleteText, editCategory, deleteCategory, getTTS, addConversation, getCategory, getCategories, addCategory } from "./controller";
+import { addText, getRecommendCategory, getRecommends, updateBookmark, editText, deleteText, editCategory, deleteCategory, getTTS, addConversation, getCategories, addCategory, updateText } from "./controller";
 import { TextCard } from "./component";
 import useStore from "./categoryID";
 
@@ -11,7 +11,7 @@ function History({history, onClick}) {
   return (
     <div className={styles.history} onClick={onClick}>
       {history.length == 0 && "기록"}
-      {history.slice(-2).map((item, index) => {
+      {history.slice(0, 2).map((item, index) => {
         return <div key={index}>{item.text}</div>
       })}
     </div>
@@ -25,7 +25,8 @@ function HistoryModal({
   onTextClick,
   onEdit,
   onDelete,
-  onBookmark
+  onBookmark,
+  onUpdate
 }) {
   if (!isOpen) return null;
 
@@ -50,6 +51,7 @@ function HistoryModal({
                 onDelete={onDelete}
                 onBookmark={onBookmark}
                 currentPath={[]}
+                onUpdate={onUpdate}
               />
             ))
           )}
@@ -1318,6 +1320,78 @@ export default function Home() {
     }
   };
 
+  const handleTextUpdate = async (textID, cat0Name, cat1Name = "", cat2Name = "") => {
+    try {
+      const userID = JSON.parse(localStorage.getItem('user'));
+      const res = await updateText(userID, textID);
+
+      if (!res.success) {
+        showError("업데이트에 실패했습니다.");
+        return false;
+      }
+
+      setCategories(prev => {
+        const updatedCategories = prev.map(cat0 => {
+          if (cat0.name === cat0Name) {
+            if (cat1Name === "") {
+              // category1이 ""면 cat0의 list에서 직접 처리
+              return {
+                ...cat0,
+                list: cat0.list ? cat0.list.map(textItem => 
+                  textItem.id === textID ? { ...textItem, usageCount: textItem.usageCount + 1, lastUseDate: new Date() } : textItem
+                ) : []
+              };
+            } else {
+              return {
+                ...cat0,
+                subcategories: cat0.subcategories.map(cat1 => {
+                  if (cat1.name === cat1Name) {
+                    if (cat2Name === "") {
+                      // category2가 ""면 cat1의 list에서 처리
+                      return {
+                        ...cat1,
+                        list: cat1.list ? cat1.list.map(textItem => 
+                          textItem.id === textID ? { ...textItem, usageCount: textItem.usageCount + 1, lastUseDate: new Date() } : textItem
+                        ) : []
+                      };
+                    } else {
+                      // category2가 있는 경우 cat2의 list에서 처리
+                      return {
+                        ...cat1,
+                        subcategories: cat1.subcategories.map(cat2 => {
+                          if (cat2.name === cat2Name) {
+                            return {
+                              ...cat2,
+                              list: cat2.list ? cat2.list.map(textItem => 
+                                textItem.id === textID ? { ...textItem, usageCount: textItem.usageCount + 1, lastUseDate: new Date() } : textItem
+                              ) : []
+                            };
+                          }
+                          return cat2;
+                        })
+                      };
+                    }
+                  }
+                  return cat1;
+                })
+              };
+            }
+          }
+          return cat0;
+        });
+
+        localStorage.setItem("categories", JSON.stringify(updatedCategories));
+        return updatedCategories;
+      });
+
+      return true; 
+    } catch (error) {
+      console.error("error: ", error);
+      showError("작업 중 오류가 발생했습니다.");
+      return false;
+    }
+  };
+
   // 유저가 타이핑 한 후 0.2초 후 추천 목록 불러오기
   const handleInputChange = (newInput) => {
     setInput(newInput);
@@ -1391,6 +1465,7 @@ export default function Home() {
         orderType={orderType}
         conversation={conversation}
         onAdd={handleTextAdd}
+        onUpdate={handleTextUpdate}
       />
       <InputSection
         openHistoryModal={openHistoryModal}
@@ -1412,6 +1487,7 @@ export default function Home() {
         onDelete={handleTextDelete}
         onBookmark={handleTextBookmark}
         onEdit={handleTextEdit}
+        onUpdate={handleTextUpdate}
       />
       <AddModal
         isOpen={isAddModalOpen}

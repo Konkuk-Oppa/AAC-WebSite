@@ -300,6 +300,36 @@ export async function editText(textID, newText, cat0ID, cat1ID = null, cat2ID = 
   }
 }
 
+export async function updateText(userID, textID) {
+  try{
+    const response = await fetch(`${BASE_URL}/common-word/usage`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        user_id: userID,
+        common_word_ids: [textID]
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const result = await response.json();
+
+    if (!result.success) {
+      return { success: false, error: result.error };
+    }
+
+    return { success: true };
+  } catch (error) {
+    console.error('Error updating text:', error);
+    return { success: false, error: error.message };  
+  }
+}
+
 /* CATEGORY */
 export async function deleteCategory(catID) {
   try {
@@ -357,8 +387,6 @@ export async function editCategory(catID, newCatName) {
     return { success: false, error: error.message };
   }
 }
-
-
 
 /* CONVERSATION */
 export async function addConversation(text) {

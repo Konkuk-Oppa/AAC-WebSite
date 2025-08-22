@@ -9,7 +9,8 @@ function Bookmark({
   onEdit, 
   onDelete, 
   onBookmark,
-  orderType       // usageCount, abc, default
+  orderType,       // usageCount, abc, default
+  onUpdate
 }) {
   const [sentences, setSentences] = useState([]);
   const [originalSentences, setOriginalSentences] = useState([]);
@@ -98,6 +99,7 @@ function Bookmark({
             onBookmark={onBookmark}
             currentPath={[]}
             categories={categories}
+            onUpdate={onUpdate}
           />
         )
       })}
@@ -141,7 +143,7 @@ function Conversation({conversation, onTextClick, onAdd, categories, orderType})
   )
 }
 
-function Category({categories, onTextClick, onEdit, onDelete, onBookmark, onCategoryEdit, onCategoryDelete, orderType}) {
+function Category({categories, onTextClick, onEdit, onDelete, onBookmark, onCategoryEdit, onCategoryDelete, orderType, onUpdate}) {
   const [currentPath, setCurrentPath] = useState([]);
   const [currentCategory, setCurrentCategory] = useState(categories);
   const [currentList, setCurrentList] = useState([]);
@@ -299,6 +301,7 @@ function Category({categories, onTextClick, onEdit, onDelete, onBookmark, onCate
               onBookmark={onBookmark}
               currentPath={currentPath}
               categories={categories}
+              onUpdate={onUpdate}
             />
           )
         })}
@@ -319,7 +322,8 @@ export default function Body({
   onCategoryDelete,
   orderType,
   conversation,
-  onAdd
+  onAdd,
+  onUpdate
 }) {
   return (
     <div className={styles.bodyContainer}>
@@ -331,6 +335,7 @@ export default function Body({
           onDelete={onDelete}
           onBookmark={onBookmark}
           orderType={orderType}
+          onUpdate={onUpdate}
         />
       )}
       {menu === "conversation" && (
@@ -352,6 +357,7 @@ export default function Body({
           onCategoryEdit={onCategoryEdit}
           onCategoryDelete={onCategoryDelete}
           orderType={orderType}
+          onUpdate={onUpdate}
         />
       )}
     </div>
