@@ -72,9 +72,13 @@ export default function Login() {
 
     res = await getUser({ email: formData.email });
     if (res.success) {
-        router.push('/');
+      if (JSON.parse(localStorage.getItem('user')) != res.data.id) {
+        localStorage.setItem('samUser', JSON.stringify(false));
+      }
+      localStorage.setItem('user', JSON.stringify(res.data.id));
+      router.push('/');
     } else {
-        setErrors({ email: '서버 연결 실패' });
+      setErrors({ email: '서버 연결 실패' });
     }
     setIsSubmitting(false);
   };

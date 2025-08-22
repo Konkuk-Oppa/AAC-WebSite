@@ -2,7 +2,7 @@
 import styles from "./page.module.css";
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import Body from "./body";
-import { addText, getRecommendCategory, getRecommends, updateBookmark, editText, deleteText, editCategory, deleteCategory, getTTS, addConversation } from "./controller";
+import { addText, getRecommendCategory, getRecommends, updateBookmark, editText, deleteText, editCategory, deleteCategory, getTTS, addConversation, getCategory, getCategories, addCategory } from "./controller";
 import { TextCard } from "./component";
 
 // 화면 상단 두개 보여주는 기록
@@ -665,6 +665,7 @@ export default function Home() {
   const [recommends, setRecommends] = useState([]);
   const [toast, setToast] = useState({ isVisible: false, message: "", type: "error" }); // 토스트 팝업 상태
   const [orderType, setOrderType] = useState("default");          // 정렬 기능
+  const [categories, setCategories] = useState([]); // 카테고리 목록
 
   const debounceTimeoutRef = useRef(null);          // 너무 낮은 recommend 불러오기 방지용
   const addingRef = useRef(false);                  // 추가 중 여부 체크용
@@ -674,72 +675,73 @@ export default function Home() {
   const openAddModal = () => setIsAddModalOpen(true);
   const closeAddModal = () => setIsAddModalOpen(false);
 
-  const [categories, setCategories] = useState([
-    {
-      id: 1000,
-      name: "인사",
-      subcategories: [
-        {
-          id: 1100,
-          name: "안녕",
-          subcategories: [ // [Dto, Dto, commonWordUser[]]
-            { id: 1110, name: "안녕하세요", list: [{id: 13, text:"안녕하세요", bookmark:false, usageCount:1, lastUseDate: new Date(2025, 7, 15)}, {id: 14, text: "반갑습니다", bookmark:true, usageCount:2, lastUseDate: new Date(2025, 7, 18)}] },
-            { id: 1120, name: "안녕히 가세요", list: [{id: 15, text:"안녕히 가세요", bookmark:false, usageCount:1, lastUseDate: new Date(2025, 7, 19)}, {id: 16, text: "다음에 봐요", bookmark:true, usageCount:2, lastUseDate: new Date(2025, 7, 20)}] },
-          ],
-          list:[{id: 17, text:"안녕", bookmark:false, usageCount:0, lastUseDate: null}, {id: 18, text:"하이", bookmark:true, usageCount:2, lastUseDate: new Date(2025, 7, 22)}, {id: 19, text:"헬로우", bookmark:false, usageCount:1, lastUseDate: new Date(2025, 7, 23)}]
-        },
-        {
-          id: 1001,
-          name: "감사",
-          subcategories: [
-            { id: 1200, name: "고맙습니다", list: [{id: 20, text:"고맙습니다", bookmark:false, usageCount:1, lastUseDate: new Date(2025, 7, 24)}, {id: 21, text: "감사해요", bookmark:true, usageCount:2, lastUseDate: new Date(2025, 7, 25)}] },
-            { id: 1220, name: "죄송합니다", list: [{id: 22, text:"죄송합니다", bookmark:false, usageCount:1, lastUseDate: new Date(2025, 7, 26)}, {id: 23, text: "미안해요", bookmark:true, usageCount:2, lastUseDate: new Date(2025, 7, 27)}] },
-          ],
-          list: [{id: 24, text:"빠른 감사", bookmark:false, usageCount:1, lastUseDate: new Date(2025, 7, 28)}, {id: 25, text:"정말 감사합니다", bookmark:true, usageCount:2, lastUseDate: new Date(2025, 7, 29)}]
-        },
-      ],
-      list: [{id: 26, text:"빠른 인사", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id: 27, text:"안녕", bookmark:true, usageCount:2, lastUseDate: new Date()}]
-    },
-    {
-      id:200,
-      name: "음식",
-      subcategories: [
-        {
-          id: 210,
-          name: "한식",
-          subcategories: [
-            { id: 2000, name: "밥류", list: [{id: 2200, text:"밥 주세요", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id: 2201, text:"비빔밥 주세요", bookmark:true, usageCount:2, lastUseDate: new Date()}] },
-            { id: 2001, name: "국물", list: [{id: 2220, text:"김치찌개 주세요", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id: 2221, text:"된장찌개 주세요", bookmark:true, usageCount:2, lastUseDate: new Date()}] }
-          ],
-          list: []
-        },
-        {
-          id: 220,
-          name: "양식",
-          subcategories: [
-            { id: 2200, name: "파스타", list: [{id: 2200, text:"스파게티 주세요", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id: 2201, text:"카르보나라 주세요", bookmark:true, usageCount:2, lastUseDate: new Date()}] },
-            { id: 2300, name: "피자", list: [{id: 2300, text:"피자 주세요", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id: 2301, text:"치즈피자 주세요", bookmark:true, usageCount:2, lastUseDate: new Date()}] }
-          ]
-        }
-      ],
-      list: [{id: 2400, text:"음식 주문", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id: 2401, text:"메뉴 추천해주세요", bookmark:true, usageCount:2, lastUseDate: new Date()}]
-    },
-    {
-      id: 3000,
-      name: "일상",
-      subcategories: [
-        {
-          id: 3100,
-          name: "병원",
-          subcategories: [
-            { id: 3110, name: "증상", list: [{id:3111, text:"아파요", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id:3112, text:"열이 나요", bookmark:true, usageCount:2, lastUseDate: new Date()}, {id:3113, text:"머리가 아파요", bookmark:false, usageCount:1, lastUseDate: new Date()}] },
-            { id: 3120, name: "예약", list: [{id:3121, text:"예약하고 싶어요", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id:3122, text:"진료 받고 싶어요", bookmark:true, usageCount:2, lastUseDate: new Date()}] },
-          ],
-          list: [{id: 3130, text:"괜찮아요", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id: 3131, text:"별일 아니에요", bookmark:true, usageCount:2, lastUseDate: new Date()}]
-        }
-      ]
-    }
-  ]);
+  /* 목업 데이터 */
+  // const [categories, setCategories] = useState([
+  //   {
+  //     id: 1000,
+  //     name: "인사",
+  //     subcategories: [
+  //       {
+  //         id: 1100,
+  //         name: "안녕",
+  //         subcategories: [ // [Dto, Dto, commonWordUser[]]
+  //           { id: 1110, name: "안녕하세요", list: [{id: 13, text:"안녕하세요", bookmark:false, usageCount:1, lastUseDate: new Date(2025, 7, 15)}, {id: 14, text: "반갑습니다", bookmark:true, usageCount:2, lastUseDate: new Date(2025, 7, 18)}] },
+  //           { id: 1120, name: "안녕히 가세요", list: [{id: 15, text:"안녕히 가세요", bookmark:false, usageCount:1, lastUseDate: new Date(2025, 7, 19)}, {id: 16, text: "다음에 봐요", bookmark:true, usageCount:2, lastUseDate: new Date(2025, 7, 20)}] },
+  //         ],
+  //         list:[{id: 17, text:"안녕", bookmark:false, usageCount:0, lastUseDate: null}, {id: 18, text:"하이", bookmark:true, usageCount:2, lastUseDate: new Date(2025, 7, 22)}, {id: 19, text:"헬로우", bookmark:false, usageCount:1, lastUseDate: new Date(2025, 7, 23)}]
+  //       },
+  //       {
+  //         id: 1001,
+  //         name: "감사",
+  //         subcategories: [
+  //           { id: 1200, name: "고맙습니다", list: [{id: 20, text:"고맙습니다", bookmark:false, usageCount:1, lastUseDate: new Date(2025, 7, 24)}, {id: 21, text: "감사해요", bookmark:true, usageCount:2, lastUseDate: new Date(2025, 7, 25)}] },
+  //           { id: 1220, name: "죄송합니다", list: [{id: 22, text:"죄송합니다", bookmark:false, usageCount:1, lastUseDate: new Date(2025, 7, 26)}, {id: 23, text: "미안해요", bookmark:true, usageCount:2, lastUseDate: new Date(2025, 7, 27)}] },
+  //         ],
+  //         list: [{id: 24, text:"빠른 감사", bookmark:false, usageCount:1, lastUseDate: new Date(2025, 7, 28)}, {id: 25, text:"정말 감사합니다", bookmark:true, usageCount:2, lastUseDate: new Date(2025, 7, 29)}]
+  //       },
+  //     ],
+  //     list: [{id: 26, text:"빠른 인사", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id: 27, text:"안녕", bookmark:true, usageCount:2, lastUseDate: new Date()}]
+  //   },
+  //   {
+  //     id:200,
+  //     name: "음식",
+  //     subcategories: [
+  //       {
+  //         id: 210,
+  //         name: "한식",
+  //         subcategories: [
+  //           { id: 2000, name: "밥류", list: [{id: 2200, text:"밥 주세요", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id: 2201, text:"비빔밥 주세요", bookmark:true, usageCount:2, lastUseDate: new Date()}] },
+  //           { id: 2001, name: "국물", list: [{id: 2220, text:"김치찌개 주세요", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id: 2221, text:"된장찌개 주세요", bookmark:true, usageCount:2, lastUseDate: new Date()}] }
+  //         ],
+  //         list: []
+  //       },
+  //       {
+  //         id: 220,
+  //         name: "양식",
+  //         subcategories: [
+  //           { id: 2200, name: "파스타", list: [{id: 2200, text:"스파게티 주세요", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id: 2201, text:"카르보나라 주세요", bookmark:true, usageCount:2, lastUseDate: new Date()}] },
+  //           { id: 2300, name: "피자", list: [{id: 2300, text:"피자 주세요", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id: 2301, text:"치즈피자 주세요", bookmark:true, usageCount:2, lastUseDate: new Date()}] }
+  //         ]
+  //       }
+  //     ],
+  //     list: [{id: 2400, text:"음식 주문", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id: 2401, text:"메뉴 추천해주세요", bookmark:true, usageCount:2, lastUseDate: new Date()}]
+  //   },
+  //   {
+  //     id: 3000,
+  //     name: "일상",
+  //     subcategories: [
+  //       {
+  //         id: 3100,
+  //         name: "병원",
+  //         subcategories: [
+  //           { id: 3110, name: "증상", list: [{id:3111, text:"아파요", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id:3112, text:"열이 나요", bookmark:true, usageCount:2, lastUseDate: new Date()}, {id:3113, text:"머리가 아파요", bookmark:false, usageCount:1, lastUseDate: new Date()}] },
+  //           { id: 3120, name: "예약", list: [{id:3121, text:"예약하고 싶어요", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id:3122, text:"진료 받고 싶어요", bookmark:true, usageCount:2, lastUseDate: new Date()}] },
+  //         ],
+  //         list: [{id: 3130, text:"괜찮아요", bookmark:false, usageCount:1, lastUseDate: new Date()}, {id: 3131, text:"별일 아니에요", bookmark:true, usageCount:2, lastUseDate: new Date()}]
+  //       }
+  //     ]
+  //   }
+  // ]);
   
   const history = useMemo(() => {
     const allItems = [];
@@ -1251,45 +1253,29 @@ export default function Home() {
   };
 
   // (완성) 카테고리에 새 단어/문장 추가하는 함수
-  const handleTextAdd = async (text, type, cat0Name, cat1Name = "", cat2Name = "") => {
+  const handleTextAdd = async (
+    text, type, 
+    cat0ID, cat0Name, 
+    cat1ID = null, cat1Name = "", 
+    cat2ID = null, cat2Name = ""
+  ) => {
     // 이미 실행 중이면 무시
     if (addingRef.current) return;
 
-    const prevCategories = [...categories];
-    const isDuplicate = categories.some(cat0 => {
-      if (cat0.name === cat0Name) {
-        if (cat1Name === "") {
-          return cat0.list.some(item => item.text === text);
-        } else {
-          return cat0.subcategories.some(cat1 => {
-            if (cat1.name === cat1Name) {
-              if (cat2Name === "") {
-                return cat1.list.some(item => item.text === text);
-              } else {
-                return cat1.subcategories.some(cat2 => {
-                  if (cat2.name === cat2Name) {
-                    return cat2.list.some(item => item.text === text);
-                  }
-                  return false;
-                });
-              }
-            }
-            return false;
-          });
-        }
-      }
-      return false;
-    });
-    
-    // 이미 존재하는 항목이라면 return
-    if (isDuplicate) {
-      showError("이미 존재하는 항목입니다.");
-      return false;
-    }
-
     addingRef.current = true;
+    const prevCategories = [...categories];
+
     setCategories(prevCats => {
+      const newCatName = [];
+      if (cat0ID === null) newCatName.push(cat0Name);
+      if (cat1ID === null && cat1Name !== "") newCatName.push(cat1Name);
+      if (cat2ID === null && cat2Name !== "") newCatName.push(cat2Name);
+
+      addCategory(newCatName);
+
       const newCats = [...prevCats];
+
+      
       
       // 메인 카테고리 찾기 또는 생성
       let cat0Index = newCats.findIndex(cat => cat.name === cat0Name);
@@ -1376,7 +1362,13 @@ export default function Home() {
   };
 
   // 컴포넌트 언마운트 시 타이머 정리
-  useEffect(() => {
+  useEffect(async () => {
+    const res = await getCategories();
+    
+    if (res.success) {
+      
+    }
+
     // 여기에 사용자 어휘들 불러오는 컨트롤러
     return () => {
       if (debounceTimeoutRef.current) {

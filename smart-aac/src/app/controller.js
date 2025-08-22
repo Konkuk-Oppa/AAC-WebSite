@@ -53,31 +53,28 @@ export async function getUser({email}) {
   }
 }
 
-export async function checkEmailAvailable(email) {
+/* CATEGORY */
+export async function getCategories() {
   try {
-    const response = await fetch(`${BASE_URL}/users/by-email`, {
-      method: 'POST',
+    const response = await fetch(`${BASE_URL}/categories/getList`, {
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email })
     });
 
-    if (response.status === 404) {
-      // 404는 사용자가 없다는 뜻이므로 사용 가능한 이메일
-      return { success: true, available: true };
-    } else if (response.ok) {
-      // 200은 사용자가 존재한다는 뜻이므로 사용 불가능한 이메일
-      return { success: true, available: false };
-    } else {
+    if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
+
+    const data = await response.json();
+
+    return { success: true, data: data };
   } catch (error) {
-    console.error('Error checking email availability:', error);
+    console.error('Error fetching categories:', error);
     return { success: false, error: error.message };
   }
 }
-
 
 // 입력한 단어 및 문장에 따라 카테고리 추천
 export async function getRecommendCategory({text}) {
@@ -100,30 +97,80 @@ export async function getTTS({text}) {
 }
 
 /* TEXT */
-export async function addText(text, type, cat0Name, cat1Name = "", cat2Name = "") {
-  // 디버깅 용 코드
-  return {success: true};
-
-  try {
-    const response = await fetch('/add', {
+export async function addCategory({catNames}) {
+  try{
+    const response = await fetch(`${BASE_URL}/bulk/categories`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        text: text,
-        type: type,
-        cat0Name: cat0Name,
-        cat1Name: cat1Name,
-        cat2Name: cat2Name
-      })
+      body: JSON.stringify({ categories: catNames })
     });
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    return { success: true };
+    const result = await response.json();
+    const createdID = {};
+    if (!result.success) {
+      return { success: false, error: result.error };
+    }
+
+    for (let cat of result.created_categories) {
+      createdID[cat.value] = cat.id;
+    }
+
+    return { success: true, data: createdID };
+  } catch (error) {
+    console.error('Error adding text:', error);
+    return { success: false, error: error.message };
+  }
+}
+
+
+export async function addText(text, type, cat0ID, cat0Name, cat1ID = null, cat1Name = "", cat2ID = null, cat2Name = "") {
+  try {
+    let response, result;
+
+    if (type === 'sentence') {
+      response = await fetch(`${BASE_URL}/sentences`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          value: text,
+          category0_id: cat0ID,
+          category1_id: cat1ID,
+          category2_id: cat2ID
+        })
+      });
+    } else {
+      response = await fetch(`${BASE_URL}/words`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          value: text,
+          category0_id: cat0ID,
+          category1_id: cat1ID,
+          category2_id: cat2ID
+        })
+      });
+    }
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    result = await response.json();
+
+    if (!result.success) {
+      return { success: false, error: result.error };
+    }
+    return { success: true, data: result.sentence };
   } catch (error) {
     console.error('Error adding text:', error);
     return { success: false, error: error.message };
