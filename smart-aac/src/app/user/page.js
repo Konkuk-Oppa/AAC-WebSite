@@ -72,9 +72,6 @@ export default function Login() {
 
     res = await getUser({ email: formData.email });
     if (res.success) {
-      if (JSON.parse(localStorage.getItem('user')) != res.data.id) {
-        localStorage.setItem('samUser', JSON.stringify(false));
-      }
       localStorage.setItem('user', JSON.stringify(res.data.id));
       router.push('/');
     } else {

@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import Body from "./body";
 import { addText, getRecommendCategory, getRecommends, updateBookmark, editText, deleteText, editCategory, deleteCategory, getTTS, addConversation, getCategory, getCategories, addCategory } from "./controller";
 import { TextCard } from "./component";
+import useStore from "./categoryID";
 
 // 화면 상단 두개 보여주는 기록
 function History({history, onClick}) {
@@ -210,7 +211,7 @@ export function CategorySelectModal({isOpen, onClose, categories, onSelect, reco
   const [newCategory0Name, setNewCategory0Name] = useState("");
   const [newCategory1Name, setNewCategory1Name] = useState("");
   const [newCategory2Name, setNewCategory2Name] = useState("");
-
+  
   if (!isOpen) return null;
 
   // 카테고리0 옵션 생성
@@ -668,12 +669,13 @@ export default function Home() {
   const [categories, setCategories] = useState([]); // 카테고리 목록
 
   const debounceTimeoutRef = useRef(null);          // 너무 낮은 recommend 불러오기 방지용
-  const addingRef = useRef(false);                  // 추가 중 여부 체크용
   const openHistoryModal = () => setIsHistoryModalOpen(true);
   const closeHistoryModal = () => setIsHistoryModalOpen(false);
   const selectMenu = (menuName) => setMenu(menuName);
   const openAddModal = () => setIsAddModalOpen(true);
   const closeAddModal = () => setIsAddModalOpen(false);
+
+  const { categoryID, setCategoryID } = useStore();
 
   /* 목업 데이터 */
   // const [categories, setCategories] = useState([
@@ -745,15 +747,14 @@ export default function Home() {
   
   const history = useMemo(() => {
     const allItems = [];
-    console.log(categories);
   
     categories.forEach(cat0 => {
-      console.log(cat0);
       // cat0 list 처리
       if (cat0.list) {
         cat0.list.forEach(item => {
           if (item.usageCount > 0) {
             allItems.push({
+              id:item.id,
               text: item.text,
               usageCount: item.usageCount,
               lastUseDate: item.lastUseDate,
@@ -771,6 +772,7 @@ export default function Home() {
           cat1.list.forEach(item => {
             if (item.usageCount > 0) {
               allItems.push({
+                id:item.id,
                 text: item.text,
                 usageCount: item.usageCount,
                 lastUseDate: item.lastUseDate,
@@ -789,6 +791,7 @@ export default function Home() {
             cat2.list.forEach(item => {
               if (item.usageCount > 0) {
                 allItems.push({
+                  id:item.id,
                   text: item.text,
                   usageCount: item.usageCount,
                   lastUseDate: item.lastUseDate,
@@ -969,13 +972,13 @@ export default function Home() {
     );
   };
 
-  // (완료) TextCard 클릭 핸들러 - input에 텍스트 설정
+  // TextCard 클릭 핸들러 - input에 텍스트 설정
   const handleTextClick = (text) => {
     setInput(text);
     setIsRecommendOpen(false); // 추천창 닫기
   };
 
-  // (완성) TextCard 수정 핸들러
+  // TextCard 수정 핸들러
   const handleTextEdit = async (text, newText, cat0Name, cat1Name = "", cat2Name = "") => {
     if (newText.trim() === "") {
       showError("텍스트를 입력해주세요.");
@@ -1092,7 +1095,7 @@ export default function Home() {
     );
   };
 
-  // (완성) TextCard 삭제 핸들러
+  // TextCard 삭제 핸들러
   const handleTextDelete = async (text, cat0Name, cat1Name = "", cat2Name = "") => {
     const prevCategories = [...categories];
     const level = cat2Name === "" ? cat1Name === "" ? 0 : 1 : 2;
@@ -1170,9 +1173,13 @@ export default function Home() {
     );
   };
 
-  // (완성) TextCard 즐겨찾기 토글 핸들러
-  const handleTextBookmark = async (text, cat0Name, cat1Name = "", cat2Name = "") => {
+  // TextCard 즐겨찾기 토글 핸들러
+  const handleTextBookmark = async (textID) => {
     let bookmark = false;
+
+    const userID = JSON.parse(localStorage.getItem('user'));
+    updateBookmark(userID, textID)
+
 
     const prevCategories = [...categories];
 
@@ -1252,93 +1259,87 @@ export default function Home() {
     );
   };
 
-  // (완성) 카테고리에 새 단어/문장 추가하는 함수
-  const handleTextAdd = async (
-    text, type, 
-    cat0ID, cat0Name, 
-    cat1ID = null, cat1Name = "", 
-    cat2ID = null, cat2Name = ""
-  ) => {
-    // 이미 실행 중이면 무시
-    if (addingRef.current) return;
+  /**** 완료 **** 카테고리에 새 단어/문장 추가하는 함수 ****/
+  const handleTextAdd = async (text, type, cat0Name, cat1Name = "", cat2Name = "") => {
+  try {
+    const newCatNames = [];
+    console.log(categoryID);
+    if (!categoryID?.[cat0Name]) newCatNames.push(cat0Name);
+    if (cat1Name && !categoryID?.[cat1Name]) newCatNames.push(cat1Name);
+    if (cat2Name && !categoryID?.[cat2Name]) newCatNames.push(cat2Name);
 
-    addingRef.current = true;
-    const prevCategories = [...categories];
+    if (newCatNames.length > 0) {
+      const res = await addCategory({ catNames: newCatNames });
+      if (!res.success) {
+        showError("카테고리 추가에 실패했습니다.");
+        return false;
+      }
 
+      for (const catName in res.data) {
+        categoryID[catName] = res.data[catName];
+      }
+    }
+
+    const cat0ID = categoryID[cat0Name];
+    const cat1ID = cat1Name ? categoryID[cat1Name] : null;
+    const cat2ID = cat2Name ? categoryID[cat2Name] : null;
+
+    const textRes = await addText(text, type, cat0ID, cat1ID, cat2ID);
+    if (!textRes.success) {
+      showError("어휘가 추가되지 않았습니다.");
+      return false;
+    }
+    const textID = textRes.data.id;
+    
     setCategories(prevCats => {
-      const newCatName = [];
-      if (cat0ID === null) newCatName.push(cat0Name);
-      if (cat1ID === null && cat1Name !== "") newCatName.push(cat1Name);
-      if (cat2ID === null && cat2Name !== "") newCatName.push(cat2Name);
+      const newCats = JSON.parse(JSON.stringify(prevCats));
+      const newText = { id: textID, text, bookmark: false, usageCount: 0, lastUseDate: null };
 
-      addCategory(newCatName);
-
-      const newCats = [...prevCats];
-
-      
-      
-      // 메인 카테고리 찾기 또는 생성
-      let cat0Index = newCats.findIndex(cat => cat.name === cat0Name);
-      
-      // 카테고리가 없으면 새로 생성
-      if (cat0Index === -1) {
-        newCats.push({name: cat0Name, subcategories: [], list: []});
-        cat0Index = newCats.length-1;
+      let cat0 = newCats.find(cat => cat.id === cat0ID);
+      if (!cat0) {
+        cat0 = { id: cat0ID, name: cat0Name, subcategories: [], list: [] };
+        newCats.push(cat0);
       }
 
-      // category1이 설정되지 않은 경우
-      if (cat1Name === "") {
-        newCats[cat0Index].list.push({text:text, bookmark:false, usageCount: 0});
-
-        localStorage.setItem("categories", JSON.stringify(newCats));
-        return newCats;
-      }
-
-      // category1 리스트에 추가
-      const cat1s = newCats[cat0Index].subcategories;
-      let cat1Index = cat1s.findIndex(cat => cat.name === cat1Name);
-
-      // 카테고리 없으면 새로 생성
-      if (cat1Index === -1) {
-        cat1s.push({name: cat1Name, subcategories: [], list: []});
-        cat1Index = cat1s.length - 1;
-      }
-
-      // category2가 설정되지 않은 경우
-      if (cat2Name === "") {
-        cat1s[cat1Index].list.push({text:text, bookmark:false, usageCount: 0});
-
-        localStorage.setItem("categories", JSON.stringify(newCats));
-        return newCats;
-      }
-
-      // category2가 설정된 경우
-      const cat2s = cat1s[cat1Index].subcategories;
-      const cat2ArrIndex = cat2s.findIndex(cat => cat.name === cat2Name);
-
-      if (cat2ArrIndex === -1) {  // 배열이 없는 경우
-        cat2s.push({name: cat2Name, list: [{text:text, bookmark:false, usageCount: 0}]});
+      // 1차 하위 카테고리에 추가
+      if (cat1ID === null) {
+        cat0.list.push(newText);
       } else {
-        cat2s[cat2ArrIndex].list.push({text:text, bookmark:false, usageCount: 0});
-      }
+        let cat1 = cat0.subcategories.find(cat => cat.id === cat1ID);
+        if (!cat1) {
+          cat1 = { id: cat1ID, name: cat1Name, subcategories: [], list: [] };
+          cat0.subcategories.push(cat1);
+        }
 
+        // 2차 하위 카테고리에 추가
+        if (cat2ID === null) {
+          cat1.list.push(newText);
+        } else {
+          let cat2 = cat1.subcategories.find(cat => cat.id === cat2ID);
+          if (!cat2) {
+            cat2 = { id: cat2ID, name: cat2Name, list: [] };
+            cat1.subcategories.push(cat2);
+          }
+          cat2.list.push(newText);
+        }
+      }
+      
+      // 최종적으로 계산된 새로운 상태를 로컬 스토리지에 저장하고 반환
       localStorage.setItem("categories", JSON.stringify(newCats));
       return newCats;
     });
 
-    try{
-      return await controlServer(
-        prevCategories,
-        async () => {return await addText(text, type, cat0Name, cat1Name, cat2Name);},
-        "항목 추가 성공",
-        "항목 추가 실패"
-      );
-    } finally {
-      addingRef.current = false;
-    }
-  };
+    showInfo("어휘가 추가되었습니다.");
+    return true; // 성공적으로 모든 작업 완료
 
-  // (완료) 유저가 타이핑 한 후 0.2초 후 추천 목록 불러오기
+  } catch (error) {
+    console.error("An error occurred in handleTextAdd:", error);
+    showError("작업 중 오류가 발생했습니다.");
+    return false;
+  }
+};
+
+  // 유저가 타이핑 한 후 0.2초 후 추천 목록 불러오기
   const handleInputChange = (newInput) => {
     setInput(newInput);
     
@@ -1362,12 +1363,28 @@ export default function Home() {
   };
 
   // 컴포넌트 언마운트 시 타이머 정리
-  useEffect(async () => {
-    const res = await getCategories();
-    
-    if (res.success) {
+  useEffect(() => {
+    async function fetchCategories() {
+      const res = await getCategories();
       
+      if (!res.success) {
+        showError("카테고리 불러오기 실패");
+        return;
+      }
+
+      setCategories(res.data);
+      res.data.forEach(cat0 => {
+        setCategoryID(cat0.name, cat0.id);
+        cat0.subcategories.forEach(cat1 => {
+          setCategoryID(cat1.name, cat1.id);
+          cat1.subcategories.forEach(cat2 => {
+            setCategoryID(cat2.name, cat2.id);
+          });
+        });
+      });
     }
+
+    fetchCategories();
 
     // 여기에 사용자 어휘들 불러오는 컨트롤러
     return () => {

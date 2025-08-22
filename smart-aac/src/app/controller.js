@@ -117,7 +117,7 @@ export async function addCategory({catNames}) {
       return { success: false, error: result.error };
     }
 
-    for (let cat of result.created_categories) {
+    for (let cat of result.data.created_categories) {
       createdID[cat.value] = cat.id;
     }
 
@@ -128,8 +128,7 @@ export async function addCategory({catNames}) {
   }
 }
 
-
-export async function addText(text, type, cat0ID, cat0Name, cat1ID = null, cat1Name = "", cat2ID = null, cat2Name = "") {
+export async function addText(text, type, cat0ID, cat1ID = null, cat2ID = null) {
   try {
     let response, result;
 
@@ -170,29 +169,22 @@ export async function addText(text, type, cat0ID, cat0Name, cat1ID = null, cat1N
     if (!result.success) {
       return { success: false, error: result.error };
     }
-    return { success: true, data: result.sentence };
+    return { success: true, data: result.sentence || result.word };
   } catch (error) {
     console.error('Error adding text:', error);
     return { success: false, error: error.message };
   }
 }
 
-export async function updateBookmark(text, cat0Name, cat1Name = "", cat2Name = "", bookmark) {
-  // 디버깅 용 코드
-  return {success: true};
-
+export async function updateBookmark(userID, textID) {
   try {
-    const response = await fetch('/update-bookmark', {
+    const response = await fetch(`${BASE_URL}/users/${userID}/bookmark`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        text: text,
-        bookmark: bookmark,
-        cat0Name: cat0Name,
-        cat1Name: cat1Name,
-        cat2Name: cat2Name
+        word_id: textID
       })
     });
 
@@ -200,7 +192,8 @@ export async function updateBookmark(text, cat0Name, cat1Name = "", cat2Name = "
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    return { success: true };
+    const result = await response.json();
+    return { success: true, data: result.bookmark.bookmark };
   } catch (error) {
     console.error('Error updating bookmark:', error);
     return { success: false, error: error.message };

@@ -2,11 +2,11 @@
 import { create } from 'zustand'
 
 const useStore = create((set) => ({
-  categoryIDs: {},
+  categoryID: {},
   setCategoryID: (categoryName, categoryID) => set((state) => ({
-    categoryIDs: {
-      ...state.categoryIDs,
-      [categoryID]: categoryName
+    categoryID: {
+      ...state.categoryID,
+      [categoryName]: categoryID
     }
   }))
 }));
