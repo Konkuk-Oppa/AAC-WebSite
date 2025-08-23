@@ -21,14 +21,17 @@ export async function addBulk() {
 }
 
 /* RECOMMEND */
-export async function getRecommends({text}) {
+export async function getRecommends({text, topk=5}) {
+  let body;
+  if (topk === 5) body = JSON.stringify({ text });
+  else body = JSON.stringify({ text, num_predictions: topk });
   try{
     const response = await fetch(`${BASE_URL}/api/word/api_recommend`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ text })
+      body: body
     });
 
     if (!response.ok) {

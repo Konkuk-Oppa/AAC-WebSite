@@ -275,27 +275,30 @@ export function TextCard({
   currentPath,
   categories,
   onUpdate,
+  handleRecommend,
   isCategory = false
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const longPressTimer = useRef(null);
   const isLongPress = useRef(false);
+  let cat0Name = "", cat1Name = "", cat2Name = "";
+  if (currentPath.length === 0) {
+    cat0Name = item.category0;
+    cat1Name = item.category1;
+    cat2Name = item.category2;
+  } else {
+    if (currentPath.length > 0) cat0Name = currentPath[0];
+    if (currentPath.length > 1) cat1Name = currentPath[1];
+    if (currentPath.length > 2) cat2Name = currentPath[2];
+  }
 
   // TTS 기능
   const handleTTS = async (e) => {
     e.stopPropagation(); 
 
-    let cat0Name = "", cat1Name = "", cat2Name = "";
-    if (currentPath.length === 0) {
-      cat0Name = item.category0;
-      cat1Name = item.category1;
-      cat2Name = item.category2;
-    } else {
-      if (currentPath.length > 0) cat0Name = currentPath[0];
-      if (currentPath.length > 1) cat1Name = currentPath[1];
-      if (currentPath.length > 2) cat2Name = currentPath[2];
-    }
     onUpdate(item.id, cat0Name, cat1Name, cat2Name);
+
+    handleRecommend(item.text, 3, cat0Name, cat1Name, cat2Name);
 
     // getTTS({text: item.text})
     // TODO 더 자연스러운 TTS 구현하기
@@ -314,7 +317,7 @@ export function TextCard({
   // 클릭 핸들러
   const handleClick = () => {
     if (!isLongPress.current && onTextClick) {
-      onTextClick(item.text);
+      onTextClick(item.text, cat0Name, cat1Name, cat2Name);
     }
     isLongPress.current = false;
   };

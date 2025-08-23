@@ -26,7 +26,8 @@ function HistoryModal({
   onEdit,
   onDelete,
   onBookmark,
-  onUpdate
+  onUpdate,
+  handleRecommend
 }) {
   if (!isOpen) return null;
 
@@ -52,6 +53,7 @@ function HistoryModal({
                 onBookmark={onBookmark}
                 currentPath={[]}
                 onUpdate={onUpdate}
+                handleRecommend={handleRecommend}
               />
             ))
           )}
@@ -101,7 +103,7 @@ function MenuSelector({menu, onClick}) {
 }
 
 // ai 추천 팝업
-function Recommend({recommends, onClick, onClose}) {
+function Recommend({recommends, onClick, onClose, onCategoryClick, category = []}) {
   return (
     <>
       <div className={styles.recommendCloseBtnContainer}>
@@ -111,9 +113,12 @@ function Recommend({recommends, onClick, onClose}) {
         {recommends.map((recommend, index)=> {
           return <div key={index} className={styles.recommendItem} onClick={() => {onClick(recommend)}}>
             <p>{recommend}</p>
-            {recommends.length != index+1 && <hr/>}
+            {(recommends.length != index+1 || category.length > 0) && <hr/>}
           </div>
         })}
+        {category.length > 0 && <div className = {styles.recommendItem} onClick={() => {onCategoryClick(category)}}>
+          <p>{category.map((cat, index) => <span key={index}>{cat}{index < category.length - 1 && " > "}</span>)}</p>
+        </div>}
       </div>
     </>
   )
@@ -132,11 +137,20 @@ function InputSection({
   onConversationAdd,
   onRecommendClick,
   onRecommendClose,
+  onCategoryClick,
+  recommendCategory
 }) {
   return(
     <div className={styles.bottomSection}>
       <div>
-        {(isRecommendOpen && recommends.length != 0) && <Recommend recommends={recommends} onClick={onRecommendClick} onClose={onRecommendClose}/>}
+        {(isRecommendOpen && recommends.length != 0) && 
+          <Recommend 
+            recommends={recommends} 
+            onClick={onRecommendClick} 
+            onClose={onRecommendClose}
+            onCategoryClick={onCategoryClick}
+            category={recommendCategory}
+            />}
         <div className={styles.inputSection}>
           <div className={styles.inputContainer}>
             <input 
@@ -653,6 +667,7 @@ export default function Home() {
   const [orderType, setOrderType] = useState("default");          // 정렬 기능
   const [categories, setCategories] = useState([]); // 카테고리 목록
   const [conversation, setConversation] = useState([]);
+  const [recommendCategory, setRecommendCategory] = useState([]); // 추천 카테고리
 
   const debounceTimeoutRef = useRef(null);          // 너무 낮은 recommend 불러오기 방지용
   const openHistoryModal = () => setIsHistoryModalOpen(true);
@@ -660,6 +675,12 @@ export default function Home() {
   const selectMenu = (menuName) => setMenu(menuName);
   const openAddModal = () => setIsAddModalOpen(true);
   const closeAddModal = () => setIsAddModalOpen(false);
+
+  // category
+  const [currentPath, setCurrentPath] = useState([]);
+  const [currentCategory, setCurrentCategory] = useState(categories);
+  const [currentList, setCurrentList] = useState([]);
+  const [originalCurrentList, setOriginalCurrentList] = useState([]);
 
   const { categoryID, setCategoryID } = useStore();
 
@@ -872,7 +893,7 @@ export default function Home() {
   };
 
   // TextCard 클릭 핸들러 - input에 텍스트 설정
-  const handleTextClick = async (text) => {
+  const handleTextClick = async (text, cat0Name="", cat1Name="", cat2Name="") => {
     setInput(text);
     const res = await getRecommends({ text });
 
@@ -881,6 +902,11 @@ export default function Home() {
       setIsRecommendOpen(true);
     } else {
       showError("추천 기능에 오류가 발생했습니다.");
+    }
+    if (cat0Name !== "") {
+      setRecommendCategory([cat0Name, cat1Name, cat2Name].filter(cat => cat !== ""));
+    } else {
+      setRecommendCategory([]);
     }
   };
 
@@ -1331,6 +1357,7 @@ export default function Home() {
   };
 
   const handleConversationAdd = async (text) => {
+    setRecommendCategory([]);
     try{
       const res = await addConversation(Number(JSON.parse(localStorage.getItem('user'))), text);
       if (!res.success) {
@@ -1347,6 +1374,16 @@ export default function Home() {
       }
       return [...prev, { value: text, lastUseDate: new Date(), usageCount: 1 }];
     });
+
+    const res = await getRecommends({ text });
+
+    if (res.success) {
+      setRecommends(res.data);
+      setIsRecommendOpen(true);
+    } else {
+      showError("추천 기능에 오류가 발생했습니다.");
+    }
+
 
     // getTTS({text: text});
     // TODO 더 자연스러운 TTS 구현하기
@@ -1367,6 +1404,7 @@ export default function Home() {
     let newText;
     if (text.includes(input)) newText = text;
     else newText = input + text;
+    setInput(newText);
     if (newText.trim()) {
       const res = await getRecommends({ text: newText });
 
@@ -1377,9 +1415,67 @@ export default function Home() {
         showError("추천 기능에 오류가 발생했습니다.");
       }
     }
-    setInput(newText);
+    
 
   }
+
+  const handleRecommend = async (text, topk, cat0Name, cat1Name, cat2Name) => {
+    const res = await getRecommends({ text, topk });
+
+    if (res.success) {
+      setRecommends(res.data);
+      setIsRecommendOpen(true);
+    } else {
+      showError("추천 기능에 오류가 발생했습니다.");
+    }
+    setRecommendCategory([cat0Name, cat1Name, cat2Name].filter(cat => cat !== ""));
+  }
+
+  const handleCategoryClick = (category) => {
+    setMenu("category");
+
+    setCurrentPath(category);
+    for (let cat of categories) {
+      if (cat.name === category[0]) {
+        setCurrentCategory(cat.subcategories);
+        setCurrentList(cat.list || []);
+        setOriginalCurrentList(cat.list || []);
+        if (category.length > 1) {
+          for (let cat1 of cat.subcategories) {
+            if (cat1.name === category[1]) {
+              setCurrentCategory(cat1.subcategories);
+              setCurrentList(cat1.list || []);
+              setOriginalCurrentList(cat1.list || []);
+              if (category.length > 2) {
+                for (let cat2 of cat1.subcategories) {
+                  if (cat2.name === category[2]) {
+                    setCurrentCategory([]);
+                    setCurrentList(cat2.list || []);
+                    setOriginalCurrentList(cat2.list || []);
+                    return;
+                  }
+                }
+              }
+              return;
+            }
+          }
+        }
+        return;
+      }
+    }
+
+    setOriginalCurrentList()
+
+    // setCurrentPath([...currentPath, category.name]);
+    // setOriginalCurrentList(category.list || []);
+    // setOrder(category.list || []);
+
+    // if (category.subcategories && category.subcategories.length > 0) {
+    //   setCurrentCategory(category.subcategories);
+    // } else {
+    //   setCurrentCategory([]);
+    // }
+  };
 
   // 컴포넌트 언마운트 시 타이머 정리
   useEffect(() => {
@@ -1446,6 +1542,15 @@ export default function Home() {
         onAdd={handleTextAdd}
         onUpdate={handleTextUpdate}
         onConversationAdd={handleConversationAdd}
+        handleRecommend={handleRecommend}
+        currentPath={currentPath}
+        setCurrentPath={setCurrentPath}
+        currentCategory={currentCategory}
+        setCurrentCategory={setCurrentCategory}
+        currentList={currentList}
+        setCurrentList={setCurrentList}
+        originalCurrentList={originalCurrentList}
+        setOriginalCurrentList={setOriginalCurrentList}
       />
       <InputSection
         openHistoryModal={openHistoryModal}
@@ -1459,6 +1564,8 @@ export default function Home() {
         onConversationAdd={handleConversationAdd}
         onRecommendClick={handleRecommendClick}
         onRecommendClose={() => setIsRecommendOpen(false)}
+        onCategoryClick={handleCategoryClick}
+        recommendCategory={recommendCategory}
       />
       <HistoryModal 
         isOpen={isHistoryModalOpen} 

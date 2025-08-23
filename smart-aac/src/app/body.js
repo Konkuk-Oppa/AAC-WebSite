@@ -10,7 +10,8 @@ function Bookmark({
   onDelete, 
   onBookmark,
   orderType,       // usageCount, abc, default
-  onUpdate
+  onUpdate,
+  handleRecommend
 }) {
   const [sentences, setSentences] = useState([]);
   const [originalSentences, setOriginalSentences] = useState([]);
@@ -100,6 +101,7 @@ function Bookmark({
             currentPath={[]}
             categories={categories}
             onUpdate={onUpdate}
+            handleRecommend={handleRecommend}
           />
         )
       })}
@@ -144,11 +146,30 @@ function Conversation({conversation, onTextClick, onAdd, categories, orderType, 
   )
 }
 
-function Category({categories, onTextClick, onEdit, onDelete, onBookmark, onCategoryEdit, onCategoryDelete, orderType, onUpdate}) {
-  const [currentPath, setCurrentPath] = useState([]);
-  const [currentCategory, setCurrentCategory] = useState(categories);
-  const [currentList, setCurrentList] = useState([]);
-  const [originalCurrentList, setOriginalCurrentList] = useState([]);
+function Category({
+  categories, 
+  onTextClick, 
+  onEdit, 
+  onDelete, 
+  onBookmark, 
+  onCategoryEdit, 
+  onCategoryDelete, 
+  orderType, 
+  onUpdate, 
+  handleRecommend,
+  currentPath,
+  setCurrentPath,
+  currentCategory,
+  setCurrentCategory,
+  currentList,
+  setCurrentList,
+  originalCurrentList,
+  setOriginalCurrentList
+}) {
+  // const [currentPath, setCurrentPath] = useState([]);
+  // const [currentCategory, setCurrentCategory] = useState(categories);
+  // const [currentList, setCurrentList] = useState([]);
+  // const [originalCurrentList, setOriginalCurrentList] = useState([]);
 
   const setOrder = (list) => {
     if (orderType === "usageCount") {
@@ -304,6 +325,7 @@ function Category({categories, onTextClick, onEdit, onDelete, onBookmark, onCate
               categories={categories}
               onUpdate={onUpdate}
               isCategory={true}
+              handleRecommend={handleRecommend}
             />
           )
         })}
@@ -326,7 +348,16 @@ export default function Body({
   conversation,
   onAdd,
   onUpdate,
-  onConversationAdd
+  onConversationAdd,
+  handleRecommend,
+  currentPath,
+  setCurrentPath,
+  currentCategory,
+  setCurrentCategory,
+  currentList,
+  setCurrentList,
+  originalCurrentList,
+  setOriginalCurrentList
 }) {
   return (
     <div className={styles.bodyContainer}>
@@ -339,6 +370,7 @@ export default function Body({
           onBookmark={onBookmark}
           orderType={orderType}
           onUpdate={onUpdate}
+          handleRecommend={handleRecommend}
         />
       )}
       {menu === "conversation" && (
@@ -362,6 +394,15 @@ export default function Body({
           onCategoryDelete={onCategoryDelete}
           orderType={orderType}
           onUpdate={onUpdate}
+          handleRecommend={handleRecommend}
+          currentPath={currentPath}
+          setCurrentPath={setCurrentPath}
+          currentCategory={currentCategory}
+          setCurrentCategory={setCurrentCategory}
+          currentList={currentList}
+          setCurrentList={setCurrentList}
+          originalCurrentList={originalCurrentList}
+          setOriginalCurrentList={setOriginalCurrentList}
         />
       )}
     </div>
