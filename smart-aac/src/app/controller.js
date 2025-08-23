@@ -22,12 +22,26 @@ export async function addBulk() {
 
 /* RECOMMEND */
 export async function getRecommends({text}) {
-  // 목업용 데이터
-  const recommends = [
-    "커피한잔주세요",
-    "~한 상황",
-  ]
-  return {success: true, data: recommends};
+  try{
+    const response = await fetch(`${BASE_URL}/api/word/recommend`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ text })
+    });
+
+    if (!response.ok) {
+      const result = await response.json();
+      throw new Error(`HTTP error! status: ${response.status} ${result.error}`);
+    }
+
+    const data = await response.json();
+    return {success: true, data: data.predictions};
+  } catch (error) {
+    console.error('Error fetching recommendations:', error);
+    return {success: false, error: error.message};
+  }
 }
 
 export async function getRecommendCategory({text}) {

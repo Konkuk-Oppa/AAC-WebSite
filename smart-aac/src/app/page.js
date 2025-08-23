@@ -865,9 +865,16 @@ export default function Home() {
   };
 
   // TextCard 클릭 핸들러 - input에 텍스트 설정
-  const handleTextClick = (text) => {
+  const handleTextClick = async (text) => {
     setInput(text);
-    setIsRecommendOpen(false); // 추천창 닫기
+    const res = await getRecommends({ text });
+
+    if (res.success) {
+      setRecommends(res.data);
+      setIsRecommendOpen(true);
+    } else {
+      showError("추천 기능에 오류가 발생했습니다.");
+    }
   };
 
   /**** 완료 **** TextCard 수정 핸들러 ****/
@@ -1304,7 +1311,7 @@ export default function Home() {
     // 새로운 타이머 설정 (0.2초 후 실행)
     debounceTimeoutRef.current = setTimeout(async () => {
       if (newInput.trim()) { 
-        const res = await getRecommends(newInput);
+        const res = await getRecommends({ text: newInput });
         
         if (res.success) {
           setRecommends(res.data);
