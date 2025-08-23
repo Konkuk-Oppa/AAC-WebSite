@@ -101,16 +101,21 @@ function MenuSelector({menu, onClick}) {
 }
 
 // ai 추천 팝업
-function Recommend({recommends}) {
+function Recommend({recommends, onClick, onClose}) {
   return (
-    <div className={styles.recommend}>
-      {recommends.map((recommend, index)=> {
-        return <div key={index} className={styles.recommendItem}>
-          <p>{recommend}</p>
-          {recommends.length != index+1 && <hr/>}
-        </div>
-      })}
-    </div>
+    <>
+      <div className={styles.recommendCloseBtnContainer}>
+        <div className={styles.recommendCloseBtn} onClick={onClose}>×</div>
+      </div>
+      <div className={styles.recommend}>
+        {recommends.map((recommend, index)=> {
+          return <div key={index} className={styles.recommendItem} onClick={() => {onClick(recommend)}}>
+            <p>{recommend}</p>
+            {recommends.length != index+1 && <hr/>}
+          </div>
+        })}
+      </div>
+    </>
   )
 }
 
@@ -124,12 +129,14 @@ function InputSection({
   openAddModal,
   orderType,
   setOrderType,
-  onConversationAdd
+  onConversationAdd,
+  onRecommendClick,
+  onRecommendClose,
 }) {
   return(
     <div className={styles.bottomSection}>
       <div>
-        {(isRecommendOpen && recommends.length != 0) && <Recommend recommends={recommends}/>}
+        {(isRecommendOpen && recommends.length != 0) && <Recommend recommends={recommends} onClick={onRecommendClick} onClose={onRecommendClose}/>}
         <div className={styles.inputSection}>
           <div className={styles.inputContainer}>
             <input 
@@ -1353,6 +1360,27 @@ export default function Home() {
     } else {
       alert('이 브라우저는 음성 합성을 지원하지 않습니다.');
     }
+    setRecommends([]);
+    setIsRecommendOpen(false);
+    setInput("");
+  }
+
+  const handleRecommendClick = async (text) => {
+    let newText;
+    if (text.includes(input)) newText = text;
+    else newText = input + text;
+    if (newText.trim()) {
+      const res = await getRecommends({ text: newText });
+
+      if (res.success) {
+        setRecommends(res.data);
+        setIsRecommendOpen(true);
+      } else {
+        showError("추천 기능에 오류가 발생했습니다.");
+      }
+    }
+    setInput(newText);
+
   }
 
   // 컴포넌트 언마운트 시 타이머 정리
@@ -1431,6 +1459,8 @@ export default function Home() {
         orderType={orderType}
         setOrderType={setOrderType}
         onConversationAdd={handleConversationAdd}
+        onRecommendClick={handleRecommendClick}
+        onRecommendClose={() => setIsRecommendOpen(false)}
       />
       <HistoryModal 
         isOpen={isHistoryModalOpen} 

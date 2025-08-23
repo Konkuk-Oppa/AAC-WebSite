@@ -974,3 +974,29 @@
 .deleteButton:hover {
   background-color: #ff5252;
 }
+
+.recommendCloseBtnContainer{
+  width:100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom:10px;
+}
+
+.recommendCloseBtn{
+  height:40px;
+  width:40px;
+  border-radius: 20px;
+  background-color: #CDF8CE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0 40px 9px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s;
+}
+
+.recommendCloseBtn:hover {
+  background-color: #CDF8CE;
+  font-size: 24px;
+  box-shadow: 0 0 40px 9px rgba(0, 0, 0, 0.1);
+}
