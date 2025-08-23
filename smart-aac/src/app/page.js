@@ -1360,8 +1360,6 @@ export default function Home() {
     } else {
       alert('이 브라우저는 음성 합성을 지원하지 않습니다.');
     }
-    setRecommends([]);
-    setIsRecommendOpen(false);
     setInput("");
   }
 
