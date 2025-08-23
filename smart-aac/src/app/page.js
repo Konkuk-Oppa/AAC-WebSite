@@ -1304,7 +1304,7 @@ export default function Home() {
     // 새로운 타이머 설정 (0.2초 후 실행)
     debounceTimeoutRef.current = setTimeout(async () => {
       if (newInput.trim()) { 
-        const res = await getRecommends(newInput);
+        const res = await getRecommends({text: newInput});
         
         if (res.success) {
           setRecommends(res.data);
