@@ -23,7 +23,7 @@ export async function addBulk() {
 /* RECOMMEND */
 export async function getRecommends({text}) {
   try{
-    const response = await fetch(`${BASE_URL}/api/word/recommend`, {
+    const response = await fetch(`${BASE_URL}/api/word/api_recommend`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

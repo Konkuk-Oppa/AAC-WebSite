@@ -110,7 +110,7 @@
 
 .bodyContainer {
   margin-top: 136px; 
-  margin-bottom: 110px;
+  margin-bottom: 327px;
 }
 
 .sentenceItem{
@@ -138,7 +138,7 @@
   background-color: #CDF8CE;
   border-radius: 15px;
   box-shadow: 0 0 40px 9px rgba(0, 0, 0, 0.1);
-  max-height: 124px;
+  max-height: 198px;
 }
 
 .recommendItem{

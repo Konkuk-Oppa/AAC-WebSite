@@ -18587,3 +18587,14 @@
 2025-08-23 14:08:00,808 - INFO - [REQUEST] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/api/word/recommend | User-Agent: PostmanRuntime/7.43.2
 2025-08-23 14:08:00,832 - INFO - [RESPONSE] IP: 127.0.0.1 | Method: POST | Endpoint: http://127.0.0.1:5000/api/word/recommend | Status: 503 | Duration: 0.034s
 2025-08-23 14:08:00,835 - INFO - 127.0.0.1 - - [23/Aug/2025 14:08:00] "[35m[1mPOST /api/word/recommend HTTP/1.1[0m" 503 -
+2025-08-23 20:26:24,704 - INFO - SQLAlchemy 등록된 모델들: ['users', 'categories', 'common_words', 'common_word_users', 'words', 'sentences', 'conversations']
+2025-08-23 20:26:24,705 - INFO - 현재 존재하는 테이블: ['categories', 'common_word_users', 'common_words', 'conversations', 'sentences', 'users', 'words']
+2025-08-23 20:26:24,705 - INFO - 필요한 테이블: ['users', 'categories', 'common_words', 'common_word_users', 'words', 'sentences', 'conversations']
+2025-08-23 20:26:24,705 - INFO - 모든 필요한 테이블이 존재합니다: ['categories', 'common_word_users', 'common_words', 'conversations', 'sentences', 'users', 'words']
+2025-08-23 20:26:27,652 - INFO - CategorySimilarityService 인스턴스 생성 완료
+2025-08-23 20:26:28,748 - INFO - WordRecommendService 즉시 로딩 시작...
+2025-08-23 20:26:28,748 - INFO - WordRecommendService 초기화 시작...
+2025-08-23 20:26:28,748 - WARNING - 우선순위 단어 파일을 찾을 수 없습니다: data_source/final_words.json
+2025-08-23 20:26:28,748 - ERROR - 모델 경로를 찾을 수 없습니다: word_recommend_model/kogpt2-finetuned-final
+2025-08-23 20:26:28,748 - ERROR - WordRecommendService 초기화 실패: 모델 파일이 없습니다: word_recommend_model/kogpt2-finetuned-final
+2025-08-23 20:26:28,748 - ERROR - WordRecommendService 즉시 로딩 실패: 모델 파일이 없습니다: word_recommend_model/kogpt2-finetuned-final
