@@ -1,9 +1,3 @@
-[submodule "backend/ACC-backend"]
-	path = backend/ACC-backend
-	url = https://github.com/Konkuk-Oppa/ACC-backend.git
-[submodule "ACC-backend"]
-	path = ACC-backend
-	url = https://github.com/Konkuk-Oppa/ACC-backend.git
 [submodule "AAC-backend"]
 	path = AAC-backend
 	url = https://github.com/Konkuk-Oppa/AAC-backend.git
