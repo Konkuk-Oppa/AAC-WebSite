@@ -100,7 +100,7 @@ export async function getRecommendCategory({text}) {
 }
 
 /* TTS */
-export async function getTTS({text}) {
+export async function getTTS({text, ttsType}) {
   try {
     // TTS 클라이언트 초기화
     const client = initializeTTSClient();
@@ -110,7 +110,7 @@ export async function getTTS({text}) {
       input: { text: text },
       voice: {
         languageCode: 'ko-KR', // 한국어
-        name: 'ko-KR-Chirp3-HD-Achernar', // 고품질 신경망 음성
+        name: ttsType, // 고품질 신경망 음성
         // ssmlGender: 'NEUTRAL',
       },
       audioConfig: {

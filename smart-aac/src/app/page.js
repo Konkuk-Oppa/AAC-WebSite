@@ -1,10 +1,11 @@
 'use client'
 import styles from "./page.module.css";
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
+import { useRouter } from "next/navigation";
 import Body from "./body";
 import { addText, getRecommendCategory, getRecommends, updateBookmark, editText, deleteText, editCategory, deleteCategory, getTTS, addConversation, getCategories, addCategory, updateText, getConversations } from "./controller";
 import { TextCard } from "./component";
-import useStore from "./categoryID";
+import useStore, { useTTSStore } from "./categoryID";
 
 // 화면 상단 두개 보여주는 기록
 function History({history, onClick}) {
@@ -657,6 +658,8 @@ function AddModal({isOpen, onClose, categories, onAdd}) {
 }
 
 export default function Home() {
+  const router = useRouter();
+  const { tts, setTts, selectedTTS } = useTTSStore();
   const [menu, setMenu] = useState("bookmark");     // 현재 선택된 메뉴
   const [isHistoryModalOpen, setIsHistoryModalOpen] = useState(false);  // 최근 기록 모달창 열림 여부
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // 어휘 추가 모달창 열림 여부
@@ -1336,6 +1339,7 @@ export default function Home() {
   // 유저가 타이핑 한 후 0.2초 후 추천 목록 불러오기
   const handleInputChange = (newInput) => {
     setInput(newInput);
+    console.log(newInput + "!")
     
     // 기존 타이머가 있으면 취소
     if (debounceTimeoutRef.current) 
@@ -1343,8 +1347,8 @@ export default function Home() {
     
     // 새로운 타이머 설정 (0.2초 후 실행)
     debounceTimeoutRef.current = setTimeout(async () => {
-      console.log(newInput);
       if (newInput.trim()) { 
+        console.log(newInput + "????")
         const res = await getRecommends({ text: newInput });
         
         if (res.success) {
@@ -1386,7 +1390,7 @@ export default function Home() {
     }
 
     setInput("");
-    res = await getTTS({text: text});
+    res = await getTTS({text: text, ttsType: selectedTTS});
     
     // Blob 오디오 재생 함수
     if (res.success && res.data) {
@@ -1436,6 +1440,7 @@ export default function Home() {
 
     setInput(newText);
     if (newText.trim()) {
+      console.log(newText + "?");
       const res = await getRecommends({ text: newText });
 
       if (res.success) {
@@ -1445,8 +1450,6 @@ export default function Home() {
         showError("추천 기능에 오류가 발생했습니다.");
       }
     }
-    
-
   }
 
   const handleRecommend = async (text, topk, cat0Name, cat1Name, cat2Name) => {
@@ -1557,6 +1560,13 @@ export default function Home() {
       <div className={styles.nav}>
         <History history={history} onClick={openHistoryModal}/>
         <MenuSelector menu={menu} onClick={selectMenu}/>
+        <button 
+          className={styles.ttsSettingsBtn}
+          onClick={() => router.push('/tts')}
+          title="음성 설정"
+        >
+          음성 설정
+        </button>
       </div>
       <Body 
         menu={menu}

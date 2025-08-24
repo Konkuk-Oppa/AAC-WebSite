@@ -2,6 +2,7 @@ import { getRecommendCategory, getTTS, updateText } from './controller';
 import { CategorySelectModal } from './page';
 import styles from './page.module.css';
 import { useState, useRef, useCallback } from 'react';
+import { useTTSStore } from './categoryID';
 
 // 카테고리 옵션 모달 
 function CategoryModal({isOpen, onClose, category, onEdit, onDelete, currentPath}) {
@@ -281,6 +282,7 @@ export function TextCard({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const longPressTimer = useRef(null);
   const isLongPress = useRef(false);
+  const { tts, selectedTTS } = useTTSStore();
   let cat0Name = "", cat1Name = "", cat2Name = "";
   if (currentPath.length === 0) {
     cat0Name = item.category0;
@@ -300,7 +302,7 @@ export function TextCard({
 
     handleRecommend(item.text, 3, cat0Name, cat1Name, cat2Name);
 
-    const res = await getTTS({text: item.text});
+    const res = await getTTS({text: item.text, ttsType: selectedTTS});
     
     // Blob 오디오 재생 함수
     if (res.success && res.data) {
