@@ -298,10 +298,6 @@ export function TextCard({
   const handleTTS = async (e) => {
     e.stopPropagation(); 
 
-    onUpdate(item.id, cat0Name, cat1Name, cat2Name);
-
-    handleRecommend(item.text, 3, cat0Name, cat1Name, cat2Name);
-
     const res = await getTTS({text: item.text, ttsType: selectedTTS});
     
     // Blob 오디오 재생 함수
@@ -343,6 +339,9 @@ export function TextCard({
         alert('음성 합성을 지원하지 않는 브라우저입니다.');
       }
     }
+
+    onUpdate(item.id, cat0Name, cat1Name, cat2Name);
+    handleRecommend(item.text, 3, cat0Name, cat1Name, cat2Name);
   };
 
   // 클릭 핸들러

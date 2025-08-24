@@ -7,27 +7,27 @@ const BASE_URL = "http://127.0.0.1:5000";
 // Google Cloud TTS 클라이언트 초기화
 let ttsClient;
 
-function initializeTTSClient() {
-  if (!ttsClient) {
-    const config = {};
+// function initializeTTSClient() {
+//   if (!ttsClient) {
+//     const config = {};
     
-    // 환경변수에서 인증 정보 확인
-    if (process.env.GOOGLE_APPLICATION_CREDENTIALS) {
-      config.keyFilename = process.env.GOOGLE_APPLICATION_CREDENTIALS;
-    } else if (process.env.GOOGLE_CLOUD_PROJECT && 
-               process.env.GOOGLE_CLOUD_PRIVATE_KEY && 
-               process.env.GOOGLE_CLOUD_CLIENT_EMAIL) {
-      config.credentials = {
-        private_key: process.env.GOOGLE_CLOUD_PRIVATE_KEY.replace(/\\n/g, '\n'),
-        client_email: process.env.GOOGLE_CLOUD_CLIENT_EMAIL,
-      };
-      config.projectId = process.env.GOOGLE_CLOUD_PROJECT;
-    }
+//     // 환경변수에서 인증 정보 확인
+//     if (process.env.GOOGLE_APPLICATION_CREDENTIALS) {
+//       config.keyFilename = process.env.GOOGLE_APPLICATION_CREDENTIALS;
+//     } else if (process.env.GOOGLE_CLOUD_PROJECT && 
+//                process.env.GOOGLE_CLOUD_PRIVATE_KEY && 
+//                process.env.GOOGLE_CLOUD_CLIENT_EMAIL) {
+//       config.credentials = {
+//         private_key: process.env.GOOGLE_CLOUD_PRIVATE_KEY.replace(/\\n/g, '\n'),
+//         client_email: process.env.GOOGLE_CLOUD_CLIENT_EMAIL,
+//       };
+//       config.projectId = process.env.GOOGLE_CLOUD_PROJECT;
+//     }
     
-    ttsClient = new TextToSpeechClient(config);
-  }
-  return ttsClient;
-}
+//     ttsClient = new TextToSpeechClient(config);
+//   }
+//   return ttsClient;
+// }
 
 
 /* BULK */
@@ -103,7 +103,7 @@ export async function getRecommendCategory({text}) {
 export async function getTTS({text, ttsType}) {
   try {
     // TTS 클라이언트 초기화
-    const client = initializeTTSClient();
+    const client = new TextToSpeechClient({ keyFilename: '/Users/implement/development/AAC-WebSite/smart-aac/generativeaac-470013-4cee17d4eeee.json' });
     
     // Google Cloud TTS 요청 구성
     const request = {

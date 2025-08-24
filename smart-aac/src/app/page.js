@@ -1368,33 +1368,6 @@ export default function Home() {
   };
 
   const handleConversationAdd = async (text) => {
-    setRecommendCategory([]);
-    try{
-      const res = await addConversation(Number(JSON.parse(localStorage.getItem('user'))), text);
-      if (!res.success) {
-        showError("대화 추가에 실패했습니다.");
-        return;
-      }
-    } catch(error) {
-      console.error("대화 추가 중 오류 발생:", error);
-    }
-
-    setConversation(prev => {
-      if (prev.some(item => item.value === text)) {
-        return prev.map(item => item.value === text ? { ...item, lastUseDate: new Date(), usageCount: item.usageCount + 1 } : item);
-      }
-      return [...prev, { value: text, lastUseDate: new Date(), usageCount: 1 }];
-    });
-
-    let res = await getRecommends({ text });
-
-    if (res.success) {
-      setRecommends(res.data);
-      setIsRecommendOpen(true);
-    } else {
-      showError("추천 기능에 오류가 발생했습니다.");
-    }
-
     setInput("");
     res = await getTTS({text: text, ttsType: selectedTTS});
     
@@ -1436,6 +1409,32 @@ export default function Home() {
       } else {
         alert('음성 합성을 지원하지 않는 브라우저입니다.');
       }
+    }
+    setRecommendCategory([]);
+    try{
+      const res = await addConversation(Number(JSON.parse(localStorage.getItem('user'))), text);
+      if (!res.success) {
+        showError("대화 추가에 실패했습니다.");
+        return;
+      }
+    } catch(error) {
+      console.error("대화 추가 중 오류 발생:", error);
+    }
+
+    setConversation(prev => {
+      if (prev.some(item => item.value === text)) {
+        return prev.map(item => item.value === text ? { ...item, lastUseDate: new Date(), usageCount: item.usageCount + 1 } : item);
+      }
+      return [...prev, { value: text, lastUseDate: new Date(), usageCount: 1 }];
+    });
+
+    let res = await getRecommends({ text });
+
+    if (res.success) {
+      setRecommends(res.data);
+      setIsRecommendOpen(true);
+    } else {
+      showError("추천 기능에 오류가 발생했습니다.");
     }
   }
 
