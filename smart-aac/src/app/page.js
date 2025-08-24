@@ -669,7 +669,7 @@ export default function Home() {
   const [conversation, setConversation] = useState([]);
   const [recommendCategory, setRecommendCategory] = useState([]); // 추천 카테고리
 
-  const debounceTimeoutRef = useRef(null);          // 너무 낮은 recommend 불러오기 방지용
+  const debounceTimeoutRef = useRef([]);          // 너무 낮은 recommend 불러오기 방지용
   const openHistoryModal = () => setIsHistoryModalOpen(true);
   const closeHistoryModal = () => setIsHistoryModalOpen(false);
   const selectMenu = (menuName) => setMenu(menuName);
@@ -1338,23 +1338,25 @@ export default function Home() {
     setInput(newInput);
     
     // 기존 타이머가 있으면 취소
-    if (debounceTimeoutRef.current) 
-      clearTimeout(debounceTimeoutRef.current);
+    if (debounceTimeoutRef.current.length != 0) {
+      while (debounceTimeoutRef.current.length)
+        clearTimeout(debounceTimeoutRef.current.pop());
+    } 
     
     // 새로운 타이머 설정 (0.2초 후 실행)
-    debounceTimeoutRef.current = setTimeout(async () => {
+    debounceTimeoutRef.current.push(setTimeout(async () => {
       console.log(newInput);
       if (newInput.trim()) { 
         const res = await getRecommends({ text: newInput });
         
-        if (res.success) {
+        if (res.success) {;
           setRecommends(res.data);
           setIsRecommendOpen(true);
         } else {
           showError("추천 기능에 오류가 발생했습니다.");
         }
       }
-    }, 200);
+    }, 500));
   };
 
   const handleConversationAdd = async (text) => {
