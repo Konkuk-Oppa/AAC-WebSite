@@ -56,7 +56,7 @@ export async function getRecommends({text, topk=5}) {
   if (topk === 5) body = JSON.stringify({ text });
   else body = JSON.stringify({ text, num_predictions: topk });
   try{
-    const response = await fetch(`${BASE_URL}/api/word/api_recommend`, {
+    const response = await fetch(`${BASE_URL}/api/word/recommend`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
