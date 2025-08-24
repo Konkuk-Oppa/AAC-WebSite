@@ -1343,6 +1343,7 @@ export default function Home() {
     
     // 새로운 타이머 설정 (0.2초 후 실행)
     debounceTimeoutRef.current = setTimeout(async () => {
+      console.log(newInput);
       if (newInput.trim()) { 
         const res = await getRecommends({ text: newInput });
         
@@ -1375,7 +1376,7 @@ export default function Home() {
       return [...prev, { value: text, lastUseDate: new Date(), usageCount: 1 }];
     });
 
-    const res = await getRecommends({ text });
+    let res = await getRecommends({ text });
 
     if (res.success) {
       setRecommends(res.data);
@@ -1384,26 +1385,55 @@ export default function Home() {
       showError("추천 기능에 오류가 발생했습니다.");
     }
 
-
-    // getTTS({text: text});
-    // TODO 더 자연스러운 TTS 구현하기
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'ko-KR'; // 한국어 설정
-      utterance.rate = 0.8; // 속도 조절
-      window.speechSynthesis.speak(utterance);
-    } else {
-      alert('이 브라우저는 음성 합성을 지원하지 않습니다.');
-    }
     setInput("");
+    res = await getTTS({text: text});
+    
+    // Blob 오디오 재생 함수
+    if (res.success && res.data) {
+      try {
+        // Blob을 URL로 변환
+        const audioUrl = URL.createObjectURL(res.data);
+        
+        // Audio 객체 생성하여 재생
+        const audio = new Audio(audioUrl);
+        
+        // 재생 완료 후 URL 메모리 해제
+        audio.addEventListener('ended', () => {
+          URL.revokeObjectURL(audioUrl);
+        });
+        
+        // 오디오 재생
+        await audio.play();
+      } catch (error) {
+        console.error('오디오 재생 중 오류:', error);
+        // 폴백: 브라우저 기본 TTS 사용
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.cancel();
+          const utterance = new SpeechSynthesisUtterance(item.text);
+          utterance.lang = 'ko-KR';
+          utterance.rate = 0.8;
+          window.speechSynthesis.speak(utterance);
+        }
+      }
+    } else {
+      // TTS API 실패 시 폴백: 브라우저 기본 TTS 사용
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(item.text);
+        utterance.lang = 'ko-KR';
+        utterance.rate = 0.8;
+        window.speechSynthesis.speak(utterance);
+      } else {
+        alert('음성 합성을 지원하지 않는 브라우저입니다.');
+      }
+    }
   }
 
   const handleRecommendClick = async (text) => {
     let newText;
     if (text.includes(input)) newText = text;
     else newText = input + text;
+
     setInput(newText);
     if (newText.trim()) {
       const res = await getRecommends({ text: newText });

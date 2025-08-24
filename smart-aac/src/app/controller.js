@@ -1,5 +1,34 @@
 'use server'
+
+import { TextToSpeechClient } from '@google-cloud/text-to-speech';
+
 const BASE_URL = "http://127.0.0.1:5000";
+
+// Google Cloud TTS 클라이언트 초기화
+let ttsClient;
+
+function initializeTTSClient() {
+  if (!ttsClient) {
+    const config = {};
+    
+    // 환경변수에서 인증 정보 확인
+    if (process.env.GOOGLE_APPLICATION_CREDENTIALS) {
+      config.keyFilename = process.env.GOOGLE_APPLICATION_CREDENTIALS;
+    } else if (process.env.GOOGLE_CLOUD_PROJECT && 
+               process.env.GOOGLE_CLOUD_PRIVATE_KEY && 
+               process.env.GOOGLE_CLOUD_CLIENT_EMAIL) {
+      config.credentials = {
+        private_key: process.env.GOOGLE_CLOUD_PRIVATE_KEY.replace(/\\n/g, '\n'),
+        client_email: process.env.GOOGLE_CLOUD_CLIENT_EMAIL,
+      };
+      config.projectId = process.env.GOOGLE_CLOUD_PROJECT;
+    }
+    
+    ttsClient = new TextToSpeechClient(config);
+  }
+  return ttsClient;
+}
+
 
 /* BULK */
 export async function addBulk() {
@@ -72,7 +101,37 @@ export async function getRecommendCategory({text}) {
 
 /* TTS */
 export async function getTTS({text}) {
-  return { success:true, data: "음성 합성된 텍스트" }
+  try {
+    // TTS 클라이언트 초기화
+    const client = initializeTTSClient();
+    
+    // Google Cloud TTS 요청 구성
+    const request = {
+      input: { text: text },
+      voice: {
+        languageCode: 'ko-KR', // 한국어
+        name: 'ko-KR-Chirp3-HD-Achernar', // 고품질 신경망 음성
+        // ssmlGender: 'NEUTRAL',
+      },
+      audioConfig: {
+        audioEncoding: 'MP3', // MP3 형식으로 출력
+        speakingRate: 1.0, // 말하기 속도
+        pitch: 0.0, // 음높이
+        volumeGainDb: 0.0, // 볼륨
+      },
+    };
+
+    // TTS 요청 실행
+    const [response] = await client.synthesizeSpeech(request);
+    
+    // 오디오 데이터를 Blob으로 변환
+    const audioBlob = new Blob([response.audioContent], { type: 'audio/mp3' });
+    
+    return { success: true, data: audioBlob };
+  } catch (error) {
+    console.error('Google Cloud TTS 오류:', error);
+    return { success: false, error: error.message };
+  }
 }
 
 /* USER */
