@@ -1347,21 +1347,24 @@ export default function Home() {
         clearTimeout(debounceTimeoutRef.current.pop());
     } 
     
-    // 새로운 타이머 설정 (0.2초 후 실행)
+    // 새로운 타이머 설정 (0.5초 후 실행)
     debounceTimeoutRef.current.push(setTimeout(async () => {
-      console.log(newInput);
-      if (newInput.trim()) { 
-        console.log(newInput + "????")
-        const res = await getRecommends({ text: newInput });
+      // newInput 대신 현재 input 상태값 사용
+      const currentInput = document.querySelector(`.${styles.textInput}`)?.value || newInput;
+      
+      console.log(currentInput);
+      if (currentInput.trim()) { 
+        console.log(currentInput + "????")
+        const res = await getRecommends({ text: currentInput });
         
-        if (res.success) {;
+        if (res.success) {
           setRecommends(res.data);
           setIsRecommendOpen(true);
         } else {
           showError("추천 기능에 오류가 발생했습니다.");
         }
       }
-    }, 500));
+    }, 300));
   };
 
   const handleConversationAdd = async (text) => {
